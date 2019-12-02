@@ -19,6 +19,7 @@ module.exports = function(app) {
   // Hello
   // line 2
   // line 3
+  // line 4
   app.delete("/api/examples/:id", function(req, res) {
     db.Example.destroy({ where: { id: req.params.id } }).then(function(
       dbExample
