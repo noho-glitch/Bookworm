@@ -5,12 +5,20 @@ var exphbs = require("express-handlebars");
 var db = require("./models");
 
 var app = express();
+var passport = require("passport");
+var session = require("express-session");
+var bodyParser = require("body-parser");
+
 var PORT = process.env.PORT || 3000;
 
 // Middleware
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(express.static("public"));
+
+//For BodyParser
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 // Handlebars
 app.engine(
