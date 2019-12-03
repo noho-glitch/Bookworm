@@ -12,13 +12,11 @@ var bodyParser = require("body-parser");
 var PORT = process.env.PORT || 3000;
 
 // Middleware
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
-app.use(express.static("public"));
-
-//For BodyParser
+// For BodyParser
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(express.json());
+app.use(express.static("public"));
 
 // Handlebars
 app.engine(
