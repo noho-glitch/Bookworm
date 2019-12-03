@@ -9,6 +9,9 @@ var passport = require("passport");
 var session = require("express-session");
 var bodyParser = require("body-parser");
 
+console.log("passport: " + passport);
+console.log("session: " + session);
+
 var PORT = process.env.PORT || 3000;
 
 // Middleware
