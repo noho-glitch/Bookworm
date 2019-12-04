@@ -1,3 +1,19 @@
-.list-group-item {
-  line-height: 2.5;
+
+.search_bar {
+  width: 70% !important; 
+  margin-right: auto; 
+  margin-left: auto; 
+}
+
+body {
+  background: url(../assets/img/books.png);
+  background-repeat: no-repeat; 
+}
+
+.search-box {
+  margin-top: 100px; 
+  width: 80%; 
+  margin-right: auto; 
+  margin-left: auto; 
+  border-radius: 25px !important; 
 }
