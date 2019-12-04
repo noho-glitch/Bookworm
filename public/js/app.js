@@ -17,7 +17,23 @@ $("#search-btn").on("click", function(event) {
 });
 
 
+
+
 function renderBooks() {
+
+    $.fn.stars = function() {
+        return $(this).each(function() {
+            // Get the value
+            var val = parseFloat($(this).html());
+            // Make sure that the value is in 0 - 5 range, multiply to get width
+            var size = Math.max(0, (Math.min(5, val))) * 16;
+            // Create stars holder
+            var $span = $('<span />').width(size);
+            // Replace the numerical value with stars
+            $(this).html($span);
+        });
+    }
+
     var parameter = "";
     var search = "harry+potter";
     var queryURL =
@@ -38,6 +54,7 @@ function renderBooks() {
     var author = response.items[0].volumeInfo.authors[0];
     var image = response.items[0].volumeInfo.imageLinks.thumbnail;
     var description = response.items[0].volumeInfo.description;
+    var rating = 
     
     console.log(title)
     console.log(author)
@@ -55,34 +72,46 @@ function renderBooks() {
 
         title = booksArr[i].volumeInfo.title;
         author = booksArr[i].volumeInfo.authors[0];
-
-        console.log(author)
+        rating = booksArr[i].volumeInfo.averageRating;
         image = booksArr[i].volumeInfo.imageLinks.thumbnail;
         description = booksArr[i].volumeInfo.description;
 
-        console.log(title)
-        console.log(author)
 
-        var card = $("<div>")
-        card.addClass("card form-rounded")
+        var card = $("<div>");
+        card.addClass("card form-rounded");
 
         var cardBody = $("<div>");
         cardBody.addClass("card-body");
 
         var bookTitle = $("<p>");
         bookTitle.text(title);
-        bookTitle.addClass("card-text")
+        bookTitle.addClass("card-text");
+        $(function() {
+            $('span.stars').stars();
+        });
+        var span = $("<span>");
+        span.addClass("stars");
+        span.addClass("card-text");
+        var bookRating = $("<span>");
+        bookRating.text(rating);
+        bookRating.addClass("card-text")
+        span.append(bookRating);
+        console.log(rating)
 
         var bookAuthor = $("<p>");
-        bookAuthor = $("<p>")
-        bookAuthor.addClass("card-text")
+        bookAuthor = $("<p>");
+        bookAuthor.addClass("card-text");
 
         var cardImage = $("<img>");
         cardImage.attr("src", image)
 
-        cardBody.append(bookTitle)
-        cardBody.append(bookAuthor)
-        cardBody.append(cardImage)
+       
+        console.log(bookRating)
+
+        cardBody.append(cardImage);
+        cardBody.append(bookTitle);
+        cardBody.append(span);
+        cardBody.append(bookAuthor);
         card.append(cardBody)
         $("#resultsDiv").append(card)
     }
