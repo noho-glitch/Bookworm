@@ -39,9 +39,9 @@ app.engine(
 app.set("view engine", "handlebars");
 
 // Routes
+var authRoute = require("./routes/auth.js")(app);
 require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
-var authRoute = require("./routes/auth.js")(app);
 
 var syncOptions = {
   force: false
