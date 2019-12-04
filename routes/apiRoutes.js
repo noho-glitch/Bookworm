@@ -15,9 +15,11 @@ module.exports = function (app) {
     // get the user input
     request("https://www.googleapis.com/books/v1/volumes?q="+ search + ":keyes&key=AIzaSyBaLr5TPsFewkitZXad_5_EaTeCT35K9No", function (error, response, body){
       if (!error && response.statusCode == 200){
+        
+        var bodyres = JSON.parse(body)
         console.log(body)
       }
-      res.json(body)
+      res.json(bodyres)
       // res.json(body.title)
     })
     // request("https://www.googleapis.com/books/v1/volumes?q=" + search + ":keyes&key=AIzaSyBaLr5TPsFewkitZXad_5_EaTeCT35K9No")
