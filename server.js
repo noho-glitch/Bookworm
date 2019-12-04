@@ -7,12 +7,7 @@ var exphbs = require("express-handlebars");
 
 var db = require("./models");
 
-
-
 var bodyParser = require("body-parser");
-
-console.log("passport: " + passport);
-console.log("session: " + session);
 
 var PORT = process.env.PORT || 3000;
 
