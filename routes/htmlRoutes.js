@@ -2,6 +2,7 @@ var db = require("../models");
 
 module.exports = function(app) {
   // Load index page
+  // line 2
   app.get("/", function(req, res) {
     db.Example.findAll({}).then(function(dbExamples) {
       res.render("index", {
@@ -9,6 +10,10 @@ module.exports = function(app) {
         examples: dbExamples
       });
     });
+  });
+
+  app.get("/search", function(req, res) {
+    res.render("search");
   });
 
   // Load example page and pass in an example by id
