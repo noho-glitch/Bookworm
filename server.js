@@ -1,12 +1,14 @@
-require("dotenv").config();
 var express = require("express");
+var app = express();
+var passport = require("passport");
+var session = require("express-session");
+require("dotenv").config();
 var exphbs = require("express-handlebars");
 
 var db = require("./models");
 
-var app = express();
-var passport = require("passport");
-var session = require("express-session");
+
+
 var bodyParser = require("body-parser");
 
 console.log("passport: " + passport);
@@ -44,6 +46,8 @@ app.set("view engine", "handlebars");
 // Routes
 require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
+// eslint-disable-next-line no-unused-vars
+var authRoute = require("./routes/auth.js")(app);
 
 var syncOptions = {
   force: false
