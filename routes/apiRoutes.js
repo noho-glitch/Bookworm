@@ -11,9 +11,10 @@ module.exports = function (app) {
 
 
   app.get("/api/googlebooks", function (req, res) {
+    var parameter = "";
     var search = "Harry Potter"
     // get the user input
-    request("https://www.googleapis.com/books/v1/volumes?q="+ search + ":keyes&key=AIzaSyBaLr5TPsFewkitZXad_5_EaTeCT35K9No", function (error, response, body){
+    request("https://www.googleapis.com/books/v1/volumes?q="+ search + parameter + ":keyes&key=AIzaSyBaLr5TPsFewkitZXad_5_EaTeCT35K9No", function (error, response, body){
       if (!error && response.statusCode == 200){
         
         var bodyres = JSON.parse(body)
