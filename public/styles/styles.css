@@ -25,7 +25,7 @@ body {
   height: 500px; 
   border-radius: 25px !important; 
   background: lightgray; 
-  /* margin-bottom: 50px;  */
+  border: none !important; 
 }
 
 .currently-reading {
@@ -34,10 +34,11 @@ body {
   font-size: 30pt; 
   background: lightgray; 
   margin-bottom: 10px; 
+  border: none !important; 
 }
 
 .fav-book-container {
-  margin-top: 120px; 
+  margin-top: 60px; 
   border-radius: 25px !important; 
 }
 
@@ -147,4 +148,14 @@ body {
 #cssmenu > ul > li:hover > a:after,
 #cssmenu > ul > li > a:hover:after {
   background: #47c9af;
+}
+
+/* Media Queries  */
+
+@media only screen and (max-width: 990px) {
+  
+  .fav-books {
+    margin-bottom: 50px; 
+  }
+
 }
