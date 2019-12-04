@@ -41,7 +41,6 @@ app.set("view engine", "handlebars");
 // Routes
 require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
-// eslint-disable-next-line no-unused-vars
 var authRoute = require("./routes/auth.js")(app);
 
 var syncOptions = {

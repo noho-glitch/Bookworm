@@ -36,7 +36,6 @@ module.exports = function(sequelize, Sequelize) {
       allowNull: false
     },
 
-    // eslint-disable-next-line camelcase
     last_login: {
       type: Sequelize.DATE
     },
