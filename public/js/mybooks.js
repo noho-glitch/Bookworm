@@ -15,10 +15,12 @@ $(document).on("click", "#page-submit", function() {
     var percentProgress = progress * 100; 
     console.log("% is: " + percentProgress); 
 
-    $("#curr-page-count").text(currentPage); 
-    $("#total-page-count").text(totalPages); 
+    $("#curr-page-count").text(currentPage.toString()); 
+    $("#total-page-count").text(totalPages.toString()); 
 
     $(".progress-bar-fill").css({width: percentProgress + "%"})
+
+    
 
 }); 
 
