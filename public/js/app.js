@@ -21,24 +21,12 @@ $("#search-btn").on("click", function(event) {
 
 function renderBooks() {
 
-    $.fn.stars = function() {
-        return $(this).each(function() {
-            // Get the value
-            var val = parseFloat($(this).html());
-            // Make sure that the value is in 0 - 5 range, multiply to get width
-            var size = Math.max(0, (Math.min(5, val))) * 16;
-            // Create stars holder
-            var $span = $('<span />').width(size);
-            // Replace the numerical value with stars
-            $(this).html($span);
-        });
-    }
 
     var parameter = "";
-    var search = "harry+potter";
+    // var userInput = "";
     var queryURL =
         "https://www.googleapis.com/books/v1/volumes?q=" +
-        search +
+        userInput +
         parameter +
         ":keyes&key=AIzaSyBaLr5TPsFewkitZXad_5_EaTeCT35K9No";
 
@@ -86,16 +74,14 @@ function renderBooks() {
         var bookTitle = $("<p>");
         bookTitle.text(title);
         bookTitle.addClass("card-text");
-        $(function() {
-            $('span.stars').stars();
-        });
-        var span = $("<span>");
-        span.addClass("stars");
-        span.addClass("card-text");
+
+       
+
+        
         var bookRating = $("<span>");
-        bookRating.text(rating);
-        bookRating.addClass("card-text")
-        span.append(bookRating);
+        bookRating.addClass("card-text rating data-default-rating=" + rating + " disabled")
+        // bookRating.text(rating);
+        // span.append(bookRating);
         console.log(rating)
 
         var bookAuthor = $("<p>");
@@ -106,11 +92,12 @@ function renderBooks() {
         cardImage.attr("src", image)
 
        
-        console.log(bookRating)
+       
+       
 
         cardBody.append(cardImage);
         cardBody.append(bookTitle);
-        cardBody.append(span);
+        cardBody.append(bookRating);
         cardBody.append(bookAuthor);
         card.append(cardBody)
         $("#resultsDiv").append(card)
