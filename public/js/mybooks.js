@@ -1,5 +1,7 @@
 $( document ).ready(function() {
 
+// Capture page progress and update progress bar 
+
 $(document).on("click", "#page-submit", function() {
 
     var totalPages = $("#total-pages").val().trim(); 
@@ -17,6 +19,17 @@ $(document).on("click", "#page-submit", function() {
     $("#total-page-count").text(totalPages.toString()); 
 
     $(".progress-bar-fill").css({width: percentProgress + "%"})
+
+}); 
+
+// Capture note 
+$(document).on("click", "#note-submit", function() {
+
+    var noteTitle = $("#note-title").val().trim(); 
+    var noteBody = $("#book-note-area").val().trim(); 
+
+    console.log(noteTitle); 
+    console.log(noteBody); 
 
 }); 
 
