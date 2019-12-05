@@ -1,8 +1,6 @@
 $( document ).ready(function() {
-   
 
 $(document).on("click", "#page-submit", function() {
-
 
     var totalPages = $("#total-pages").val().trim(); 
     var currentPage = $("#current-page").val().trim(); 
@@ -19,8 +17,6 @@ $(document).on("click", "#page-submit", function() {
     $("#total-page-count").text(totalPages.toString()); 
 
     $(".progress-bar-fill").css({width: percentProgress + "%"})
-
-    
 
 }); 
 
