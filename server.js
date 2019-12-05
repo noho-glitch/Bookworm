@@ -5,7 +5,7 @@ var session = require("express-session");
 require("dotenv").config();
 var exphbs = require("express-handlebars");
 
-var db = require("./models");
+var models = require("./models");
 
 var bodyParser = require("body-parser");
 
@@ -39,9 +39,12 @@ app.engine(
 app.set("view engine", "handlebars");
 
 // Routes
-var authRoute = require("./routes/auth.js")(app);
+var authRoute = require('./routes/auth.js')(app,passport);
 require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
+
+//load passport strategies
+require('./config/passport/passport.js')(passport, models.user);
 
 var syncOptions = {
   force: false
@@ -54,7 +57,7 @@ if (process.env.NODE_ENV === "test") {
 }
 
 // Starting the server, syncing our models ------------------------------------/
-db.sequelize.sync(syncOptions).then(function() {
+models.sequelize.sync(syncOptions).then(function() {
   app.listen(PORT, function() {
     console.log(
       "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
