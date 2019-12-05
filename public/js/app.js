@@ -1,10 +1,10 @@
 //Global variables
 var userInput;
-var booksArr = [];
 
 
 // This function handles events where SEARCH button is clicked
 $("#search-btn").on("click", function(event) {
+    $("#resultsDiv").empty();
   userInput = $("#search-input")
     .val()
     .trim()
@@ -14,13 +14,13 @@ $("#search-btn").on("click", function(event) {
   console.log(userInput);
 
   renderBooks();
+
 });
 
 
 
 
 function renderBooks() {
-
 
     var parameter = "";
     // var userInput = "";
@@ -38,10 +38,14 @@ function renderBooks() {
         console.log(response);
 
     
-    var title = response.items[0].volumeInfo.title;
-    var author = response.items[0].volumeInfo.authors[0];
-    var image = response.items[0].volumeInfo.imageLinks.thumbnail;
-    var description = response.items[0].volumeInfo.description;
+    var booksArr = [];
+    var title;
+    var author;
+    var image;
+    var description;
+    var isbn;
+    var pageCount;
+    var publishedDate;
     
     // console.log(title)
     // console.log(author)
@@ -54,11 +58,11 @@ function renderBooks() {
         booksArr.push(results[i])
     }
 
-    for (var i = 0; i < booksArr.length; i++) {
+    for (var i = 0; i < 5; i++) {
         console.log(booksArr[i]);
 
         title = booksArr[i].volumeInfo.title;
-        author = booksArr[i].volumeInfo.authors[0];
+        author = booksArr[i].volumeInfo.authors[0] || "";
         rating = booksArr[i].volumeInfo.averageRating;
         image = booksArr[i].volumeInfo.imageLinks.thumbnail;
         description = booksArr[i].volumeInfo.description;
@@ -103,9 +107,10 @@ function renderBooks() {
         var bookPageCount = $("<p>");
         bookPageCount.addClass("card-text");
         bookPageCount.text("Page Count: " + pageCount);
-
         var bookRating = $("<span>");
-        bookRating.addClass("card-text rating data-default-rating=" + rating + " disabled")
+        bookRating.addClass("card-text rating");
+        bookRating.attr("data-default-rating", rating);
+        bookRating.attr("disabled", true);
         console.log(rating)
 
         var bookAuthor = $("<p>");
@@ -130,13 +135,26 @@ function renderBooks() {
         textDiv.append(bookAuthor);
         // textDiv.append(bookPublishedDate);
         // textDiv.append(bookISBN);
+
+        if(rating) {
+        textDiv.append(bookRating)
+        }
+
         textDiv.append(bookShelf);
         cardBody.append(imageDiv);
         cardBody.append(textDiv);
         card.append(cardBody)
         $("#resultsDiv").append(card)
+
+        
     }
-    
+
+    var ratings = $('.rating');
+    console.log(ratings);
+
+    for (var i = 0; i < ratings.length; i++) {
+        var r = new SimpleStarRating(ratings[i]);
+    }
 
     });
 }
