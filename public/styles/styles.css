@@ -159,3 +159,11 @@ body {
   }
 
 }
+
+.thumbnail {
+  margin-right: 15px;
+}
+
+.form-rounded {
+  border-radius: 1rem;
+}
