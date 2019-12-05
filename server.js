@@ -7,12 +7,7 @@ var exphbs = require("express-handlebars");
 
 var db = require("./models");
 
-
-
 var bodyParser = require("body-parser");
-
-// console.log("passport: " + passport);
-// console.log("session: " + session);
 
 var PORT = process.env.PORT || 3000;
 
@@ -44,10 +39,9 @@ app.engine(
 app.set("view engine", "handlebars");
 
 // Routes
+var authRoute = require("./routes/auth.js")(app);
 require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
-// eslint-disable-next-line no-unused-vars
-var authRoute = require("./routes/auth.js")(app);
 
 var syncOptions = {
   force: false

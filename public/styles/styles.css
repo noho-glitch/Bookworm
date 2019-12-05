@@ -10,7 +10,6 @@ body {
   background-repeat: no-repeat; 
 }
 
-
 .search-box {
   margin-top: 100px; 
   width: 80%; 
@@ -20,6 +19,38 @@ body {
   margin-right: auto; 
   margin-left: auto; 
   border-radius: 25px !important; 
+}
+
+.fav-books {
+  height: 500px; 
+  border-radius: 25px !important; 
+  background: lightgray; 
+  border: none !important; 
+}
+
+.currently-reading {
+  height: 500px;
+  border-radius: 25px !important; 
+  font-size: 30pt; 
+  background: lightgray; 
+  margin-bottom: 10px; 
+  border: none !important; 
+}
+
+.fav-book-container {
+  margin-top: 60px; 
+  border-radius: 25px !important; 
+}
+
+#fav-books-title {
+  margin-right: auto; 
+  margin-left: auto; 
+  font-size: 30pt; 
+}
+
+#currently-reading-title {
+  margin-right: auto; 
+  margin-left: auto; 
 }
 
 #cssmenu,
@@ -119,13 +150,12 @@ body {
   background: #47c9af;
 }
 
-span.stars, span.stars span {
-  display: block;
-  background-image: url("../assets/img/star.png") 0 -16px repeat-x;
-  width: 80px;
-  height: 16px;
-}
+/* Media Queries  */
 
-span.stars span {
-  background-position: 0 0;
+@media only screen and (max-width: 990px) {
+  
+  .fav-books {
+    margin-bottom: 50px; 
+  }
+
 }
