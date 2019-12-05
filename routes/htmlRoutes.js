@@ -1,16 +1,15 @@
 var db = require("../models");
 
 module.exports = function(app) {
-  // Load index page
-  // line 2
-  app.get("/", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
-      res.render("index", {
-        msg: "Welcome!",
-        examples: dbExamples
-      });
-    });
-  });
+
+  // app.get("/", function(req, res) {
+  //   db.Books.findAll({}).then(function(dbbookworm) {
+  //     res.render("index", {
+  //       msg: "Welcome!",
+  //       examples: dbbookworm
+  //     });
+  //   });
+  // });
 
   app.get("/search", function(req, res) {
     res.render("search");
@@ -20,12 +19,8 @@ module.exports = function(app) {
     res.render("mybooks");
   });
 
-
-
-
-
   // Load example page and pass in an example by id
-  app.get("/example/:id", function(req, res) {
+  app.get("/book/:id", function(req, res) {
     db.Example.findOne({ where: { id: req.params.id } }).then(function(
       dbExample
     ) {

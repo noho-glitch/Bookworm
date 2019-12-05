@@ -28,6 +28,20 @@ body {
   border: none !important; 
 }
 
+#img-contain {
+  height: 250px !important; 
+  width: 180px !important; 
+  background: black; 
+  margin-right: auto; 
+  margin-left: auto; 
+  margin-top: 40px; 
+}
+
+.current-book-img {
+  width: 100%; 
+  height: 100%; 
+}
+
 .currently-reading {
   height: 500px;
   border-radius: 25px !important; 
@@ -51,6 +65,49 @@ body {
 #currently-reading-title {
   margin-right: auto; 
   margin-left: auto; 
+}
+
+#edit-progress {
+  font-size: 8pt; 
+}
+
+#add-note {
+  font-size: 8pt; 
+}
+
+
+.card-note-body {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+  max-width: 100%;
+  font-size: 10pt;
+  color: gray;  
+  margin-left: 10px; 
+}
+
+.card-note-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+  max-width: 100%;
+
+  font-size: 14pt; 
+  margin-top: 5px; 
+  margin-left: 10px; 
+  margin-bottom: 5px; 
+}
+
+.note-card {
+  margin-bottom: 5px; 
+  margin-right: 10px; 
+}
+
+#append-new-note {
+  overflow-y: scroll;
+  height: 400px; 
 }
 
 #cssmenu,
@@ -166,4 +223,36 @@ body {
 
 .form-rounded {
   border-radius: 1rem;
+}
+
+.wrapper {
+  width: 500px;
+}
+
+.progress-bar {
+  margin-top: 10px; 
+  margin-bottom: 10px; 
+  margin-right: auto; 
+  margin-left: auto; 
+  width: 70%;
+  height: 15px; 
+  background-color: #e0e0e0;
+  padding: 3px;
+  border-radius: 3px;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, .2);
+}
+
+.progress-bar-fill {
+  display: block;
+  height: 22px;
+  background-color: #659cef;
+  border-radius: 3px;
+  
+  transition: width 500ms ease-in-out;
+}
+
+.page-progress {
+  font-size: 12pt; 
+  color: darkgray; 
+  margin-bottom: 5px; 
 }
