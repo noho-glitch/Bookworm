@@ -31,6 +31,18 @@ $(document).on("click", "#note-submit", function() {
     console.log(noteTitle); 
     console.log(noteBody); 
 
+    var newCard = $("<div class=card>"); 
+    var newNoteTitle = $("<p class=card-note-title>"); 
+    var newNoteBody = $("<p class=card-note-body>");
+
+    newNoteTitle.text(noteTitle); 
+    newNoteBody.text(noteBody); 
+
+    newCard.append(newNoteTitle); 
+    newCard.append(newNoteBody); 
+
+    $("#append-new-note").append(newCard); 
+
 }); 
 
 

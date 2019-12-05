@@ -75,6 +75,16 @@ body {
   font-size: 8pt; 
 }
 
+
+.card-note-body {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+  max-width: 100%;
+}
+
+
 #cssmenu,
 #cssmenu ul,
 #cssmenu ul li,
