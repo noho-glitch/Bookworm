@@ -82,8 +82,33 @@ body {
   text-overflow: ellipsis;
   display: inline-block;
   max-width: 100%;
+  font-size: 10pt;
+  color: gray;  
+  margin-left: 10px; 
 }
 
+.card-note-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+  max-width: 100%;
+
+  font-size: 14pt; 
+  margin-top: 5px; 
+  margin-left: 10px; 
+  margin-bottom: 5px; 
+}
+
+.note-card {
+  margin-bottom: 5px; 
+  margin-right: 10px; 
+}
+
+#append-new-note {
+  overflow-y: scroll;
+  height: 400px; 
+}
 
 #cssmenu,
 #cssmenu ul,
