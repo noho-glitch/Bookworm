@@ -1,13 +1,13 @@
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
 
-    <script src="https://use.fontawesome.com/6207dd8341.js"></script>
+    <script href="https://use.fontawesome.com/6207dd8341.js"></script>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -17,98 +17,120 @@
 
     <title>My books</title>
 
+
 </head>
 
 <body>
 
 
     <div id='cssmenu'>
-<ul>
-   <li class='active'><a href='#'>Search</a></li>
-   <li><a href='#'>My Books</a></li>
-</ul>
+        <ul>
+            <li class='active'><a href='#'>Search</a></li>
+            <li><a href='#'>My Books</a></li>
+        </ul>
 
-</div>
-                  
+    </div>
+
     <div class="container">
 
         <div class="fav-book-container jumbotron">
 
-        
-        <div class="row">
 
-            <div class="col-lg-4">
+            <div class="row">
 
-                <div class="card fav-books">
-                    <p id="fav-books-title">Favorite Books</p>
-                </div>
+                <div class="col-lg-4">
 
-            </div>
-
-            <div class="col-lg-8">
-
-                <div class="card currently-reading">
-                    <p id="currently-reading-title">Currently Reading</p>
-
-                    <div id="curr-reading-book">
-
-                        <div id="img-contain">
-<img class="current-book-img" src="http://via.placeholder.com/360x640">
-
-                        </div>
-
-                       <a data-toggle="modal" data-target="#exampleModalCenter"> <p id="edit-progress">Edit Progress</p> </a>
-                        
+                    <div class="card fav-books">
+                        <p id="fav-books-title">Favorite Books</p>
                     </div>
 
                 </div>
 
+                <div class="col-lg-8">
+
+                    <div class="card currently-reading">
+                        <p id="currently-reading-title">Currently Reading</p>
+
+                        <div id="curr-reading-book">
+
+                            <div id="img-contain">
+                                <img class="current-book-img" src="http://via.placeholder.com/360x640">
+
+                            </div>
+
+                            <div class="wrapper">
+			<div class="progress-bar">
+				<span class="progress-bar-fill" style="width: 33%;"></span>
+			</div>
+
+            <p class="page-progress">Page <span id="curr-page-count">100</span> of <span>300</span></p>
+		</div>
+
+
+                            <a data-toggle="modal" data-target="#exampleModalCenter">
+
+ <p id="edit-progress">Edit Progress</p>
+                            </a>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
 
             </div>
-
         </div>
-</div>
 
 
     </div>
 
 
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Reading progress</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        
-          Total pages:<br>
-  <input type="text" name="firstname"><br>
-  Current page:<br>
-  <input type="text" name="lastname">
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Reading progress</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
 
+                   
+                    Current page:<br>
+                    <input id="current-page"  type="text" name="lastname">
+                     Total pages:<br>
+                    <input id="total-pages" type="text" name="firstname"><br>
 
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button id="page-submit" type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
 
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    {{!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
+        crossorigin="anonymous"></script> --}}
+        <script integrity="" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"
+integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
         crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
+
+
+<script type="text/javascript" src="/js/mybooks.js"></script>
+
+
 </body>
 
 </html>
