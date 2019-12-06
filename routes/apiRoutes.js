@@ -1,15 +1,8 @@
 var db = require("../models");
 var request = require("request");
-
 module.exports = function (app) {
-  // Get all examples
-  app.get("/api/examples", function (req, res) {
-    db.Example.findAll({}).then(function (dbExamples) {
-      res.json(dbExamples);
-    });
-  });
 
-
+// Get the google API data 
   app.get("/api/googlebooks", function (req, res) {
     var parameter = "";
     var search = "Harry Potter"
@@ -23,32 +16,33 @@ module.exports = function (app) {
       res.json(bodyres)
       // res.json(body.title)
     })
-    // request("https://www.googleapis.com/books/v1/volumes?q=" + search + ":keyes&key=AIzaSyBaLr5TPsFewkitZXad_5_EaTeCT35K9No")
-    // var search = "harry+potter";
-    // var queryURL = "https://www.googleapis.com/books/v1/volumes?q=" + search + ":keyes&key=AIzaSyBaLr5TPsFewkitZXad_5_EaTeCT35K9No";
-    // console.log(queryURL)
-    // $.ajax({
-    //   url: queryURL,
-    //   method: "GET"
-    // }).then(function (response) {
-    //   console.log(response)
-    // });
+    
 
   });
-  // Create a new example
-  app.post("/api/examples", function (req, res) {
-    db.Example.create(req.body).then(function (dbExample) {
-      res.json(dbExample);
+/***************************NOTES**********************/ 
+    // Get all notes
+    app.get("/api/mybooks/notes", function (req, res) {
+      db.Notes.findAll({}).then(function (dbNotes) {
+        res.json(dbNotes);
+      });
+    });
+
+
+  // Create a new note
+  app.post("/api/mybooks", function (req, res) {
+    db.Notes.create(req.body).then(function (dbNotes) {
+      res.json(dbNotes);
     });
   });
 
-  // Delete an example by id
-  // Hello
-  app.delete("/api/examples/:id", function (req, res) {
-    db.Example.destroy({ where: { id: req.params.id } }).then(function (
+  // Delete a note by id
+  app.delete("/api/mybooks/:id", function (req, res) {
+    db.Notes.destroy({ where: { id: req.params.id } }).then(function (
       dbExample
     ) {
       res.json(dbExample);
     });
   });
+
+  /*************BOOKS ****************/ 
 };
