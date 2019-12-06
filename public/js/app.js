@@ -52,11 +52,12 @@ function renderBooks() {
 
     for (var i = 0; i < results.length; i++) {
       booksArr.push(results[i]);
+      $(this).attr("id", i);
     }
 
     for (var i = 0; i < 5; i++) {
       console.log(booksArr[i]);
-
+      
       title = booksArr[i].volumeInfo.title;
       author = booksArr[i].volumeInfo.authors[0] || "";
       rating = booksArr[i].volumeInfo.averageRating;
@@ -79,6 +80,8 @@ function renderBooks() {
       bookShelfBtn.addClass("btn btn-warning form-rounded");
       bookShelfBtn.attr("id", "favorite");
       bookShelfBtn.text("Add to Bookshelf");
+      bookShelfBtn.attr("data-title", title);
+      bookShelfBtn.attr("data-author", author); 
 
       var cardBody = $("<div>");
       cardBody.addClass("card-body");
@@ -204,28 +207,32 @@ function renderBooks() {
       var r = new SimpleStarRating(ratings[i]);
     }
   });
+
+  //saving new book
+
+$(document).on("click", "#favorite", function() {
+
+    var title = $(this).attr("data-title"); 
+    var author = $(this).attr("data-author"); 
+
+    console.log(title);
+    console.log(author); 
+
+
+        var newBook = {
+            title: title,
+            authors: author
+        }
+    
+        console.log("working!")
+        console.log("new book" + JSON.stringify(newBook));
+
+        $.post("/api/favorites", newBook, function() {
+            // window.location.href = "/mybooks"; 
+            console.log(newBook);
+            location.reload();
+        }); 
+    })
+    
 }
 
-//saving new book
-
-$(document).on("click", ".card-body", function() {
-// var title = $(this).data("title").val();
-var title = $(this).attr(data-title);
-var author = $(this).data("author").val();
-
-console.log(title);
-console.log(author);
-
-    var newBook = {
-        title: title,
-        authors: author
-    }
-
-    console.log("working!")
-    console.log("new book" + newBook);
-    $.post("/api/favorites", newBook, function() {
-        // window.location.href = "/mybooks"; 
-        console.log(newBook);
-        location.reload();
-    }); 
-})
