@@ -72,7 +72,7 @@ module.exports = function (app) {
     });
   });
 
-  
+
   /*************BOOKS ****************/ 
 
    // get user id
@@ -122,6 +122,7 @@ module.exports = function (app) {
 
 
   //save a new book
+
   // app.post("/api/favorites", function (req, res) {
   //   console.log("req.body" + req.body);
   //   db.Books.create(req.body);
@@ -130,5 +131,17 @@ module.exports = function (app) {
   // // app.delete("/api/favorites/:id", function (req, res) {
   // //   db.Books.destroy({ where: { id: req.params.id } }).then(function ())
   // // })
+
+  app.post("/api/favorites", function (req, res) {
+    console.log("req.body", JSON.stringify(req.body));
+    db.Book.create(req.body).then( function(newBook) {
+      res.status(201).json(newBook);
+    })
+  })
+  //delete a book by id
+  // app.delete("/api/favorites/:id", function (req, res) {
+  //   db.Books.destroy({ where: { id: req.params.id } }).then(function ())
+  // })
+
 };
 
