@@ -256,3 +256,11 @@ body {
   color: darkgray; 
   margin-bottom: 5px; 
 }
+
+.textWrap {
+  width: 60%;
+}
+
+.card {
+  background-image: url("/assets/img/brownpager.jpg");
+}
