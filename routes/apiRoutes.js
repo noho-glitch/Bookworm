@@ -48,4 +48,15 @@ module.exports = function (app) {
   });
 
   /*************BOOKS ****************/ 
+
+  //save a new book
+  app.post("/api/favorites", function (req, res) {
+    console.log("req.body" + req.body);
+    db.Books.create(req.body);
+  })
+  //delete a book by id
+  // app.delete("/api/favorites/:id", function (req, res) {
+  //   db.Books.destroy({ where: { id: req.params.id } }).then(function ())
+  // })
 };
+
