@@ -217,6 +217,14 @@ body {
 
 }
 
+.thumbnail {
+  margin-right: 15px;
+}
+
+.form-rounded {
+  border-radius: 1rem;
+}
+
 .wrapper {
   width: 500px;
 }
@@ -247,4 +255,12 @@ body {
   font-size: 12pt; 
   color: darkgray; 
   margin-bottom: 5px; 
+}
+
+.textWrap {
+  width: 60%;
+}
+
+.card {
+  background-image: url("/assets/img/brownpager.jpg");
 }
