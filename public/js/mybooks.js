@@ -104,4 +104,27 @@ $(document).ready(function () {
     });
 
 /****************************BOOKS*************************************/ 
+
+// Show all books
+$(document).ready(function () {
+    // get all boooks by user id
+    $.get("/api/mybooks", function (data) {
+        console.log(data);
+        // loop to append all the books 
+        for (var i = 0; i < data.length; i++) {
+            $("#allBooks").append(data[i].title)
+            $("#allBooks").append(data[i].authors)
+            $("#allBooks").append(data[i].pageCount)
+            $("#allBooks").append(data[i].currentPage)
+            $("#allBooks").append(data[i].imgThumbnail)
+            $("#allBooks").append(data[i].rating)
+
+        }
+    });
+})
+
+
+
+
+
 }); // end of on load 
