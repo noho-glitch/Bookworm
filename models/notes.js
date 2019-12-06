@@ -1,6 +1,6 @@
 module.exports = function(sequelize, Sequelize) {
   
-  var Notes = sequelize.define("notes", {
+  var Note = sequelize.define("Note", {
     id: {
       autoIncrement: true,
       primaryKey: true,
@@ -15,16 +15,15 @@ module.exports = function(sequelize, Sequelize) {
       type: Sequelize.STRING,
       notEmpty: true
     },
-    userId:{
-      type: Sequelize.INTEGER,
-      notEmpty: true
-    },
-    bookId:{
-      type: Sequelize.INTEGER,
-      notEmpty: true
-    }
+    userId: Sequelize.INTEGER,
+      // notEmpty: true
+
+    bookId: Sequelize.INTEGER
+      
+      // notEmpty: true
+    
   });
 
-  return Notes;
+  return Note;
 };
 

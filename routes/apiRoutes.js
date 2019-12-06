@@ -21,8 +21,8 @@ module.exports = function (app) {
   });
 /***************************NOTES**********************/ 
     // Get all notes
-    app.get("/api/mybooks/notes", function (req, res) {
-      db.Notes.findAll({}).then(function (dbNotes) {
+    app.get("/api/mybooks/:bookid/notes", function (req, res) {
+      db.Note.findAll({}).then(function (dbNotes) {
         res.json(dbNotes);
       });
     });
@@ -30,14 +30,17 @@ module.exports = function (app) {
 
   // Create a new note
   app.post("/api/mybooks", function (req, res) {
-    db.Notes.create(req.body).then(function (dbNotes) {
+    console.log("This is the req body")
+    console.log(req.body);
+    db.Note.create(req.body)
+    .then(function (dbNotes) {
       res.json(dbNotes);
     });
   });
 
   // Delete a note by id
   app.delete("/api/mybooks/:id", function (req, res) {
-    db.Notes.destroy({ where: { id: req.params.id } }).then(function (
+    db.Note.destroy({ where: { id: req.params.id } }).then(function (
       dbExample
     ) {
       res.json(dbExample);
@@ -45,4 +48,15 @@ module.exports = function (app) {
   });
 
   /*************BOOKS ****************/ 
+
+  //save a new book
+  app.post("/api/favorites", function (req, res) {
+    console.log("req.body" + req.body);
+    db.Books.create(req.body);
+  })
+  //delete a book by id
+  // app.delete("/api/favorites/:id", function (req, res) {
+  //   db.Books.destroy({ where: { id: req.params.id } }).then(function ())
+  // })
 };
+
