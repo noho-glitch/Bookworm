@@ -51,7 +51,7 @@ module.exports = function (app) {
 
   //save a new book
   app.post("/api/favorites", function (req, res) {
-    console.log("req.body" + req.body);
+    console.log("req.body", JSON.stringify(req.body));
     db.Books.create(req.body);
   })
   //delete a book by id

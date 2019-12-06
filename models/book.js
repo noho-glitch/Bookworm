@@ -1,6 +1,8 @@
+
+
 module.exports = function(sequelize, Sequelize) {
   
-  var Books = sequelize.define("book", {
+  var Books = sequelize.define("Book", {
     id: {
       autoIncrement: true,
       primaryKey: true,
