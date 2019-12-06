@@ -20,28 +20,12 @@ module.exports = function(sequelize, Sequelize) {
       type: Sequelize.STRING,
       notEmpty: true
     },
-    pageCount:{
-      type: Sequelize.INTEGER,
-      notEmpty: true
-    },
-    currentPage:{
-      type: Sequelize.INTEGER,
-      notEmpty: true
-    },
-    imgThumbnail:{
-      type: Sequelize.STRING,
-      notEmpty: true
-    }, 
-    imgUrl:{
-      type: Sequelize.STRING,
-      notEmpty: true
-    }, 
+    pageCount: Sequelize.INTEGER,
+    currentPage: Sequelize.INTEGER,
+    imgThumbnail:Sequelize.STRING,
+    imgUrl: Sequelize.STRING,
     rating: Sequelize.INTEGER,
-    userId:{
-      type: Sequelize.INTEGER,
-      notEmpty: true
-    }
-  
+    userId: Sequelize.INTEGER,
   });
 
   return Books;
