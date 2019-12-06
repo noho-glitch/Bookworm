@@ -245,15 +245,13 @@ $(document).on("click", "#favorite", function() {
             'authors': author
         }
 
-    
-    
         console.log("working!")
         console.log("new book" + newBook);
 
         $.post("/api/favorites", newBook, function(res) {
             // window.location.href = "/mybooks"; 
             console.log(res);
-            location.reload();
+            // location.reload();
         }); 
     })
     
