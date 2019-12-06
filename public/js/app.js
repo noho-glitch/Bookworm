@@ -1,5 +1,13 @@
 //Global variables
 var userInput;
+var booksArr = [];
+var title;
+var author;
+var image;
+var description;
+var isbn;
+var pageCount;
+var publishedDate;
 
 // This function handles events where SEARCH button is clicked
 $("#search-btn").on("click", function(event) {
@@ -31,14 +39,14 @@ function renderBooks() {
   }).then(function(response) {
     console.log(response);
 
-    var booksArr = [];
-    var title;
-    var author;
-    var image;
-    var description;
-    var isbn;
-    var pageCount;
-    var publishedDate;
+    // var booksArr = [];
+    // var title;
+    // var author;
+    // var image;
+    // var description;
+    // var isbn;
+    // var pageCount;
+    // var publishedDate;
 
     var results = response.items;
 
@@ -69,6 +77,7 @@ function renderBooks() {
 
       var bookShelfBtn = $("<button>");
       bookShelfBtn.addClass("btn btn-warning form-rounded");
+      bookShelfBtn.attr("id", "favorite");
       bookShelfBtn.text("Add to Bookshelf");
 
       var cardBody = $("<div>");
@@ -76,7 +85,8 @@ function renderBooks() {
 
       var bookTitle = $("<h5>");
       bookTitle.text(title);
-      bookTitle.addClass("card-text");
+      bookTitle.addClass("card-text favTitle");
+      bookTitle.attr("data-title", `${i}`)
 
       var bookPageCount = $("<p>");
       bookPageCount.addClass("card-text");
@@ -105,24 +115,25 @@ function renderBooks() {
 
       var bookAuthor = $("<p>");
       bookAuthor.text("By: " + author);
-      bookAuthor.addClass("card-text");
+      bookAuthor.addClass("card-text favAuthor");
+      bookAuthor.attr("data-author", `${i}`)
+
 
       var cardImage = $("<img>");
       cardImage.attr("src", image);
 
+
       var modalBtn = $("<button>");
       modalBtn.addClass("btn btn-warning form-rounded modalBtn");
-      modalBtn.data("toggle", "modal");
-      modalBtn.data("target", "#launchModal");
+      modalBtn.attr("data-target", `#launchModal${i}`)
+      modalBtn.attr("data-toggle", "modal")
       modalBtn.text("More Info");
      
-      $(".modalBtn").on("click", function(event) {
-
       //Book Modal
       var modalDiv = $("<div>");
       modalDiv.addClass("modal-fade");
-      modalDiv.attr("id", "launchModal");
-      modalDiv.attr("")
+      modalDiv.attr("id", `launchModal${i}`);
+
 
       var modalContent = $("<div>");
       modalContent.addClass("modal-dialog");
@@ -136,7 +147,30 @@ function renderBooks() {
       modalTitle.addClass("modal-header");
       modalTitle.text(title);
       modalHeader.append(modalTitle);
-      });
+
+      
+     
+    //   $(".modalBtn").on("click", function(event) {
+
+    //   //Book Modal
+    //   var modalDiv = $("<div>");
+    //   modalDiv.addClass("modal-fade");
+    //   modalDiv.attr("id", "launchModal");
+    //   modalDiv.attr("")
+
+    //   var modalContent = $("<div>");
+    //   modalContent.addClass("modal-dialog");
+    //   modalDiv.append(modalContent);
+
+    //   var modalHeader = $("<div>");
+    //   modalHeader.addClass("modal-header");
+    //   modalContent.append(modalHeader);
+
+    //   var modalTitle = $("<h5>");
+    //   modalTitle.addClass("modal-header");
+    //   modalTitle.text(title);
+    //   modalHeader.append(modalTitle);
+    //   });
       // cardBody.append(cardImage);
       // cardBody.append(bookTitle);
       // cardBody.append(bookAuthor);
@@ -159,6 +193,7 @@ function renderBooks() {
       cardBody.append(imageDiv);
       cardBody.append(textDiv);
       card.append(cardBody);
+      card.append(modalDiv);
       $("#resultsDiv").append(card);
     }
 
@@ -170,3 +205,27 @@ function renderBooks() {
     }
   });
 }
+
+//saving new book
+
+$(document).on("click", ".card-body", function() {
+// var title = $(this).data("title").val();
+var title = $(this).attr(data-title);
+var author = $(this).data("author").val();
+
+console.log(title);
+console.log(author);
+
+    var newBook = {
+        title: title,
+        authors: author
+    }
+
+    console.log("working!")
+    console.log("new book" + newBook);
+    $.post("/api/favorites", newBook, function() {
+        // window.location.href = "/mybooks"; 
+        console.log(newBook);
+        location.reload();
+    }); 
+})
