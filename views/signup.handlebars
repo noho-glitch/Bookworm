@@ -6,12 +6,12 @@
 
 <body>
     <div class="container">
-        <div class="jumbotron sign-up search-box">
+        <div class="jumbotron sign-up search-box"  style="overflow:hidden">
             <h1 class="text-center find-book display-4">Register Your Account</h1>
 
             <form id="signup" name="signup" method="post" action="/signup">
                 <label for="email">Email Address</label>
-                <input class="text-center" name="email" type="email" />
+                <input class="text" name="email" type="email" />
                 <br>
                 <label for="firstname">Firstname</label>
                 <input name="firstname" type="text" />
@@ -22,7 +22,7 @@
                 <label for="password">Password</label>
                 <input name="password" type="password" />
                 <br>
-                <input class="btn" type="submit" value="Sign Up" />
+                <input class="btn btn-warning form-rounded registerBtn" type="submit" value="Register" />
             </form>
         </div>
     </div>

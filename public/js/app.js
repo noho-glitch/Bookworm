@@ -81,7 +81,19 @@ function renderBooks() {
       bookShelfBtn.attr("id", "favorite");
       bookShelfBtn.text("Add to Bookshelf");
       bookShelfBtn.attr("data-title", title);
-      bookShelfBtn.attr("data-author", author); 
+      bookShelfBtn.attr("data-author", author);
+      bookShelfBtn.attr("data-isbn", isbn);
+      bookShelfBtn.attr("data-pageCount", pageCount); 
+      bookShelfBtn.attr("data-rating", rating); 
+      bookShelfBtn.attr("data-image", image); 
+      bookShelfBtn.attr("data-description", description); 
+      bookShelfBtn.attr("data-publishedDate", publishedDate); 
+
+
+
+
+ 
+
 
       var cardBody = $("<div>");
       cardBody.addClass("card-body");
@@ -212,25 +224,34 @@ function renderBooks() {
 
 $(document).on("click", "#favorite", function() {
 
-    var title = $(this).attr("data-title"); 
+    var title2 = $(this).attr("data-title"); 
     var author = $(this).attr("data-author"); 
+    var image = $(this).attr("data-image"); 
+    var rating = $(this).attr("data-rating"); 
+    var publishedDate = $(this).attr("data-publishedDate"); 
+    var isbn = $(this).attr("data-isbn"); 
+    var description = $(this).attr("data-description"); 
+    var pageCount = $(this).attr("data-pageCount"); 
 
-    console.log(title);
-    console.log(author); 
+
+
+
+    console.log(typeof title2);
+    console.log(typeof author); 
 
 
         var newBook = {
-            title: title,
-            authors: author
+            'title': title2,
+            'authors': author
         }
-    
-        console.log("working!")
-        console.log("new book" + JSON.stringify(newBook));
 
-        $.post("/api/favorites", newBook, function() {
+        console.log("working!")
+        console.log("new book" + newBook);
+
+        $.post("/api/favorites", newBook, function(res) {
             // window.location.href = "/mybooks"; 
-            console.log(newBook);
-            location.reload();
+            console.log(res);
+            // location.reload();
         }); 
     })
     

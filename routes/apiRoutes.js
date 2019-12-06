@@ -71,20 +71,18 @@ module.exports = function (app) {
     });
   });
 
-<<<<<<< HEAD
-  /*************BOOKS ****************/
-=======
   /*************BOOKS ****************/ 
 
   //save a new book
   app.post("/api/favorites", function (req, res) {
-    console.log("req.body" + req.body);
-    db.Books.create(req.body);
+    console.log("req.body", JSON.stringify(req.body));
+    db.Book.create(req.body).then( function(newBook) {
+      res.status(201).json(newBook);
+    })
   })
   //delete a book by id
   // app.delete("/api/favorites/:id", function (req, res) {
   //   db.Books.destroy({ where: { id: req.params.id } }).then(function ())
   // })
->>>>>>> 191034627a873a7ad03e0ccf2579040ddc3e9f5d
 };
 
