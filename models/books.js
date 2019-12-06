@@ -25,7 +25,7 @@ module.exports = function(sequelize, Sequelize) {
     imgThumbnail:Sequelize.STRING,
     imgUrl: Sequelize.STRING,
     rating: Sequelize.INTEGER,
-    userId: Sequelize.INTEGER,
+    userId: Sequelize.INTEGER
   });
 
   return Books;
