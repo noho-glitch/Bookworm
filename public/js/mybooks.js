@@ -30,11 +30,15 @@ $(document).ready(function () {
         $.get("/api/mybooks", function (data) {
             console.log(data);
             // loop to append all the notes 
+
+            // begin sabrina paste 
             for (var i = 0; i < data.length; i++) {
-                $("#append-new-note").append(data[i].noteTitle)
-                $("#append-new-note").append(data[i].noteText)
+                $("#append-new-note").append("<h1>" + data[i].noteTitle + "</h1>")
+                $("#append-new-note").append("<p>" + data[i].noteText + "</p>")
                 $("#append-new-note").append("<button class='delete' data-id='" + data[i].id + "'>delete</button>");
-            }
+            } // end sabrina paste 
+
+
         });
     })
 
@@ -113,15 +117,23 @@ $(document).ready(function () {
     $.get("/api/fav-books", function (data) {
         console.log(data);
         // loop to append all the books 
-        for (var i = 0; i < data.length; i++) {
-            $("#allBooks").append(data[i].title)
-            $("#allBooks").append(data[i].authors)
-            $("#allBooks").append(data[i].pageCount)
-            $("#allBooks").append(data[i].currentPage)
-            $("#allBooks").append(data[i].imgThumbnail)
-            $("#allBooks").append(data[i].rating)
 
-        }
+
+        // begin sabrina paste 
+      
+        for (var i = 0; i < data.length; i++) {
+            $("#allBooks").append("<h1>"+ data[i].title + "</h1>");
+            $("#allBooks").append("<p>" + data[i].authors+ "</p>");
+            $("#allBooks").append("<p>" + data[i].pageCount + "</p>");
+            $("#allBooks").append("<p>" + data[i].currentPage + "</p>");
+            $("#allBooks").append("<img class='book-cover'>");
+            $("#allBooks").append("<p>" + data[i].rating + "</p>");
+            $("#allBooks").append("<button class='delete' data-id='" + data[i].id + "'>delete</button>");
+            $(".book-cover").attr("src", data[i].imgThumbnail);
+        };
+
+         // end sabrina paste 
+
     });
 })
 
