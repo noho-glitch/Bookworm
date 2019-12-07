@@ -50,14 +50,14 @@ function renderBooks() {
     for (var i = 0; i < 5; i++) {
       console.log(booksArr.length);
 
-      title = booksArr[i].volumeInfo.title;
+      title = booksArr[i].volumeInfo.title  || "";
       author = booksArr[i].volumeInfo.authors[0] || "";
-      rating = booksArr[i].volumeInfo.averageRating;
-      image = booksArr[i].volumeInfo.imageLinks.thumbnail;
-      description = booksArr[i].volumeInfo.description;
-      isbn = booksArr[i].volumeInfo.industryIdentifiers[0].identifier;
-      pageCount = booksArr[i].volumeInfo.pageCount;
-      publishedDate = booksArr[i].volumeInfo.publishedDate;
+      rating = booksArr[i].volumeInfo.averageRating || "";
+      image = booksArr[i].volumeInfo.imageLinks.thumbnail || "";
+      description = booksArr[i].volumeInfo.description || "";
+      isbn = booksArr[i].volumeInfo.industryIdentifiers[0].identifier || "";
+      pageCount = booksArr[i].volumeInfo.pageCount || "";
+      publishedDate = booksArr[i].volumeInfo.publishedDate || "";
 
       var card = $("<div>");
       card.addClass("card form-rounded");
@@ -127,15 +127,14 @@ function renderBooks() {
 
       var modalBtn = $("<button>");
       modalBtn.addClass("btn btn-warning form-rounded modalBtn");
-      modalBtn.attr("data-target", `#launchModal${i}`)
-      modalBtn.attr("data-toggle", "modal")
+      modalBtn.attr("data-target", `#launchModal${i}`);
+      modalBtn.attr("data-toggle", "modal");
       modalBtn.text("More Info");
      
       //Book Modal
       var modalDiv = $("<div>");
       modalDiv.addClass("modal-fade");
       modalDiv.attr("id", `launchModal${i}`);
-
 
       var modalContent = $("<div>");
       modalContent.addClass("modal-dialog");
@@ -150,29 +149,6 @@ function renderBooks() {
       modalTitle.text(title);
       modalHeader.append(modalTitle);
 
-      
-     
-    //   $(".modalBtn").on("click", function(event) {
-
-    //   //Book Modal
-    //   var modalDiv = $("<div>");
-    //   modalDiv.addClass("modal-fade");
-    //   modalDiv.attr("id", "launchModal");
-    //   modalDiv.attr("")
-
-    //   var modalContent = $("<div>");
-    //   modalContent.addClass("modal-dialog");
-    //   modalDiv.append(modalContent);
-
-    //   var modalHeader = $("<div>");
-    //   modalHeader.addClass("modal-header");
-    //   modalContent.append(modalHeader);
-
-    //   var modalTitle = $("<h5>");
-    //   modalTitle.addClass("modal-header");
-    //   modalTitle.text(title);
-    //   modalHeader.append(modalTitle);
-    //   });
  
       imageDiv.append(cardImage);
       textDiv.append(bookTitle);
