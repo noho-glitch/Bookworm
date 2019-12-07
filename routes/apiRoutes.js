@@ -125,7 +125,7 @@ module.exports = function (app) {
     
     console.log("req is: ", req); 
     console.log("req.session is: ", req.session); 
-    console.log("req.user.id is: ", req.user.id); 
+    // console.log("req.user.id is: ", req.user.id); 
 
     req.body.userId = req.user.id; 
     console.log("req.body.userId", req.body.userId); 
