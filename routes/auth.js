@@ -26,14 +26,26 @@ module.exports = function (app, passport) {
   app.get('/dashboard', isLoggedIn, authController.dashboard);
   app.get('/logout', authController.logout);
   app.post('/signin', passport.authenticate('local-signin', {
-    successRedirect: '/dashboard',
+    successRedirect: '/search',
     failureRedirect: '/signin'
   }));
 
   function isLoggedIn(req, res, next) {
-    if (req.isAuthenticated())
+    if (req.isAuthenticated()) {
+      console.log("req.user is successful");
+      console.log(req.user.id);
+
+      // authcontroller search 
+      authController.search(req, res); 
+
       return next();
-    res.redirect('/signin');
+
+    } else {
+
+      res.redirect('/signin');
+
+    }
+
   }
 
 }

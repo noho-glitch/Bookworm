@@ -10,8 +10,12 @@ module.exports = function(sequelize, Sequelize) {
       primaryKey: true,
       type: Sequelize.INTEGER
     },
-
-    ISBN: Sequelize.INTEGER,
+    ISBN: {
+      dialectOptions: {
+        supportBigNumbers: true
+      }, 
+      type: Sequelize.BIGINT
+    },
     title: Sequelize.STRING,
     authors: Sequelize.STRING,
     pageCount: Sequelize.INTEGER,
@@ -23,5 +27,6 @@ module.exports = function(sequelize, Sequelize) {
   });
 
   return Book;
+
 };
 
