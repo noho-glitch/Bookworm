@@ -205,8 +205,6 @@ function renderBooks() {
 
 $(document).on("click", "#favorite", function() {
 
-
-
     var titleSQL = $(this).attr("data-title"); 
     var authorSQL = $(this).attr("data-author"); 
     var imageSQL = $(this).attr("data-image"); 
