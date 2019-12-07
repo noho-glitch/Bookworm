@@ -19,6 +19,7 @@ $("#search-btn").on("click", function(event) {
     .join("+");
 
   console.log(userInput);
+  booksArr = [];
 
   renderBooks();
 });
@@ -39,25 +40,16 @@ function renderBooks() {
   }).then(function(response) {
     console.log(response);
 
-    // var booksArr = [];
-    // var title;
-    // var author;
-    // var image;
-    // var description;
-    // var isbn;
-    // var pageCount;
-    // var publishedDate;
-
     var results = response.items;
 
     for (var i = 0; i < results.length; i++) {
       booksArr.push(results[i]);
-      $(this).attr("id", i);
+    //   $(this).attr("id", i);
     }
 
     for (var i = 0; i < 5; i++) {
-      console.log(booksArr[i]);
-      
+      console.log(booksArr.length);
+
       title = booksArr[i].volumeInfo.title;
       author = booksArr[i].volumeInfo.authors[0] || "";
       rating = booksArr[i].volumeInfo.averageRating;
@@ -90,11 +82,6 @@ function renderBooks() {
       bookShelfBtn.attr("data-publishedDate", publishedDate); 
 
 
-
-
- 
-
-
       var cardBody = $("<div>");
       cardBody.addClass("card-body");
 
@@ -123,7 +110,6 @@ function renderBooks() {
       bookRating.addClass("card-text rating");
       bookRating.attr("data-default-rating", rating);
       bookRating.attr("disabled", true);
-      // console.log(rating)
 
       var br = $("<p>");
       br.text("");
@@ -136,6 +122,7 @@ function renderBooks() {
 
       var cardImage = $("<img>");
       cardImage.attr("src", image);
+      console.log(image);
 
 
       var modalBtn = $("<button>");
@@ -202,7 +189,7 @@ function renderBooks() {
       cardBody.append(imageDiv);
       cardBody.append(textDiv);
       card.append(cardBody);
-      card.append(modalDiv);
+    //   body.append(modalDiv);
       $("#resultsDiv").append(card);
     }
 
@@ -238,6 +225,7 @@ $(document).on("click", "#favorite", function() {
             'title': titleSQL,
             'authors': authorSQL,
             'imageUrl': imageSQL,
+            'imageThumbnail': imageSQL,
             'rating': ratingSQL,
             'ISBN': isbnSQL,
             'pageCount': pageCountSQL,
