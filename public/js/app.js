@@ -186,17 +186,11 @@ function renderBooks() {
     //   modalTitle.text(title);
     //   modalHeader.append(modalTitle);
     //   });
-      // cardBody.append(cardImage);
-      // cardBody.append(bookTitle);
-      // cardBody.append(bookAuthor);
-      // cardBody.append(bookRating);
-      // cardBody.append(bookPublishedDate);
-      // cardBody.append(bookISBN);
+ 
       imageDiv.append(cardImage);
       textDiv.append(bookTitle);
       textDiv.append(bookAuthor);
-      // textDiv.append(bookPublishedDate);
-      // textDiv.append(bookISBN);
+    
 
       if (rating) {
         textDiv.append(bookRating);
@@ -224,14 +218,14 @@ function renderBooks() {
 
 $(document).on("click", "#favorite", function() {
 
-    var title2 = $(this).attr("data-title"); 
-    var author = $(this).attr("data-author"); 
-    var image = $(this).attr("data-image"); 
-    var rating = $(this).attr("data-rating"); 
-    var publishedDate = $(this).attr("data-publishedDate"); 
-    var isbn = $(this).attr("data-isbn"); 
-    var description = $(this).attr("data-description"); 
-    var pageCount = $(this).attr("data-pageCount"); 
+    var titleSQL = $(this).attr("data-title"); 
+    var authorSQL = $(this).attr("data-author"); 
+    var imageSQL = $(this).attr("data-image"); 
+    var ratingSQL = $(this).attr("data-rating"); 
+    var publishedDateSQL = $(this).attr("data-publishedDate"); 
+    var isbnSQL = $(this).attr("data-isbn"); 
+    var descriptionSQL = $(this).attr("data-description"); 
+    var pageCountSQL = $(this).attr("data-pageCount"); 
 
 
 
@@ -241,8 +235,12 @@ $(document).on("click", "#favorite", function() {
 
 
         var newBook = {
-            'title': title2,
-            'authors': author
+            'title': titleSQL,
+            'authors': authorSQL,
+            'imageUrl': imageSQL,
+            'rating': ratingSQL,
+            'ISBN': isbnSQL,
+            'pageCount': pageCountSQL,
         }
 
         console.log("working!")

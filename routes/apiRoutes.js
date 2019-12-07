@@ -6,8 +6,9 @@ module.exports = function (app) {
   app.get("/api/googlebooks", function (req, res) {
     var parameter = "";
     var search = "Harry Potter"
+    var refine = "&orderBy=relevance&"
     // get the user input
-    request("https://www.googleapis.com/books/v1/volumes?q=" + search + parameter + ":keyes&key=AIzaSyBaLr5TPsFewkitZXad_5_EaTeCT35K9No", function (error, response, body) {
+    request("https://www.googleapis.com/books/v1/volumes?q=" + search + parameter + refine + ":keyes&key=AIzaSyBaLr5TPsFewkitZXad_5_EaTeCT35K9No", function (error, response, body) {
       if (!error && response.statusCode == 200) {
 
         var bodyres = JSON.parse(body)
@@ -80,9 +81,6 @@ module.exports = function (app) {
       res.status(201).json(newBook);
     })
   })
-  //delete a book by id
-  // app.delete("/api/favorites/:id", function (req, res) {
-  //   db.Books.destroy({ where: { id: req.params.id } }).then(function ())
-  // })
 };
+
 
