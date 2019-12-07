@@ -263,3 +263,15 @@ body {
 .card {
   background-image: url("/assets/img/brownpager.jpg");
 }
+
+.grouping-1 {
+  margin-right: auto; 
+  margin-left: auto; 
+  max-width: 180px; 
+}
+
+.sign-in-submit {
+  margin-right: auto; 
+  margin-left: auto; 
+  display: block; 
+}
