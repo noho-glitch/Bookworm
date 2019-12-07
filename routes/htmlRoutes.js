@@ -11,6 +11,10 @@ module.exports = function(app) {
   //   });
   // });
 
+  app.get("/", function(req, res) {
+    res.render("signin");
+  });
+
   app.get("/search", function(req, res) {
     res.render("search");
   });
