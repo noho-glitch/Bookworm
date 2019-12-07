@@ -52,12 +52,12 @@ function renderBooks() {
 
       title = booksArr[i].volumeInfo.title || "";
       author = booksArr[i].volumeInfo.authors[0] || "";
-      rating = booksArr[i].volumeInfo.averageRating || "";
-      image = booksArr[i].volumeInfo.imageLinks.thumbnail || "";
+      rating = booksArr[i].volumeInfo.averageRating || 0;
+      image = booksArr[i].volumeInfo.imageLinks.thumbnail;
       description = booksArr[i].volumeInfo.description || "";
-      isbn = booksArr[i].volumeInfo.industryIdentifiers[0].identifier || "";
-      pageCount = booksArr[i].volumeInfo.pageCount || "";
-      publishedDate = booksArr[i].volumeInfo.publishedDate || "";
+      isbn = booksArr[i].volumeInfo.industryIdentifiers[0].identifier;
+      pageCount = booksArr[i].volumeInfo.pageCount;
+      publishedDate = booksArr[i].volumeInfo.publishedDate;
 
       var card = $("<div>");
       card.addClass("card form-rounded");
@@ -174,18 +174,6 @@ function renderBooks() {
   });
 
   //saving new book
-
-<<<<<<< HEAD
-  $(document).on("click", "#favorite", function() {
-    var titleSQL = $(this).attr("data-title");
-    var authorSQL = $(this).attr("data-author");
-    var imageSQL = $(this).attr("data-image");
-    var ratingSQL = $(this).attr("data-rating");
-    var publishedDateSQL = $(this).attr("data-publishedDate");
-    var isbnSQL = $(this).attr("data-isbn");
-    var descriptionSQL = $(this).attr("data-description");
-    var pageCountSQL = $(this).attr("data-pageCount");
-=======
 $(document).on("click", "#favorite", function() {
 
     var titleSQL = $(this).attr("data-title"); 
@@ -193,20 +181,21 @@ $(document).on("click", "#favorite", function() {
     var imageSQL = $(this).attr("data-image"); 
     var ratingSQL = $(this).attr("data-rating"); 
     var publishedDateSQL = $(this).attr("data-publishedDate"); 
-    // var isbnSQL = $(this).attr("data-isbn"); 
+    var isbnSQL = $(this).attr("data-isbn"); 
     var descriptionSQL = $(this).attr("data-description"); 
     var pageCountSQL = $(this).attr("data-pageCount"); 
     var userId = ""; 
->>>>>>> 06c848f21a18ab8cff81a84b2a29eaf2de90d490
 
     console.log(typeof title2);
     console.log(typeof author);
+    console.log(imageSQL)
 
     var newBook = {
       title: titleSQL,
       authors: authorSQL,
-      imageUrl: imageSQL,
-      imageThumbnail: imageSQL,
+      description: descriptionSQL,
+      publishedDate: publishedDateSQL,
+      thumbnail: imageSQL,
       rating: ratingSQL,
       ISBN: isbnSQL,
       pageCount: pageCountSQL

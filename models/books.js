@@ -18,10 +18,11 @@ module.exports = function(sequelize, Sequelize) {
     },
     title: Sequelize.STRING,
     authors: Sequelize.STRING,
+    description: Sequelize.STRING(5000),
+    publishedDate: Sequelize.STRING,
     pageCount: Sequelize.INTEGER,
     currentPage: Sequelize.INTEGER,
-    imgThumbnail:Sequelize.STRING,
-    imgUrl: Sequelize.STRING,
+    thumbnail: Sequelize.STRING,
     rating: Sequelize.INTEGER,
     userId: Sequelize.INTEGER
   });
