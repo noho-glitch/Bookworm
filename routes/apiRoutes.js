@@ -88,7 +88,14 @@ module.exports = function (app) {
   });
 
   // display all the books
-  app.get("/api/mybooks", function (req, res) {
+  app.get("/api/fav-books", function (req, res) {
+
+    console.log("req is:", req);
+    console.log("req params is:", req.params);  
+    console.log("req params.id is:", req.params.id);  
+    
+    console.log("res is: ", res); 
+
     db.Book.findAll({}).then(function (dbBooks) {
       res.json(dbBooks);
     });

@@ -22,7 +22,6 @@ $(document).ready(function () {
 
     });
 
-
 /*************************************NOTES*********************************/ 
 
     // Show notes 
@@ -108,7 +107,10 @@ $(document).ready(function () {
 // Show all books
 $(document).ready(function () {
     // get all boooks by user id
-    $.get("/api/mybooks", function (data) {
+
+    console.log("the document loads"); 
+
+    $.get("/api/fav-books", function (data) {
         console.log(data);
         // loop to append all the books 
         for (var i = 0; i < data.length; i++) {
@@ -122,9 +124,5 @@ $(document).ready(function () {
         }
     });
 })
-
-
-
-
 
 }); // end of on load 
