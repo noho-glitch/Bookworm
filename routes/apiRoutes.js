@@ -121,11 +121,13 @@ module.exports = function (app) {
   });
 
 
-
   //save a new book
 
   app.post("/api/favorites", function (req, res) {
     console.log("req.body", JSON.stringify(req.body));
+
+    // console.log("req.user.id: ", req.user.id); 
+
     db.Book.create(req.body).then( function(newBook) {
       res.status(201).json(newBook);
     })
