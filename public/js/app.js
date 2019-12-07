@@ -9,6 +9,15 @@ var isbn;
 var pageCount;
 var publishedDate;
 
+
+$(document).ready(function () {
+    // $("#launchModal").on("hidden.bs.modal", function() {
+    //   $("#launchModal").clear();
+    // });
+    $('.modal').on('hidden.bs.modal', function (e) {
+        $(this).removeData();
+    });
+});
 // This function handles events where SEARCH button is clicked
 $("#search-btn").on("click", function (event) {
     $("#resultsDiv").empty();
@@ -120,14 +129,13 @@ function renderBooks() {
 
             var cardImage = $("<img>");
             cardImage.attr("src", image);
-            console.log(image);
 
             var modalBtn = $("<button>");
             modalBtn.addClass("btn btn-warning form-rounded modalBtn");
             //   modalBtn.attr("data-target", `#launchModal${i}`);
             modalBtn.attr("data-target", "#launchModal");
             modalBtn.attr("data-toggle", "modal");
-            modalBtn.attr("id", "modalBtn")
+            modalBtn.attr("id", "modalBtn");
             modalBtn.text("More Info");
             modalBtn.attr("data-title", title);
             modalBtn.attr("data-author", author);
@@ -137,8 +145,6 @@ function renderBooks() {
             modalBtn.attr("data-image", image);
             modalBtn.attr("data-description", description);
             modalBtn.attr("data-publishedDate", publishedDate);
-
-
 
             // var modalTitle = $("<h5>");
             // modalTitle.addClass("modal-header");
@@ -172,9 +178,15 @@ function renderBooks() {
         }
     });
 
+  
     //Populating Modal
     $(document).on("click", "#modalBtn", function () {
 
+        $("#modalImage").html("");
+        $("#modalText").html("");
+        $("#description").html("");
+
+        
         var titleModal = $(this).attr("data-title");
         var authorModal = $(this).attr("data-author");
         var imageModal = $(this).attr("data-image");
@@ -184,15 +196,42 @@ function renderBooks() {
         var descriptionModal = $(this).attr("data-description");
         var pageCountModal = $(this).attr("data-pageCount");
 
-        // var modalTitle = $("<h5>")
-        // modalTitle.text(titleModal)
         $("#modalTitle").text(titleModal);
 
-    });
+        var modalImage = $("<img>");
+        modalImage.attr("src", imageModal);
+        $("#modalImage").append(modalImage);
 
+        var modalTitle = $("<p>");
+        modalTitle.text("Title: " + titleModal);
+        $("#modalText").append(modalTitle);
+
+        var modalAuthor = $("<p>");
+        modalAuthor.text("By: " + authorModal);
+        $("#modalText").append(modalAuthor);
+
+        var modalDate = $("<p>");
+        modalDate.text("Published: " + publishedDateModal);
+        $("#modalText").append(modalDate);
+
+        var modalISBN = $("<p>");
+        modalISBN.text("ISBN_10: " + isbnModal);
+        $("#modalText").append(modalISBN);
+
+        var br = $("<p>");
+        br.text("");
+        $("#modalText").append(modalDate);
+
+        var modalDescription = $("<p>");
+        modalDescription.text("Synopsis: " + descriptionModal);
+        $("#description").append(modalDescription);
+
+        
+    });
+   
+   
     //saving new book
     $(document).on("click", "#favorite", function () {
-
         var titleSQL = $(this).attr("data-title");
         var authorSQL = $(this).attr("data-author");
         var imageSQL = $(this).attr("data-image");
@@ -205,7 +244,7 @@ function renderBooks() {
 
         console.log(typeof title2);
         console.log(typeof author);
-        console.log(imageSQL)
+        console.log(imageSQL);
 
         var newBook = {
             title: titleSQL,

@@ -282,3 +282,11 @@ body {
   margin-left: auto; 
   display: block; 
 }
+#modalImage {
+  float: left;
+  margin-right: 15px;
+}
+
+#modalText {
+  float: left;
+}
