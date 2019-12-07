@@ -1,6 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
@@ -39,7 +39,7 @@
             <div class="row">
 
 
-            <!-- Favorite Book Section -->
+                <!-- Favorite Book Section -->
                 <div class="col-lg-4">
 
                     <div class="card fav-books">
@@ -49,63 +49,69 @@
 
                 </div>
 
-            
-            <!-- Currently Reading Section -->
+
+                <!-- Currently Reading Section -->
                 <div class="col-lg-8">
 
                     <div class="card currently-reading">
                         <p id="currently-reading-title">Currently Reading</p>
 
                         <div class="row">
-                        <div class="col-lg-5 text-center">
-                            <div id="curr-reading-book">
+                            <div class="col-lg-5 text-center">
+                                <div id="curr-reading-book">
 
-                                <div id="img-contain">
-                                    <img class="current-book-img" src="http://via.placeholder.com/360x640">
+                                    <div id="img-contain">
+                                        <img class="current-book-img" src="http://via.placeholder.com/360x640">
+
+                                    </div>
+
+
+                                    <div class="progress-bar">
+                                        <span class="progress-bar-fill" style="width: 50%;"></span>
+                                    </div>
+
+                                    <p class="page-progress">Page <span id="curr-page-count">100</span> of <span
+                                            id="total-page-count">300</span></p>
+
+
+                                    <a data-toggle="modal" data-target="#page-progress-modal">
+
+                                        <p id="edit-progress">Edit Progress</p>
+                                    </a>
 
                                 </div>
+                            </div>
+                            <div class="col-lg-7">
 
+                                  
 
-                <div class="progress-bar">
-                    <span class="progress-bar-fill" style="width: 50%;"></span>
-                </div>
+                                <div id="append-new-note"></div>
 
-                <p class="page-progress">Page <span id="curr-page-count">100</span> of <span id="total-page-count">300</span></p>
-
-
-                                <a data-toggle="modal" data-target="#page-progress-modal">
-
-    <p id="edit-progress">Edit Progress</p>
+ <a class="add-note-btn" data-toggle="modal" data-target="#add-note-modal">
+     
+                                    <p class="text-center" id="add-note">Add note</p>
                                 </a>
+                             
 
                             </div>
-                        </div>
-                        <div class="col-lg-7">
 
-                            <div id="append-new-note"></div>
 
-     </div>
-
-                            <a data-toggle="modal" data-target="#add-note-modal">
-
-    <p id="add-note">Add Note</p>
-                                </a>
-                       
-                        </div>
 
                         </div>
 
                     </div>
 
-
                 </div>
 
+
             </div>
+
         </div>
+    </div>
 
     </div>
 
-<!-- Page Progress Modal -->
+    <!-- Page Progress Modal -->
     <div class="modal fade" id="page-progress-modal" tabindex="-1" role="dialog"
         aria-labelledby="page-progress-modalTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -118,25 +124,26 @@
                 </div>
                 <div class="modal-body">
 
-                   
+
                     Current page:<br>
-                    <input id="current-page"  type="text" name="lastname"> <br>
-                     Total pages:<br>
+                    <input id="current-page" type="text" name="lastname"> <br>
+                    Total pages:<br>
                     <input id="total-pages" type="text" name="firstname"><br>
 
                 </div>
                 <div class="modal-footer">
 
-                    <button id="page-submit" type="button" class="btn btn-primary" data-dismiss="modal">Save changes</button>
+                    <button id="page-submit" type="button" class="btn btn-primary" data-dismiss="modal">Save
+                        changes</button>
 
                 </div>
             </div>
         </div>
     </div>
 
-<!-- Add Note Modal -->
-       <div class="modal fade" id="add-note-modal" tabindex="-1" role="dialog"
-        aria-labelledby="add-note-modalTitle" aria-hidden="true">
+    <!-- Add Note Modal -->
+    <div class="modal fade" id="add-note-modal" tabindex="-1" role="dialog" aria-labelledby="add-note-modalTitle"
+        aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -148,27 +155,28 @@
                 <div class="modal-body">
 
                     Note title:<br>
-                    <input id="note-title"  type="text" name="noteTitle"> <br>
+                    <input id="note-title" type="text" name="noteTitle"> <br>
 
-                   
-                   <div class="form-group">
-    <label for="book-note-area">Note:</label>
-    <textarea class="form-control" id="book-note-area" rows="3"></textarea>
-  </div>
+
+                    <div class="form-group">
+                        <label for="book-note-area">Note:</label>
+                        <textarea class="form-control" id="book-note-area" rows="3"></textarea>
+                    </div>
                 </div>
                 <div class="modal-footer">
 
-                    <button id="note-submit" type="button" class="btn btn-primary" data-dismiss="modal">Save note</button>
+                    <button id="note-submit" type="button" class="btn btn-primary" data-dismiss="modal">Save
+                        note</button>
 
                 </div>
             </div>
         </div>
     </div>
 
-<!-- Scripts -->
-        <script integrity="" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"
-integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-crossorigin="anonymous"></script>
+    <!-- Scripts -->
+    <script integrity="" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
         crossorigin="anonymous"></script>
@@ -176,7 +184,7 @@ crossorigin="anonymous"></script>
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
 
-<script type="text/javascript" src="/js/mybooks.js"></script>
+    <script type="text/javascript" src="/js/mybooks.js"></script>
 
 </body>
 

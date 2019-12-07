@@ -181,21 +181,20 @@ function renderBooks() {
 
 $(document).on("click", "#favorite", function() {
 
+
+
     var titleSQL = $(this).attr("data-title"); 
     var authorSQL = $(this).attr("data-author"); 
     var imageSQL = $(this).attr("data-image"); 
     var ratingSQL = $(this).attr("data-rating"); 
     var publishedDateSQL = $(this).attr("data-publishedDate"); 
-    var isbnSQL = $(this).attr("data-isbn"); 
+    // var isbnSQL = $(this).attr("data-isbn"); 
     var descriptionSQL = $(this).attr("data-description"); 
     var pageCountSQL = $(this).attr("data-pageCount"); 
-
-
-
+    var userId = ""; 
 
     console.log(typeof title2);
     console.log(typeof author); 
-
 
         var newBook = {
             'title': titleSQL,
@@ -203,8 +202,9 @@ $(document).on("click", "#favorite", function() {
             'imageUrl': imageSQL,
             'imageThumbnail': imageSQL,
             'rating': ratingSQL,
-            'ISBN': isbnSQL,
+            // 'ISBN': isbnSQL,
             'pageCount': pageCountSQL,
+            'userId': 00 
         }
 
         console.log("working!")
