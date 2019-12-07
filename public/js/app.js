@@ -19,6 +19,7 @@ $("#search-btn").on("click", function(event) {
     .join("+");
 
   console.log(userInput);
+  booksArr = [];
 
   renderBooks();
 });
@@ -39,25 +40,16 @@ function renderBooks() {
   }).then(function(response) {
     console.log(response);
 
-    // var booksArr = [];
-    // var title;
-    // var author;
-    // var image;
-    // var description;
-    // var isbn;
-    // var pageCount;
-    // var publishedDate;
-
     var results = response.items;
 
     for (var i = 0; i < results.length; i++) {
       booksArr.push(results[i]);
-      $(this).attr("id", i);
+    //   $(this).attr("id", i);
     }
 
     for (var i = 0; i < 5; i++) {
-      console.log(booksArr[i]);
-      
+      console.log(booksArr.length);
+
       title = booksArr[i].volumeInfo.title;
       author = booksArr[i].volumeInfo.authors[0] || "";
       rating = booksArr[i].volumeInfo.averageRating;
@@ -90,11 +82,6 @@ function renderBooks() {
       bookShelfBtn.attr("data-publishedDate", publishedDate); 
 
 
-
-
- 
-
-
       var cardBody = $("<div>");
       cardBody.addClass("card-body");
 
@@ -123,7 +110,6 @@ function renderBooks() {
       bookRating.addClass("card-text rating");
       bookRating.attr("data-default-rating", rating);
       bookRating.attr("disabled", true);
-      // console.log(rating)
 
       var br = $("<p>");
       br.text("");
@@ -136,6 +122,7 @@ function renderBooks() {
 
       var cardImage = $("<img>");
       cardImage.attr("src", image);
+      console.log(image);
 
 
       var modalBtn = $("<button>");
@@ -186,17 +173,11 @@ function renderBooks() {
     //   modalTitle.text(title);
     //   modalHeader.append(modalTitle);
     //   });
-      // cardBody.append(cardImage);
-      // cardBody.append(bookTitle);
-      // cardBody.append(bookAuthor);
-      // cardBody.append(bookRating);
-      // cardBody.append(bookPublishedDate);
-      // cardBody.append(bookISBN);
+ 
       imageDiv.append(cardImage);
       textDiv.append(bookTitle);
       textDiv.append(bookAuthor);
-      // textDiv.append(bookPublishedDate);
-      // textDiv.append(bookISBN);
+    
 
       if (rating) {
         textDiv.append(bookRating);
@@ -208,7 +189,7 @@ function renderBooks() {
       cardBody.append(imageDiv);
       cardBody.append(textDiv);
       card.append(cardBody);
-      card.append(modalDiv);
+    //   body.append(modalDiv);
       $("#resultsDiv").append(card);
     }
 
@@ -224,14 +205,14 @@ function renderBooks() {
 
 $(document).on("click", "#favorite", function() {
 
-    var title2 = $(this).attr("data-title"); 
-    var author = $(this).attr("data-author"); 
-    var image = $(this).attr("data-image"); 
-    var rating = $(this).attr("data-rating"); 
-    var publishedDate = $(this).attr("data-publishedDate"); 
-    var isbn = $(this).attr("data-isbn"); 
-    var description = $(this).attr("data-description"); 
-    var pageCount = $(this).attr("data-pageCount"); 
+    var titleSQL = $(this).attr("data-title"); 
+    var authorSQL = $(this).attr("data-author"); 
+    var imageSQL = $(this).attr("data-image"); 
+    var ratingSQL = $(this).attr("data-rating"); 
+    var publishedDateSQL = $(this).attr("data-publishedDate"); 
+    var isbnSQL = $(this).attr("data-isbn"); 
+    var descriptionSQL = $(this).attr("data-description"); 
+    var pageCountSQL = $(this).attr("data-pageCount"); 
 
 
 
@@ -241,8 +222,13 @@ $(document).on("click", "#favorite", function() {
 
 
         var newBook = {
-            'title': title2,
-            'authors': author
+            'title': titleSQL,
+            'authors': authorSQL,
+            'imageUrl': imageSQL,
+            'imageThumbnail': imageSQL,
+            'rating': ratingSQL,
+            'ISBN': isbnSQL,
+            'pageCount': pageCountSQL,
         }
 
         console.log("working!")

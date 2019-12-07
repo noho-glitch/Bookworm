@@ -6,8 +6,9 @@ module.exports = function (app) {
   app.get("/api/googlebooks", function (req, res) {
     var parameter = "";
     var search = "Harry Potter"
+    var refine = "&orderBy=relevance&"
     // get the user input
-    request("https://www.googleapis.com/books/v1/volumes?q=" + search + parameter + ":keyes&key=AIzaSyBaLr5TPsFewkitZXad_5_EaTeCT35K9No", function (error, response, body) {
+    request("https://www.googleapis.com/books/v1/volumes?q=" + search + parameter + refine + ":keyes&key=AIzaSyBaLr5TPsFewkitZXad_5_EaTeCT35K9No", function (error, response, body) {
       if (!error && response.statusCode == 200) {
 
         var bodyres = JSON.parse(body)
@@ -123,25 +124,12 @@ module.exports = function (app) {
 
   //save a new book
 
-  // app.post("/api/favorites", function (req, res) {
-  //   console.log("req.body" + req.body);
-  //   db.Books.create(req.body);
-  // })
-  // //delete a book by id
-  // // app.delete("/api/favorites/:id", function (req, res) {
-  // //   db.Books.destroy({ where: { id: req.params.id } }).then(function ())
-  // // })
-
   app.post("/api/favorites", function (req, res) {
     console.log("req.body", JSON.stringify(req.body));
     db.Book.create(req.body).then( function(newBook) {
       res.status(201).json(newBook);
     })
-  })
-  //delete a book by id
-  // app.delete("/api/favorites/:id", function (req, res) {
-  //   db.Books.destroy({ where: { id: req.params.id } }).then(function ())
-  // })
-
+  }) 
 };
+
 
