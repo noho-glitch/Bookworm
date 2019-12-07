@@ -210,16 +210,12 @@ $(document).on("click", "#favorite", function() {
     var imageSQL = $(this).attr("data-image"); 
     var ratingSQL = $(this).attr("data-rating"); 
     var publishedDateSQL = $(this).attr("data-publishedDate"); 
-    var isbnSQL = $(this).attr("data-isbn"); 
+    // var isbnSQL = $(this).attr("data-isbn"); 
     var descriptionSQL = $(this).attr("data-description"); 
     var pageCountSQL = $(this).attr("data-pageCount"); 
 
-
-
-
     console.log(typeof title2);
     console.log(typeof author); 
-
 
         var newBook = {
             'title': titleSQL,
@@ -227,8 +223,8 @@ $(document).on("click", "#favorite", function() {
             'imageUrl': imageSQL,
             'imageThumbnail': imageSQL,
             'rating': ratingSQL,
-            'ISBN': isbnSQL,
-            'pageCount': pageCountSQL,
+            // 'ISBN': isbnSQL,
+            'pageCount': pageCountSQL
         }
 
         console.log("working!")

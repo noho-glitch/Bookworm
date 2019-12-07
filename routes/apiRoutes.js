@@ -120,13 +120,16 @@ module.exports = function (app) {
     });
   });
 
-
   //save a new book
 
   app.post("/api/favorites", function (req, res) {
-    console.log("req.body", JSON.stringify(req.body));
-
+    
+    console.log("req.user.id is: ", req.user.id); 
+    console.log("req is: ", req); 
+    console.log("req.session is: ", req.session); 
     // console.log("req.user.id: ", req.user.id); 
+    // console.log("req.user: ", req.user.id); 
+    // console.log("req.User: ", req.User.id); 
 
     db.Book.create(req.body).then( function(newBook) {
       res.status(201).json(newBook);

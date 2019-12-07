@@ -35,6 +35,9 @@ module.exports = function (app, passport) {
       console.log("req.user is successful");
       console.log(req.user.id);
 
+      // authcontroller search 
+      authController.search(req, res); 
+
       return next();
 
     } else {
