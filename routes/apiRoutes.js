@@ -31,6 +31,7 @@ module.exports = function (app) {
       res.json(dbNotes);
     });
   });
+
   // display all the notes
   app.get("/api/mybooks", function (req, res) {
     db.Note.findAll({}).then(function (dbNotes) {
@@ -71,9 +72,66 @@ module.exports = function (app) {
     });
   });
 
+
   /*************BOOKS ****************/ 
 
+   // get user id
+   app.get("/api/mybooks/:id", function (req, res) {
+    // get the book id 
+    db.Book.findOne({
+      where: {
+        userId: req.params.id
+      }
+    }).then(function (dbBooks) {
+      res.json(dbBooks);
+    });
+  });
+
+  // display all the books
+  app.get("/api/mybooks", function (req, res) {
+    db.Book.findAll({}).then(function (dbBooks) {
+      res.json(dbBooks);
+    });
+  });
+
+// find a book by id 
+  app.get("/api/mybooks/:id", function (req, res) {
+    db.Boook.findOne({
+      where: {
+        id: req.params.id
+      }
+    }).then(function (dbBooks) {
+      res.json(dbBooks);
+    });
+  });
+
+  // delete a book 
+
+  app.delete("/api/mybooks/:id", function (req, res) {
+    db.Book.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then(function (
+      dbBooks
+    ) {
+      res.json(dbBooks);
+    });
+  });
+
+
+
   //save a new book
+
+  // app.post("/api/favorites", function (req, res) {
+  //   console.log("req.body" + req.body);
+  //   db.Books.create(req.body);
+  // })
+  // //delete a book by id
+  // // app.delete("/api/favorites/:id", function (req, res) {
+  // //   db.Books.destroy({ where: { id: req.params.id } }).then(function ())
+  // // })
+
   app.post("/api/favorites", function (req, res) {
     console.log("req.body", JSON.stringify(req.body));
     db.Book.create(req.body).then( function(newBook) {
@@ -84,5 +142,6 @@ module.exports = function (app) {
   // app.delete("/api/favorites/:id", function (req, res) {
   //   db.Books.destroy({ where: { id: req.params.id } }).then(function ())
   // })
+
 };
 
