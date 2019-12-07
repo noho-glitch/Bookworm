@@ -97,7 +97,7 @@ module.exports = function (app) {
 
 // find a book by id 
   app.get("/api/mybooks/:id", function (req, res) {
-    db.Boook.findOne({
+    db.Book.findOne({
       where: {
         id: req.params.id
       }
@@ -124,15 +124,17 @@ module.exports = function (app) {
 
   app.post("/api/favorites", function (req, res) {
     
-    console.log("req.user.id is: ", req.user.id); 
     console.log("req is: ", req); 
     console.log("req.session is: ", req.session); 
-    // console.log("req.user.id: ", req.user.id); 
-    // console.log("req.user: ", req.user.id); 
-    // console.log("req.User: ", req.User.id); 
+    console.log("req.user.id is: ", req.user.id); 
 
-    db.Book.create(req.body).then( function(newBook) {
-      res.status(201).json(newBook);
+    req.body.userId = req.user.id; 
+    console.log("req.body.userId", req.body.userId); 
+
+    // console.log("newBook: ", newBook); 
+
+    db.Book.create(req.body).then( function(newfavBook) {
+      res.status(201).json(newfavBook);
     })
   }) 
 };
