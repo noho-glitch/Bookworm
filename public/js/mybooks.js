@@ -24,8 +24,9 @@ $(document).ready(function () {
 
 /*************************************NOTES*********************************/ 
 
-    // Show notes 
+  
     $(document).ready(function () {
+
         // get all  notes by book idn
         $.get("/api/mybooks", function (data) {
             console.log(data);
@@ -85,7 +86,7 @@ $(document).ready(function () {
         // submitNote(newNote); 
         $.post("/api/mybooks", newNote, function () {
             // window.location.href = "/mybooks"; 
-            location.reload();
+            // location.reload();
         });
 
 
@@ -165,6 +166,8 @@ $(document).on("click", ".book-cover-div", function () {
     var selectedImage = $(this); 
     var selectedImageSrc = $(this).attr("src"); 
     var selectedImageTotalPage = $(this).attr("data-pagecount"); 
+    var selectedImageBookId = $(this).attr("data-bookid"); 
+    var selectedImageUserId = $(this).attr("data-userid");
 
     var placeholderImg = $(".current-book-img").attr("data-empty"); 
 
@@ -180,12 +183,35 @@ $(document).on("click", ".book-cover-div", function () {
         $(".current-book-img").attr("src", selectedImageSrc); 
         $("#total-page-count").text(selectedImageTotalPage); 
         $(".current-book-img").attr("data-empty", "1"); 
+        $(".current-book-img").attr("data-bookid", selectedImageBookId); 
+        $(".current-book-img").attr("data-userid", selectedImageUserId); 
         $(this).hide(); 
+
+        // do the post update here to toggle currentlyReading to true 
     }
 
 })
 
+$(document).on("click", "#send-back-bookshelf", function() {
 
+    // update apiRoute and set currently reading to false 
+    // hide all notes 
+    // set display back to show and empty the image source 
+    
+    // grab bookid 
+    var currentBookId = $(".current-book-img").attr("data-bookid"); 
+
+    console.log("201", currentBookId); 
+
+    $("[data-bookid='" + currentBookId + "']").show(); 
+    $(".current-book-img").attr("data-empty", "0"); 
+
+    if ($(".current-book-img").attr("data-empty") === "0") {
+        console.log("message");
+        $(".current-book-img").attr("src", "/assets/img/placeholder.jpg");
+    }
+
+}); 
 
 // on click event to send the book back to favorite books 
 

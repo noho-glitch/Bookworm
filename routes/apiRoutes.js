@@ -35,9 +35,21 @@ module.exports = function (app) {
 
   // display all the notes
   app.get("/api/mybooks", function (req, res) {
-    db.Note.findAll({}).then(function (dbNotes) {
+
+
+    // console.log("fav-notes/:id req is:", req);
+    console.log("fav-notes/:id req.user is:", req.user);  
+    console.log("fav-notes/:id req.user.id is:", req.user.id); 
+    // console.log("fav-notes res is: ", res); 
+
+    db.Note.findAll({
+      where: {
+        userId: req.user.id,
+      }
+    }).then(function (dbNotes) {
       res.json(dbNotes);
     });
+
   });
 
   // Create a new note
@@ -90,11 +102,11 @@ module.exports = function (app) {
   // display all the books
   app.get("/api/fav-books", function (req, res) {
 
-    console.log("fav-books/:id req is:", req);
-    console.log("fav-books/:id req.user is:", req.user);  
-    console.log("fav-books/:id req.user.id is:", req.user.id); 
+    // console.log("fav-books/:id req is:", req);
+    // console.log("fav-books/:id req.user is:", req.user);  
+    // console.log("fav-books/:id req.user.id is:", req.user.id); 
     
-    console.log("res is: ", res); 
+    // console.log("res is: ", res); 
 
     db.Book.findAll({
       where: {
