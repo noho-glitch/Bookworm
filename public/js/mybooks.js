@@ -121,13 +121,28 @@ $(document).ready(function () {
       
         for (var i = 0; i < data.length; i++) {
 
-            console.log("thumbnail data ", data[i].thumbnail);
+            // variables to store book information 
+            var bookId = data[i].id; 
+            var userId = data[i].userId; 
+            var bookTitle = data[i].title;
+            var bookAuthor = data[i].authors;
+            var bookPageCount = data[i].pageCount;
+            var currentPage = data[i].currentPage;
+            var bookRating = data[i].rating;
+            var bookCoverSrc = data[i].thumbnail; 
 
             var imgDiv = $("<div>"); 
             var imgElement = $("<img class=book-cover-div>"); 
-            var bookCoverSrc = data[i].thumbnail; 
-
+          
+            // apply variables as attributes to image element
+            imgElement.attr("data-bookId", bookId); 
+            imgElement.attr("data-userId", userId); 
             imgElement.attr("src", bookCoverSrc); 
+            imgElement.attr("data-title", bookTitle);
+            imgElement.attr("data-author", bookAuthor);
+            imgElement.attr("data-pageCount", bookPageCount); 
+            imgElement.attr("data-currentPage", currentPage); 
+            imgElement.attr("data-bookRating", bookRating); 
 
             imgDiv.append(imgElement); 
 
