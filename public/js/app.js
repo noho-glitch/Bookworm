@@ -51,7 +51,13 @@ function renderBooks() {
             console.log(booksArr.length);
 
             title = booksArr[i].volumeInfo.title || "";
-            author = booksArr[i].volumeInfo.authors[0] || 0;
+
+            if (booksArr[i].volumeInfo.authors === undefined) {
+              author = "No author available"; 
+            } else {
+              author = booksArr[i].volumeInfo.authors[0] || "";
+            }
+
             rating = booksArr[i].volumeInfo.averageRating || 0;
             image = booksArr[i].volumeInfo.imageLinks.thumbnail;
             description = booksArr[i].volumeInfo.description || "";
