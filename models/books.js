@@ -22,6 +22,7 @@ module.exports = function(sequelize, Sequelize) {
     publishedDate: Sequelize.STRING,
     pageCount: Sequelize.INTEGER,
     currentPage: Sequelize.INTEGER,
+    currentlyReading: Sequelize.BOOLEAN,
     thumbnail: Sequelize.STRING,
     rating: Sequelize.INTEGER,
     userId: Sequelize.INTEGER

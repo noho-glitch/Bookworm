@@ -90,31 +90,36 @@ module.exports = function (app) {
   // display all the books
   app.get("/api/fav-books", function (req, res) {
 
-    console.log("req is:", req);
-    console.log("req params is:", req.params);  
-    console.log("req params.id is:", req.params.id);  
+    console.log("fav-books/:id req is:", req);
+    console.log("fav-books/:id req.user is:", req.user);  
+    console.log("fav-books/:id req.user.id is:", req.user.id); 
     
     console.log("res is: ", res); 
 
-    db.Book.findAll({}).then(function (dbBooks) {
-      res.json(dbBooks);
-    });
-  });
-
-// find a book by id 
-  app.get("/api/mybooks/:id", function (req, res) {
-    db.Book.findOne({
+    db.Book.findAll({
       where: {
-        id: req.params.id
+        userId: req.user.id
       }
     }).then(function (dbBooks) {
       res.json(dbBooks);
     });
   });
 
+// find a book by id 
+  // app.get("/api/fav-books/:id", function (req, res) {
+
+  //   db.Book.findOne({
+  //     where: {
+  //       userId: req.user.id
+  //     }
+  //   }).then(function (dbBooks) {
+  //     res.json(dbBooks);
+  //   });
+  // });
+
   // delete a book 
 
-  app.delete("/api/mybooks/:id", function (req, res) {
+  app.delete("/api/fav-books/:id", function (req, res) {
     db.Book.destroy({
       where: {
         id: req.params.id

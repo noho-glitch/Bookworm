@@ -30,11 +30,15 @@ $(document).ready(function () {
         $.get("/api/mybooks", function (data) {
             console.log(data);
             // loop to append all the notes 
+
+            // begin sabrina paste 
             for (var i = 0; i < data.length; i++) {
-                $("#append-new-note").append(data[i].noteTitle)
-                $("#append-new-note").append(data[i].noteText)
+                $("#append-new-note").append("<h1>" + data[i].noteTitle + "</h1>")
+                $("#append-new-note").append("<p>" + data[i].noteText + "</p>")
                 $("#append-new-note").append("<button class='delete' data-id='" + data[i].id + "'>delete</button>");
-            }
+            } // end sabrina paste 
+
+
         });
     })
 
@@ -113,15 +117,41 @@ $(document).ready(function () {
     $.get("/api/fav-books", function (data) {
         console.log(data);
         // loop to append all the books 
-        for (var i = 0; i < data.length; i++) {
-            $("#allBooks").append(data[i].title)
-            $("#allBooks").append(data[i].authors)
-            $("#allBooks").append(data[i].pageCount)
-            $("#allBooks").append(data[i].currentPage)
-            $("#allBooks").append(data[i].imgThumbnail)
-            $("#allBooks").append(data[i].rating)
 
-        }
+      
+        for (var i = 0; i < data.length; i++) {
+
+            // variables to store book information 
+            var bookId = data[i].id; 
+            var userId = data[i].userId; 
+            var bookTitle = data[i].title;
+            var bookAuthor = data[i].authors;
+            var bookPageCount = data[i].pageCount;
+            var currentPage = data[i].currentPage;
+            var bookRating = data[i].rating;
+            var bookCoverSrc = data[i].thumbnail; 
+
+            var imgDiv = $("<div>"); 
+            var imgElement = $("<img class=book-cover-div>"); 
+          
+            // apply variables as attributes to image element
+            imgElement.attr("data-bookId", bookId); 
+            imgElement.attr("data-userId", userId); 
+            imgElement.attr("src", bookCoverSrc); 
+            imgElement.attr("data-title", bookTitle);
+            imgElement.attr("data-author", bookAuthor);
+            imgElement.attr("data-pageCount", bookPageCount); 
+            imgElement.attr("data-currentPage", currentPage); 
+            imgElement.attr("data-bookRating", bookRating); 
+
+            imgDiv.append(imgElement); 
+
+            $("#allBooks").append(imgDiv); 
+
+        };
+
+         // end sabrina paste 
+
     });
 })
 
