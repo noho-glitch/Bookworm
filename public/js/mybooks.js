@@ -118,18 +118,29 @@ $(document).ready(function () {
         console.log(data);
         // loop to append all the books 
 
-
-        // begin sabrina paste 
       
         for (var i = 0; i < data.length; i++) {
-            $("#allBooks").append("<h1>"+ data[i].title + "</h1>");
-            $("#allBooks").append("<p>" + data[i].authors+ "</p>");
-            $("#allBooks").append("<p>" + data[i].pageCount + "</p>");
-            $("#allBooks").append("<p>" + data[i].currentPage + "</p>");
-            $("#allBooks").append("<img class='book-cover'>");
-            $("#allBooks").append("<p>" + data[i].rating + "</p>");
-            $("#allBooks").append("<button class='delete' data-id='" + data[i].id + "'>delete</button>");
-            $(".book-cover").attr("src", data[i].imgThumbnail);
+
+            console.log("thumbnail data ", data[i].thumbnail);
+
+            var imgDiv = $("<div>"); 
+            var imgElement = $("<img class=book-cover-div>"); 
+            var bookCoverSrc = data[i].thumbnail; 
+
+            imgElement.attr("src", bookCoverSrc); 
+
+            imgDiv.append(imgElement); 
+
+            $("#allBooks").append(imgDiv); 
+
+            // $("#allBooks").append("<h1>"+ data[i].title + "</h1>");
+            // $("#allBooks").append("<p>" + data[i].authors+ "</p>");
+            // $("#allBooks").append("<p>" + data[i].pageCount + "</p>");
+            // $("#allBooks").append("<p>" + data[i].currentPage + "</p>");
+            // $("#allBooks").append("<img class='book-cover'>");
+            // $("#allBooks").append("<p>" + data[i].rating + "</p>");
+            // $("#allBooks").append("<button class='delete' data-id='" + data[i].id + "'>delete</button>");
+            // $(".book-cover").attr("src", data[i].);
         };
 
          // end sabrina paste 
