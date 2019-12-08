@@ -87,6 +87,29 @@ module.exports = function (app) {
 
   /*************BOOKS ****************/ 
 
+  // put to update book as currently reading 
+
+  app.put("/api/update", function(req, res) {
+
+    console.log("req body: ", req.body); 
+    console.log("req.body.bookId: ", req.body.bookId);
+    console.log("req.body.userId: ", req.body.userId); 
+
+    db.Book.update({currentlyReading: req.body.currentlyReading},
+      {
+        where: {
+          id: req.body.bookId,
+          userId: req.body.userId
+        },
+        returning: true
+      })
+      .then(function (result) {
+        console.log("result is:", result); 
+      })
+
+  });
+
+
    // get user id
    app.get("/api/mybooks/:id", function (req, res) {
     // get the book id 

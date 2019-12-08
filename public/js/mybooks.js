@@ -188,9 +188,29 @@ $(document).on("click", ".book-cover-div", function () {
         $(this).hide(); 
 
         // do the post update here to toggle currentlyReading to true 
+        var updateBook = {
+            bookId: selectedImageBookId, 
+            userId: selectedImageUserId,
+            currentlyReading: 1 
+        };
+
+        updateBookToReading(updateBook); 
+
     }
 
-})
+});
+
+// function to set book to currently reading = true 
+function updateBookToReading(book) {
+    $.ajax({
+        method: "PUT",
+        url: "/api/update",
+        data: book
+    })
+        .then(function() {
+            window.location.href = "/mybooks"; 
+        });
+} // end function update book to reading
 
 $(document).on("click", "#send-back-bookshelf", function() {
 
@@ -200,6 +220,8 @@ $(document).on("click", "#send-back-bookshelf", function() {
     
     // grab bookid 
     var currentBookId = $(".current-book-img").attr("data-bookid"); 
+    var currentUserId = $(".current-book-img").attr("data-userid"); 
+    console.log(currentUserId); 
 
     console.log("201", currentBookId); 
 
@@ -210,6 +232,16 @@ $(document).on("click", "#send-back-bookshelf", function() {
         console.log("message");
         $(".current-book-img").attr("src", "/assets/img/placeholder.jpg");
     }
+
+    // do the post update here to toggle currentlyReading to false
+    var updateBook = {
+        bookId: currentBookId, 
+        userId: currentUserId,
+        currentlyReading: 0
+    };
+
+    updateBookToReading(updateBook); 
+
 
 }); 
 
