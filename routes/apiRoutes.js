@@ -40,6 +40,7 @@ module.exports = function (app) {
     // console.log("fav-notes/:id req is:", req);
     console.log("fav-notes/:id req.user is:", req.user);  
     console.log("fav-notes/:id req.user.id is:", req.user.id); 
+
     // console.log("fav-notes res is: ", res); 
 
     db.Note.findAll({
@@ -138,6 +139,25 @@ module.exports = function (app) {
       res.json(dbBooks);
     });
   });
+
+
+  // display the book that is currently being read 
+
+app.get("/api/fav-books/curr-reading", function(req, res) {
+
+  db.Book.findOne({
+    where: {
+      currentlyReading: 1,
+      userId: req.body.userId
+    }
+  })
+  .then(function (currBook) {
+    res.json(currBook);
+  });
+
+});
+
+
 
 // find a book by id 
   // app.get("/api/fav-books/:id", function (req, res) {
