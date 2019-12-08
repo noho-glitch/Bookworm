@@ -78,7 +78,7 @@ function renderBooks() {
             textDiv.addClass("float-left textWrap");
 
             var bookShelfBtn = $("<button>");
-            bookShelfBtn.addClass("btn btn-warning form-rounded");
+            bookShelfBtn.addClass("btn btn-warning form-rounded favBtn");
             bookShelfBtn.attr("id", "favorite");
             bookShelfBtn.text("Add to Bookshelf");
             bookShelfBtn.attr("data-title", title);
@@ -132,7 +132,7 @@ function renderBooks() {
 
             var modalBtn = $("<button>");
             modalBtn.addClass("btn btn-warning form-rounded modalBtn");
-            //   modalBtn.attr("data-target", `#launchModal${i}`);
+           
             modalBtn.attr("data-target", "#launchModal");
             modalBtn.attr("data-toggle", "modal");
             modalBtn.attr("id", "modalBtn");
@@ -145,11 +145,6 @@ function renderBooks() {
             modalBtn.attr("data-image", image);
             modalBtn.attr("data-description", description);
             modalBtn.attr("data-publishedDate", publishedDate);
-
-            // var modalTitle = $("<h5>");
-            // modalTitle.addClass("modal-header");
-            // modalTitle.text(title);
-            // $("#modalTitle").append(modalTitle);
 
             imageDiv.append(cardImage);
             textDiv.append(bookTitle);
@@ -166,7 +161,6 @@ function renderBooks() {
             cardBody.append(textDiv);
             card.append(cardBody);
 
-            //   $("#modalDiv").append(modalContent);
             $("#resultsDiv").append(card);
         }
 
@@ -218,12 +212,12 @@ function renderBooks() {
         modalISBN.text("ISBN_10: " + isbnModal);
         $("#modalText").append(modalISBN);
 
-        var br = $("<p>");
-        br.text("");
-        $("#modalText").append(modalDate);
+        var synopsis = $("<h5>");
+        synopsis.text("Synopsis: ");
+        $("#description").append(synopsis);
 
         var modalDescription = $("<p>");
-        modalDescription.text("Synopsis: " + descriptionModal);
+        modalDescription.text(descriptionModal);
         $("#description").append(modalDescription);
 
         
