@@ -24,8 +24,9 @@ $(document).ready(function () {
 
 /*************************************NOTES*********************************/ 
 
-    // Show notes 
+  
     $(document).ready(function () {
+
         // get all  notes by book idn
         $.get("/api/mybooks", function (data) {
             console.log(data);
@@ -85,7 +86,7 @@ $(document).ready(function () {
         // submitNote(newNote); 
         $.post("/api/mybooks", newNote, function () {
             // window.location.href = "/mybooks"; 
-            location.reload();
+            // location.reload();
         });
 
 
@@ -127,6 +128,7 @@ $(document).ready(function () {
             var bookTitle = data[i].title;
             var bookAuthor = data[i].authors;
             var bookPageCount = data[i].pageCount;
+            var bookCurrentlyReading = data[i].currentlyReading; 
             var currentPage = data[i].currentPage;
             var bookRating = data[i].rating;
             var bookCoverSrc = data[i].thumbnail; 
@@ -141,6 +143,7 @@ $(document).ready(function () {
             imgElement.attr("data-title", bookTitle);
             imgElement.attr("data-author", bookAuthor);
             imgElement.attr("data-pageCount", bookPageCount); 
+            imgElement.attr("data-currentlyReading", bookCurrentlyReading); 
             imgElement.attr("data-currentPage", currentPage); 
             imgElement.attr("data-bookRating", bookRating); 
 
@@ -150,9 +153,98 @@ $(document).ready(function () {
 
         };
 
-         // end sabrina paste 
-
     });
-})
+});
+
+
+$(document).on("click", ".book-cover-div", function () {
+
+    console.log("click registers"); 
+
+    console.log(this); 
+
+    var selectedImage = $(this); 
+    var selectedImageSrc = $(this).attr("src"); 
+    var selectedImageTotalPage = $(this).attr("data-pagecount"); 
+    var selectedImageBookId = $(this).attr("data-bookid"); 
+    var selectedImageUserId = $(this).attr("data-userid");
+
+    var placeholderImg = $(".current-book-img").attr("data-empty"); 
+
+    console.log(selectedImageSrc); 
+
+    // selectedImage.addClass("currentlyReading"); 
+
+    selectedImage.attr("data-currentlyReading", true); 
+
+    console.log(selectedImage.attr("data-currentlyReading") === "true" && placeholderImg === "0"); 
+
+    if (selectedImage.attr("data-currentlyReading") === "true" && placeholderImg === "0") {
+        $(".current-book-img").attr("src", selectedImageSrc); 
+        $("#total-page-count").text(selectedImageTotalPage); 
+        $(".current-book-img").attr("data-empty", "1"); 
+        $(".current-book-img").attr("data-bookid", selectedImageBookId); 
+        $(".current-book-img").attr("data-userid", selectedImageUserId); 
+        $(this).hide(); 
+
+        // do the post update here to toggle currentlyReading to true 
+        var updateBook = {
+            bookId: selectedImageBookId, 
+            userId: selectedImageUserId,
+            currentlyReading: 1 
+        };
+
+        updateBookToReading(updateBook); 
+
+    }
+
+});
+
+// function to set book to currently reading = true 
+function updateBookToReading(book) {
+    $.ajax({
+        method: "PUT",
+        url: "/api/update",
+        data: book
+    })
+        .then(function() {
+            window.location.href = "/mybooks"; 
+        });
+} // end function update book to reading
+
+$(document).on("click", "#send-back-bookshelf", function() {
+
+    // update apiRoute and set currently reading to false 
+    // hide all notes 
+    // set display back to show and empty the image source 
+    
+    // grab bookid 
+    var currentBookId = $(".current-book-img").attr("data-bookid"); 
+    var currentUserId = $(".current-book-img").attr("data-userid"); 
+    console.log(currentUserId); 
+
+    console.log("201", currentBookId); 
+
+    $("[data-bookid='" + currentBookId + "']").show(); 
+    $(".current-book-img").attr("data-empty", "0"); 
+
+    if ($(".current-book-img").attr("data-empty") === "0") {
+        console.log("message");
+        $(".current-book-img").attr("src", "/assets/img/placeholder.jpg");
+    }
+
+    // do the post update here to toggle currentlyReading to false
+    var updateBook = {
+        bookId: currentBookId, 
+        userId: currentUserId,
+        currentlyReading: 0
+    };
+
+    updateBookToReading(updateBook); 
+
+
+}); 
+
+// on click event to send the book back to favorite books 
 
 }); // end of on load 
