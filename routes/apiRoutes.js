@@ -12,7 +12,7 @@ module.exports = function (app) {
       if (!error && response.statusCode == 200) {
 
         var bodyres = JSON.parse(body)
-        console.log(body)
+        // console.log(body)
       }
       res.json(bodyres)
       // res.json(body.title)
@@ -54,8 +54,8 @@ module.exports = function (app) {
 
   // Create a new note
   app.post("/api/mybooks", function (req, res) {
-    console.log("This is the req body")
-    console.log(req.body);
+    // console.log("This is the req body")
+    // console.log(req.body);
     db.Note.create(req.body)
       .then(function (dbNotes) {
         res.json(dbNotes);
@@ -87,6 +87,8 @@ module.exports = function (app) {
 
   /*************BOOKS ****************/ 
 
+<<<<<<< HEAD
+=======
   // put to update book as currently reading 
 
   app.put("/api/update", function(req, res) {
@@ -120,12 +122,17 @@ module.exports = function (app) {
       res.json(dbBooks);
     });
   });
+>>>>>>> cbd0965b82809ce54a8c0de958abb9af677f0fef
 
   // display all the books
   app.get("/api/fav-books", function (req, res) {
 
     // console.log("fav-books/:id req is:", req);
+<<<<<<< HEAD
+    // console.log("fav-books/:id req.body is:", req.body);  
+=======
     // console.log("fav-books/:id req.user is:", req.user);  
+>>>>>>> cbd0965b82809ce54a8c0de958abb9af677f0fef
     // console.log("fav-books/:id req.user.id is:", req.user.id); 
     
     // console.log("res is: ", res); 
@@ -139,24 +146,43 @@ module.exports = function (app) {
     });
   });
 
-// find a book by id 
-  // app.get("/api/fav-books/:id", function (req, res) {
+  
 
-  //   db.Book.findOne({
-  //     where: {
-  //       userId: req.user.id
-  //     }
-  //   }).then(function (dbBooks) {
-  //     res.json(dbBooks);
-  //   });
-  // });
+  //save a new book
 
-  // delete a book 
+  app.post("/api/favorites", function (req, res) {
+    
+    // console.log("req is: ", req); 
+    // console.log("req.session is: ", req.session); 
+    console.log("req.body.id is: ", req.body.id); 
+    
+    req.body.userId = req.user.id; 
+    // console.log("req.body.userId", req.body.userId); 
 
-  app.delete("/api/fav-books/:id", function (req, res) {
+    // console.log("newBook: ", newBook); 
+
+    db.Book.create(req.body).then( function(newfavBook) {
+      res.status(201).json(newfavBook);
+    })
+  }) 
+
+
+// DELETE A BOOK 
+  app.get("/api/book-delete/:id", function (req, res) {
+    console.log("This is req.body", req.body)
+    db.Book.findOne({
+      where: {
+        id: req.body.id
+      }
+    }).then(function (dbBooks) {
+      res.json(dbBooks);
+    });
+  });
+
+  app.delete("/api/book-delete/:id", function (req, res) {
     db.Book.destroy({
       where: {
-        id: req.params.id
+        id: req.body.id
       }
     }).then(function (
       dbBooks
@@ -165,23 +191,9 @@ module.exports = function (app) {
     });
   });
 
-  //save a new book
 
-  app.post("/api/favorites", function (req, res) {
-    
-    console.log("req is: ", req); 
-    console.log("req.session is: ", req.session); 
-    // console.log("req.user.id is: ", req.user.id); 
 
-    req.body.userId = req.user.id; 
-    console.log("req.body.userId", req.body.userId); 
 
-    // console.log("newBook: ", newBook); 
-
-    db.Book.create(req.body).then( function(newfavBook) {
-      res.status(201).json(newfavBook);
-    })
-  }) 
 };
 
 

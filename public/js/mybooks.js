@@ -150,10 +150,30 @@ $(document).ready(function () {
             imgDiv.append(imgElement); 
 
             $("#allBooks").append(imgDiv); 
+            $("#allBooks").append("<button class=delete-book> delete </button>"); 
 
         };
 
     });
+<<<<<<< HEAD
+
+    $(document).on("click", ".delete-book", function () {
+        console.log("delete was clicked!")
+        var bookToBeDeleted = $(this).data('id');
+        console.log(bookToBeDeleted)
+        $.ajax({
+            method: "DELETE",
+            url: "/api/book-delete/" + bookToBeDeleted
+        })
+            .then(function () {
+                console.log("book deleted!")
+                location.reload();
+            })
+
+    })
+})
+}); 
+=======
 });
 
 
@@ -246,5 +266,6 @@ $(document).on("click", "#send-back-bookshelf", function() {
 }); 
 
 // on click event to send the book back to favorite books 
+>>>>>>> cbd0965b82809ce54a8c0de958abb9af677f0fef
 
-}); // end of on load 
+ // end of on load 
