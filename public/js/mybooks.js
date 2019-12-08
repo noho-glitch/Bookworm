@@ -147,12 +147,29 @@ $(document).ready(function () {
             imgDiv.append(imgElement); 
 
             $("#allBooks").append(imgDiv); 
+            $("#allBooks").append("<button class=delete-book> delete </button>"); 
 
         };
 
          // end sabrina paste 
 
     });
-})
 
-}); // end of on load 
+    $(document).on("click", ".delete-book", function () {
+        console.log("delete was clicked!")
+        var bookToBeDeleted = $(this).data('id');
+        console.log(bookToBeDeleted)
+        $.ajax({
+            method: "DELETE",
+            url: "/api/book-delete/" + bookToBeDeleted
+        })
+            .then(function () {
+                console.log("book deleted!")
+                location.reload();
+            })
+
+    })
+})
+}); 
+
+ // end of on load 
