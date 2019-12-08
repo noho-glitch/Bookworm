@@ -35,9 +35,21 @@ module.exports = function (app) {
 
   // display all the notes
   app.get("/api/mybooks", function (req, res) {
-    db.Note.findAll({}).then(function (dbNotes) {
+
+
+    // console.log("fav-notes/:id req is:", req);
+    console.log("fav-notes/:id req.user is:", req.user);  
+    console.log("fav-notes/:id req.user.id is:", req.user.id); 
+    // console.log("fav-notes res is: ", res); 
+
+    db.Note.findAll({
+      where: {
+        userId: req.user.id,
+      }
+    }).then(function (dbNotes) {
       res.json(dbNotes);
     });
+
   });
 
   // Create a new note
@@ -75,12 +87,52 @@ module.exports = function (app) {
 
   /*************BOOKS ****************/ 
 
+<<<<<<< HEAD
+=======
+  // put to update book as currently reading 
+
+  app.put("/api/update", function(req, res) {
+
+    console.log("req body: ", req.body); 
+    console.log("req.body.bookId: ", req.body.bookId);
+    console.log("req.body.userId: ", req.body.userId); 
+
+    db.Book.update({currentlyReading: req.body.currentlyReading},
+      {
+        where: {
+          id: req.body.bookId,
+          userId: req.body.userId
+        },
+        returning: true
+      })
+      .then(function (result) {
+        console.log("result is:", result); 
+      })
+  });
+
+
+   // get user id
+   app.get("/api/mybooks/:id", function (req, res) {
+    // get the book id 
+    db.Book.findOne({
+      where: {
+        userId: req.params.id
+      }
+    }).then(function (dbBooks) {
+      res.json(dbBooks);
+    });
+  });
+>>>>>>> cbd0965b82809ce54a8c0de958abb9af677f0fef
 
   // display all the books
   app.get("/api/fav-books", function (req, res) {
 
     // console.log("fav-books/:id req is:", req);
+<<<<<<< HEAD
     // console.log("fav-books/:id req.body is:", req.body);  
+=======
+    // console.log("fav-books/:id req.user is:", req.user);  
+>>>>>>> cbd0965b82809ce54a8c0de958abb9af677f0fef
     // console.log("fav-books/:id req.user.id is:", req.user.id); 
     
     // console.log("res is: ", res); 
