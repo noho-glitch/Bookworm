@@ -150,11 +150,28 @@ $(document).ready(function () {
             imgDiv.append(imgElement); 
 
             $("#allBooks").append(imgDiv); 
+            $("#allBooks").append("<button class=delete-book> delete </button>"); 
 
         };
 
     });
-});
+
+    $(document).on("click", ".delete-book", function () {
+        console.log("delete was clicked!")
+        var bookToBeDeleted = $(this).data('id');
+        console.log(bookToBeDeleted)
+        $.ajax({
+            method: "DELETE",
+            url: "/api/book-delete/" + bookToBeDeleted
+        })
+            .then(function () {
+                console.log("book deleted!")
+                location.reload();
+            })
+
+    })
+})
+}); 
 
 
 $(document).on("click", ".book-cover-div", function () {
@@ -247,4 +264,4 @@ $(document).on("click", "#send-back-bookshelf", function() {
 
 // on click event to send the book back to favorite books 
 
-}); // end of on load 
+ // end of on load 
