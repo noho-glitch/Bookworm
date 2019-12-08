@@ -155,7 +155,6 @@ $(document).ready(function () {
         };
 
     });
-<<<<<<< HEAD
 
     $(document).on("click", ".delete-book", function () {
         console.log("delete was clicked!")
@@ -173,8 +172,6 @@ $(document).ready(function () {
     })
 })
 }); 
-=======
-});
 
 
 $(document).on("click", ".book-cover-div", function () {
@@ -266,6 +263,5 @@ $(document).on("click", "#send-back-bookshelf", function() {
 }); 
 
 // on click event to send the book back to favorite books 
->>>>>>> cbd0965b82809ce54a8c0de958abb9af677f0fef
 
  // end of on load 

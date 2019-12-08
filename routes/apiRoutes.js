@@ -87,8 +87,6 @@ module.exports = function (app) {
 
   /*************BOOKS ****************/ 
 
-<<<<<<< HEAD
-=======
   // put to update book as currently reading 
 
   app.put("/api/update", function(req, res) {
@@ -122,17 +120,13 @@ module.exports = function (app) {
       res.json(dbBooks);
     });
   });
->>>>>>> cbd0965b82809ce54a8c0de958abb9af677f0fef
 
   // display all the books
   app.get("/api/fav-books", function (req, res) {
 
     // console.log("fav-books/:id req is:", req);
-<<<<<<< HEAD
     // console.log("fav-books/:id req.body is:", req.body);  
-=======
     // console.log("fav-books/:id req.user is:", req.user);  
->>>>>>> cbd0965b82809ce54a8c0de958abb9af677f0fef
     // console.log("fav-books/:id req.user.id is:", req.user.id); 
     
     // console.log("res is: ", res); 
