@@ -127,6 +127,7 @@ $(document).ready(function () {
             var bookTitle = data[i].title;
             var bookAuthor = data[i].authors;
             var bookPageCount = data[i].pageCount;
+            var bookCurrentlyReading = data[i].currentlyReading; 
             var currentPage = data[i].currentPage;
             var bookRating = data[i].rating;
             var bookCoverSrc = data[i].thumbnail; 
@@ -141,6 +142,7 @@ $(document).ready(function () {
             imgElement.attr("data-title", bookTitle);
             imgElement.attr("data-author", bookAuthor);
             imgElement.attr("data-pageCount", bookPageCount); 
+            imgElement.attr("data-currentlyReading", bookCurrentlyReading); 
             imgElement.attr("data-currentPage", currentPage); 
             imgElement.attr("data-bookRating", bookRating); 
 
@@ -150,9 +152,41 @@ $(document).ready(function () {
 
         };
 
-         // end sabrina paste 
-
     });
+});
+
+
+$(document).on("click", ".book-cover-div", function () {
+
+    console.log("click registers"); 
+
+    console.log(this); 
+
+    var selectedImage = $(this); 
+    var selectedImageSrc = $(this).attr("src"); 
+    var selectedImageTotalPage = $(this).attr("data-pagecount"); 
+
+    var placeholderImg = $(".current-book-img").attr("data-empty"); 
+
+    console.log(selectedImageSrc); 
+
+    // selectedImage.addClass("currentlyReading"); 
+
+    selectedImage.attr("data-currentlyReading", true); 
+
+    console.log(selectedImage.attr("data-currentlyReading") === "true" && placeholderImg === "0"); 
+
+    if (selectedImage.attr("data-currentlyReading") === "true" && placeholderImg === "0") {
+        $(".current-book-img").attr("src", selectedImageSrc); 
+        $("#total-page-count").text(selectedImageTotalPage); 
+        $(".current-book-img").attr("data-empty", "1"); 
+        $(this).hide(); 
+    }
+
 })
+
+
+
+// on click event to send the book back to favorite books 
 
 }); // end of on load 
