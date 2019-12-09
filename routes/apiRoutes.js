@@ -36,15 +36,6 @@ module.exports = function (app) {
   // display all the notes
   app.get("/api/mybooks", function (req, res) {
 
-
-    // console.log("fav-notes/:id req is:", req);
-    // console.log("fav-notes/:id req.user is:", req.user);  
-    // console.log("fav-notes/:id req.user.id is:", req.user.id); 
-
-    console.log("req.params: ", req.params); 
-
-    // console.log("fav-notes res is: ", res); 
-
     db.Note.findAll({
       where: {
         userId: req.user.id,
@@ -54,6 +45,35 @@ module.exports = function (app) {
     });
 
   });
+
+  // update a note 
+
+
+  app.put("/api/mybooks", function(req, res) {
+
+    console.log("req body: ", req.body); 
+    // console.log("req.body.bookId: ", req.body.bookId);
+    // console.log("req.body.userId: ", req.body.userId); 
+
+    db.Note.update(
+    {
+      noteTitle: req.body.noteTitle,
+      noteText: req.body.noteText
+    },
+      {
+        where: {
+          id: req.body.id,
+        }
+      })
+      .then(function (result) {
+
+        // res.status(201).json(result);
+        console.log("result is:", result); 
+      });
+
+      
+  });
+
 
   // Create a new note
   app.post("/api/mybooks", function (req, res) {
@@ -105,7 +125,9 @@ module.exports = function (app) {
 
         // res.status(201).json(result);
         console.log("result is:", result); 
-      })
+      });
+
+
   });
 
 

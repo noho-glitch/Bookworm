@@ -71,12 +71,14 @@ $(document).ready(function () {
                     editButton.attr("data-bookid", bookId);
                     editButton.attr("data-userid", userId);
                     editButton.attr("data-noteid", noteId);
+                    editButton.attr("data-toggle", "modal");
+                    editButton.attr("data-target", "#note-information");
 
                     openButton.attr("data-bookid", bookId);
                     openButton.attr("data-userid", userId);
                     openButton.attr("data-noteid", noteId);
                     openButton.attr("data-toggle", "modal");
-                    openButton.attr("data-target", "#note-information");
+                    openButton.attr("data-target", "#display-note");
             
                     newNoteTitle.text(noteTitle);
                     newNoteBody.text(noteBody);
@@ -146,14 +148,9 @@ $(document).ready(function () {
 
     });
 
-    // open Note 
+    // Open Note 
 
     $(document).on("click", ".open-note", function () {
-
-    // populate modal with relevant information
-
-    console.log(this.parentElement.parentElement.children[1].textContent);
-    console.log(this.parentElement.parentElement.children[2].textContent);
 
     var noteTitle = this.parentElement.parentElement.children[1].textContent;
     var noteBody = this.parentElement.parentElement.children[2].textContent;
@@ -162,6 +159,66 @@ $(document).ready(function () {
     $(".note-modal-body").text(noteBody);
 
     });
+
+    // Populate edited note modal with exiting note information 
+
+    var editedNoteId; 
+
+    $(document).on("click", ".edit-note", function() {
+
+        editedNoteId = this.parentElement.children[0].dataset.noteid;
+        var noteTitle = this.parentElement.parentElement.children[1].textContent;
+        var noteBody = this.parentElement.parentElement.children[2].textContent;
+
+        console.log(noteTitle);
+        console.log(noteBody);
+
+        $("#new-note-title").val(noteTitle);
+        $("#new-book-note-area").val(noteBody);
+      
+    });
+
+    // Update edited note with new title and text 
+
+    $(document).on("click", "#edited-note-submit", function() {
+
+        console.log('line 187', editedNoteId); 
+
+        var newNoteTitle = $("#new-note-title").val().trim(); 
+        var newNoteText = $("#new-book-note-area").val().trim(); 
+
+        console.log(newNoteTitle);
+        console.log(newNoteText);
+
+        var updatedNote = {
+            noteTitle: newNoteTitle,
+            noteText: newNoteText, 
+            id: editedNoteId
+        }
+
+        $.ajax({
+            method: "PUT",
+            url: "/api/mybooks",
+            data: updatedNote,
+            timeout: 3000
+        })
+            .then(function() {
+    
+                // location.reload();
+                // you will have to close modal, then reload 
+                // window.location.href = "/mybooks"; 
+    
+            });
+
+            location.reload(); 
+
+    });
+
+    // 
+
+
+
+
 
 /****************************BOOKS*************************************/ 
 
