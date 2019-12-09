@@ -204,20 +204,12 @@ $(document).ready(function () {
         })
             .then(function() {
     
-                // location.reload();
-                // you will have to close modal, then reload 
-                // window.location.href = "/mybooks"; 
     
             });
 
             location.reload(); 
 
     });
-
-    // 
-
-
-
 
 
 /****************************BOOKS*************************************/ 
@@ -244,8 +236,12 @@ $(document).ready(function () {
             var bookRating = data[i].rating;
             var bookCoverSrc = data[i].thumbnail; 
 
-            var imgDiv = $("<div>"); 
+            var imgDiv = $("<div class=book-div-wrapper>"); 
             var imgElement = $("<img class=book-cover-div>"); 
+            var deleteBtn = $("<button type=button class=deleteBook>");
+
+            deleteBtn.text("Remove");
+            deleteBtn.attr("data-bookId", bookId);
           
             // apply variables as attributes to image element
             imgElement.attr("data-bookId", bookId); 
@@ -257,11 +253,12 @@ $(document).ready(function () {
             imgElement.attr("data-currentlyReading", bookCurrentlyReading); 
             imgElement.attr("data-currentPage", currentPage); 
             imgElement.attr("data-bookRating", bookRating); 
-
+            
+            imgDiv.append(deleteBtn);
             imgDiv.append(imgElement); 
+         
 
             $("#allBooks").append(imgDiv); 
-            $("#allBooks").append("<button class=delete-book> delete </button>"); 
 
             if (data[i].currentlyReading === true) {
                 // then set that image as we did 
@@ -270,9 +267,16 @@ $(document).ready(function () {
                 $(".current-book-img").attr("data-empty", "1"); 
                 $(".current-book-img").attr("data-bookid", bookId); 
                 $(".current-book-img").attr("data-userid", userId); 
-                
+
+                console.log($(".book-cover-div").filter("[data-bookId='" + data[i].id + "']").parent()); 
+
                 // then hide that book 
                 $(".book-cover-div").filter("[data-bookId='" + data[i].id + "']").hide();
+
+
+                // then hide the corresponding remove button
+
+
             }
 
         };
@@ -307,7 +311,14 @@ $(document).on("click", ".book-cover-div", function () {
         $(".current-book-img").attr("data-empty", "1"); 
         $(".current-book-img").attr("data-bookid", selectedImageBookId); 
         $(".current-book-img").attr("data-userid", selectedImageUserId); 
-        $(this).hide(); 
+        // $(this).hide(); 
+
+        console.log(this);
+
+        console.log(this.parentElement);
+        console.log($(this).parent());
+
+        $(this).parent().hide(); 
 
         // do the post update here to toggle currentlyReading to true 
         var updateBook = {
@@ -335,12 +346,10 @@ function updateBookToReading(book) {
     })
         .done(function() {
 
-           
             // location.reload();
 
             // window.location.href = "/mybooks"; 
 
-    
         });
 } // end function update book to reading
 
@@ -352,7 +361,7 @@ $(document).on("click", "#send-back-bookshelf", function() {
 
     console.log("201", currentBookId); 
 
-    $("[data-bookid='" + currentBookId + "']").show(); 
+    $("[data-bookid='" + currentBookId + "']").parent().show(); 
 
     $(".current-book-img").attr("data-empty", "0"); 
 

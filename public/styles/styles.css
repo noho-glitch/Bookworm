@@ -153,6 +153,20 @@ body {
   border: none; 
 }
 
+.deleteBook {
+  display: block; 
+  margin-right: auto; 
+  margin-left: auto; 
+  padding-top: 0px; 
+  border-radius: 20px;
+  height: 15px; 
+  width: 60px; 
+  font-size: 8pt;
+  background: rgb(255, 68, 0); 
+  color: white;
+  border: none; 
+}
+
 
 div.card-header {
   padding-top: 5px !important; 
@@ -346,6 +360,7 @@ body {
 
 }
 
+
 .modalBtn {
   margin: 25px 0px 0px 30px;
   padding-top: 0px;
@@ -364,7 +379,8 @@ body {
   margin-bottom: 10px; 
   margin-right: auto; 
   margin-left: auto; 
-  display: block; 
+  display: block;
+  cursor: pointer;  
 }
 
 #allBooks {
