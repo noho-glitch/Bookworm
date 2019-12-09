@@ -7,7 +7,7 @@
 
 body {
   background-image: url(../assets/img/books.png);
-  background-repeat: no-repeat; 
+  /* background-repeat: no-repeat;  */
 }
 
 .search-box {
