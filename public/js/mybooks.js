@@ -24,53 +24,68 @@ $(document).ready(function () {
 
 /*************************************NOTES*********************************/ 
 
-    function getNotesForCurrentBook() {
+    // function getNotesForCurrentBook() {
 
-        console.log("getting notes");
+    //     console.log("getting notes");
 
-        console.log("line 39: ", $("current-book-img").attr("data-empty") === "1");
+    //     console.log("line 39: ", $("current-book-img").attr("data-empty") === "1");
 
-        // if ($("current-book-img").attr("data-empty") === "1") {
+    //     // if ($("current-book-img").attr("data-empty") === "1") {
 
-            $.get("/api/mybooks", function (data) {
-                console.log("this is the get for the notes");
-                console.log("data is", data);
+    //     var currentBookId = $(".current-book-img").attr("data-bookId"); 
+
+    //         $.get("/api/mybooks", function (data) {
+    //             console.log("this is the get for the notes");
+    //             console.log("data is", data);
                
-               // run a for loop and only display notes for this book
+    //            // run a for loop and only display notes for this book
 
-        
-            });
+    //            for (var i = 0; i < data.length; i++) {
+
+    //             console.log(currentBookId); 
+
+    //             console.log(data[i].bookId); 
+                
+    //             // console.log(data[i].bookId === parseInt(currentBookId));
+
+    //             if (data[i].bookId === parseInt(currentBookId)) {
+    //                 // then display those notes 
+
+    //                 var noteTitle = data[i].noteTitle; 
+    //                 var noteBody = data[i].noteText; 
+    //                 var userId = $(".current-book-img").attr("data-userid");
+    //                 var bookId = $(".current-book-img").attr("data-bookId"); 
             
-        // } // end of If 
+    //                 var newCard = $("<div class=card>").addClass("note-card");
+    //                 var newNoteTitle = $("<p class=card-note-title>");
+    //                 var newNoteBody = $("<p class=card-note-body>");
+    //                 var deleteButton = $("<button type=button class=delete-note>");
+    //                 var cardHeader = $("<div class=card-header note-header>"); 
+            
+    //                 deleteButton.attr("data-bookid", bookId); 
+    //                 deleteButton.attr("data-userid", userId); 
+            
+    //                 newNoteTitle.text(noteTitle);
+    //                 newNoteBody.text(noteBody);
+    //                 deleteButton.text("Remove");
+    //                 cardHeader.append(deleteButton); 
+            
+    //                 newCard.append(cardHeader); 
+    //                 newCard.append(newNoteTitle);
+    //                 newCard.append(newNoteBody);
+            
+    //                 $("#append-new-note").append(newCard);
 
-    };
+    //             }
 
 
+    //            };
+                
+    //         });
+            
+    //     // } // end of If 
 
-
-    // get to display all notes associated with a book 
-
-    // function getAllNotesForBook (data) {
-
-    //     $.get("/api/mybooks", function (data) {
-    //         console.log("this is the get for the notes");
-    //         console.log(data);
-    //         // loop to append all the notes 
-    
-    //         // begin sabrina paste 
-    //         for (var i = 0; i < data.length; i++) {
-    //             $("#append-new-note").append("<h1>" + data[i].noteTitle + "</h1>")
-    //             $("#append-new-note").append("<p>" + data[i].noteText + "</p>")
-    //             $("#append-new-note").append("<button class='delete' data-id='" + data[i].id + "'>delete</button>");
-    //         } // end sabrina paste 
-    
-    
-    //     });
-    
-
-    // }
-
-   
+    // };
 
     // Capture note 
     $(document).on("click", "#note-submit", function () {
@@ -109,7 +124,7 @@ $(document).ready(function () {
 
         // submit new note
         $.post("/api/mybooks", newNote, function () {
-            // window.location.href = "/mybooks"; 
+            window.location.href = "/mybooks"; 
             // location.reload();
         });
 
@@ -198,7 +213,7 @@ $(document).ready(function () {
     }).done(function() {
         console.log("favorite books successfully loaded"); 
 
-        getNotesForCurrentBook(); 
+        // getNotesForCurrentBook(); 
 
     }); 
 });
@@ -243,7 +258,7 @@ $(document).on("click", ".book-cover-div", function () {
 
         updateBookToReading(updateBook); 
 
-        getNotesForCurrentBook(); 
+       
 
     }
 
@@ -254,19 +269,24 @@ function updateBookToReading(book) {
     $.ajax({
         method: "PUT",
         url: "/api/update",
-        data: book
+        data: book,
+        timeout: 5000
     })
         .then(function() {
-            window.location.href = "/mybooks"; 
+
+            location.reload();
+
+            console.log("window reloaded"); 
+            // window.location.href = "/mybooks"; 
+
+           
+            // getNotesForCurrentBook(); 
+
         });
 } // end function update book to reading
 
 $(document).on("click", "#send-back-bookshelf", function() {
 
-    // update apiRoute and set currently reading to false 
-    // hide all notes 
-    
-    // grab bookid 
     var currentBookId = $(".current-book-img").attr("data-bookid"); 
     var currentUserId = $(".current-book-img").attr("data-userid"); 
     console.log(currentUserId); 
@@ -274,6 +294,7 @@ $(document).on("click", "#send-back-bookshelf", function() {
     console.log("201", currentBookId); 
 
     $("[data-bookid='" + currentBookId + "']").show(); 
+
     $(".current-book-img").attr("data-empty", "0"); 
 
     if ($(".current-book-img").attr("data-empty") === "0") {
@@ -289,6 +310,8 @@ $(document).on("click", "#send-back-bookshelf", function() {
     };
 
     updateBookToReading(updateBook); 
+
+    $("#append-new-note").empty(); 
 
 
 }); 

@@ -38,8 +38,10 @@ module.exports = function (app) {
 
 
     // console.log("fav-notes/:id req is:", req);
-    console.log("fav-notes/:id req.user is:", req.user);  
-    console.log("fav-notes/:id req.user.id is:", req.user.id); 
+    // console.log("fav-notes/:id req.user is:", req.user);  
+    // console.log("fav-notes/:id req.user.id is:", req.user.id); 
+
+    console.log("req.params: ", req.params); 
 
     // console.log("fav-notes res is: ", res); 
 
@@ -92,6 +94,8 @@ module.exports = function (app) {
 
   app.put("/api/update", function(req, res) {
 
+    req.setTimeout(0);
+
     console.log("req body: ", req.body); 
     console.log("req.body.bookId: ", req.body.bookId);
     console.log("req.body.userId: ", req.body.userId); 
@@ -101,10 +105,12 @@ module.exports = function (app) {
         where: {
           id: req.body.bookId,
           userId: req.body.userId
-        },
-        returning: true
+        }
+        // ,returning: true
       })
       .then(function (result) {
+
+        // res.status(201).json(result);
         console.log("result is:", result); 
       })
   });
