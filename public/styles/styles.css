@@ -18,8 +18,7 @@ body {
   padding-left: 10px; 
   margin-right: auto; 
   margin-left: auto; 
-  border-radius: 25px !important; 
-  background: #4EC8AF; 
+  /* border-radius: 25px !important;  */
 }
 
 #search-input {
@@ -34,9 +33,11 @@ body {
 
 .fav-books {
   height: 500px; 
-  border-radius: 25px !important; 
-  background: #ededed;  
-  border: none !important; 
+  /* border-radius: 25px !important;  */
+  /* background: lightgray;  */
+  border: solid;
+  border-width: 2px;
+  border-color: black;
 }
 
 #img-contain {
@@ -56,18 +57,17 @@ body {
 }
 
 .currently-reading {
-  height: 500px;
-  border-radius: 25px !important; 
-  font-size: 30pt; 
-  background: #ededed; 
+  /* height: 500px; */
+  /* border-radius: 25px !important;  */
+  /* font-size: 30pt;  */
+  background-image: url(/assets/img/brownpaper.jpg); 
   margin-bottom: 10px; 
-  border: none !important; 
+  /* border: none !important;  */
 }
 
 .fav-book-container {
   margin-top: 60px; 
-  border-radius: 25px !important; 
-  background: #4EC8AF;
+  /* border-radius: 25px !important;  */
 }
 
 #fav-books-title {
@@ -95,8 +95,7 @@ body {
 }
 
 #add-note {
-  font-size: 8pt; 
-  cursor: pointer;
+  font-size: 16pt; 
 }
 
 .card-note-body {
@@ -141,29 +140,28 @@ body {
   height: 400px; 
 }
 
-.delete-note {
-  padding-top: 0px; 
-  border-radius: 20px;
-  height: 15px; 
-  width: 60px; 
-  float: right; 
-  font-size: 8pt;
-  background: rgb(255, 68, 0); 
-  color: white; 
-  border: none; 
-  margin-left: 5px; 
-}
+  .delete-note {
+    padding-top: 0px; 
+    border-radius: 20px;
+    height: 15px; 
+    width: 60px; 
+    float: right; 
+    font-size: 8pt;
+    background: rgb(255, 68, 0); 
+    color: white; 
+    border: none; 
+    margin-left: 5px; 
+  }
 
-.edit-note {
-  padding-top: 0px;
-  border-radius: 20px;
-  height: 15px; 
-  width: 60px; 
-  float: right; 
-  font-size: 8pt;
-  background: orange; 
-  border: none; 
-}
+  .edit-note {
+    padding-top: 0px;
+    border-radius: 20px;
+    height: 15px; 
+    width: 60px; 
+    float: right; 
+    font-size: 8pt;
+    background: orange; 
+  }
 
 .open-note {
   padding-top: 0px; 
@@ -224,7 +222,7 @@ div.card-header {
 #cssmenu {
   width: auto;
   border-bottom: 3px solid #47c9af;
-  font-family: Raleway, sans-serif;
+  /* font-family: Raleway, sans-serif; */
   line-height: 1;
 }
 #cssmenu ul {
@@ -308,9 +306,9 @@ div.card-header {
   margin-right: 15px;
 }
 
-.form-rounded {
+/* .form-rounded {
   border-radius: 1rem;
-}
+} */
 
 .wrapper {
   width: 500px;
@@ -353,35 +351,23 @@ div.card-header {
 }
 
 .grouping-1 {
-  margin-top: 30px; 
+  /* margin-top: 30px;  */
   margin-right: auto; 
   margin-left: auto; 
-  max-width: 155px; 
+  display: block;
+  max-width: 150px;
 }
-
 .grouping-2 {
-  margin-right: auto; 
   margin-left: auto; 
-  max-width: 155px; 
+  margin-right: auto;
+  max-width: 150px; 
+  margin-bottom: 20px;
 }
 
 .sign-in-submit {
-  border-radius: 25px;
-  margin-right: auto; 
-  margin-left: auto; 
   display: block; 
-  background: orange;
-  font-size: 12pt;
-}
-
-.sign-up-redirect {
-  padding-top: 0px; 
-  padding-bottom: 0px; 
-  font-size: 10pt;
-  border-radius: 25px;
-  margin-right: auto; 
-  margin-left: auto; 
-  display: block; 
+  display: inline-block;
+  margin-left: 10%;
 }
 
 #modalImage {
@@ -393,24 +379,20 @@ div.card-header {
   float: left;
 }
 
-body {
-  font-family: 'Gupter', serif;
-
-}
 
 
 .modalBtn {
   margin: 25px 0px 0px 30px;
   padding-top: 0px;
   padding-bottom: 0px;
-  font-family: calibri;
+  /* font-family: calibri; */
 }
 
 .favBtn {
   margin: 25px 0 0 0;
   padding-top: 0px;
   padding-bottom: 0px;
-  font-family: calibri;
+  /* font-family: calibri; */
 }
 
 .book-cover-div {
@@ -432,4 +414,53 @@ body {
     margin-right: auto;
     margin-left: auto;
     background-color: white;
+}
+#createAccount {
+  display:block;
+  margin-left: auto;
+  margin-right: auto;
+} 
+
+#signIn {
+  margin-top: 20px;
+  margin-left: 30%;
+  margin-right: auto;
+}
+
+#already {
+  margin-left: 25%;
+}
+
+.jumbotron {
+  background-color: white;
+}
+
+#nav {
+  float: right;
+}
+
+/* .titlePage {
+  float: left;
+}
+
+.logo-img {
+  float: left;
+} */
+
+/* #logo1 {
+  margin-bottom: 20px;
+  height: 20%;
+} */
+
+.center-div
+{
+     margin: 0 auto;
+     
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 20%;
 }
