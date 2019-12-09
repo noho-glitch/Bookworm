@@ -242,6 +242,8 @@ $(document).ready(function () {
 
             deleteBtn.text("Remove");
             deleteBtn.attr("data-bookId", bookId);
+
+            imgDiv.attr("data-bookid", bookId);
           
             // apply variables as attributes to image element
             imgElement.attr("data-bookId", bookId); 
@@ -285,7 +287,27 @@ $(document).ready(function () {
 
         getNotesForCurrentBook(); 
 
+        console.log($(".current-book-img").attr("data-empty") == 1);
+
+        if ($(".current-book-img").attr("data-empty") == 1) {
+            // then hide the parent div 
+
+            var currBookId = $(".current-book-img").attr("data-bookid");
+
+            console.log(currBookId);
+
+            $(".book-div-wrapper").filter("[data-bookId='" + currBookId + "']").hide();
+            
+        }
+
     }); 
+
+    // if there is something in the currently reading section, data-empty 
+
+
+
+   
+        
 });
 
 
@@ -383,5 +405,32 @@ $(document).on("click", "#send-back-bookshelf", function() {
 
    
 }); 
+
+// Delete Book 
+
+   // Delete Note
+   $(document).on("click", ".deleteBook", function () {
+
+    console.log("remove book was clicked!")
+
+
+    console.log(this.parentElement.children[1].dataset.bookid);
+
+    var removeBookId = this.parentElement.children[1].dataset.bookid;
+
+    // var noteId = $(this).data('noteid');
+
+    // console.log(noteId); 
+
+    // $.ajax({
+    //     method: "DELETE",
+    //     url: "/api/mybooks/" + noteId
+    // })
+    //     .then(function () {
+    //         console.log("note has been deleted!")
+    //         location.reload();
+    //     })
+
+});
 
 });
