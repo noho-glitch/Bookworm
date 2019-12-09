@@ -189,6 +189,7 @@ $(document).ready(function () {
             imgDiv.append(imgElement); 
 
             $("#allBooks").append(imgDiv); 
+            $("#allBooks").append("<button class=delete-book> delete </button>"); 
 
             if (data[i].currentlyReading === true) {
                 // then set that image as we did 
@@ -304,6 +305,3 @@ $(document).on("click", "#send-back-bookshelf", function() {
 
 }); 
 
-// on click event to send the book back to favorite books 
-
-}); // end of on load 

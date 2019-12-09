@@ -7,7 +7,7 @@
 
 body {
   background-image: url(../assets/img/books.png);
-  background-repeat: no-repeat; 
+  /* background-repeat: no-repeat;  */
 }
 
 .search-box {
@@ -303,6 +303,33 @@ div.card-header {
   margin-right: auto; 
   margin-left: auto; 
   display: block; 
+}
+#modalImage {
+  float: left;
+  margin-right: 15px;
+}
+
+#modalText {
+  float: left;
+}
+
+body {
+  font-family: 'Gupter', serif;
+
+}
+
+.modalBtn {
+  margin: 25px 0px 0px 30px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  font-family: calibri;
+}
+
+.favBtn {
+  margin: 25px 0 0 0;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  font-family: calibri;
 }
 
 .book-cover-div {

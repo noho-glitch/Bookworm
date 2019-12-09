@@ -14,7 +14,8 @@ module.exports = function(sequelize, Sequelize) {
       dialectOptions: {
         supportBigNumbers: true
       }, 
-      type: Sequelize.BIGINT
+      type: Sequelize.BIGINT,
+      unique: 'compositeIndex'
     },
     title: Sequelize.STRING,
     authors: Sequelize.STRING,
