@@ -384,6 +384,7 @@ $(document).on("click", "#send-back-bookshelf", function() {
     console.log("201", currentBookId); 
 
     $("[data-bookid='" + currentBookId + "']").parent().show(); 
+    $("[data-bookid='" + currentBookId + "']").show();
 
     $(".current-book-img").attr("data-empty", "0"); 
 
@@ -403,6 +404,8 @@ $(document).on("click", "#send-back-bookshelf", function() {
 
     updateBookToReading(updateBook); 
 
+    // location.reload(); 
+
    
 }); 
 
@@ -416,20 +419,23 @@ $(document).on("click", "#send-back-bookshelf", function() {
 
     console.log(this.parentElement.children[1].dataset.bookid);
 
-    var removeBookId = this.parentElement.children[1].dataset.bookid;
+    var removeBookId = parseInt(this.parentElement.children[1].dataset.bookid);
+
+    console.log(removeBookId);
 
     // var noteId = $(this).data('noteid');
 
     // console.log(noteId); 
 
-    // $.ajax({
-    //     method: "DELETE",
-    //     url: "/api/mybooks/" + noteId
-    // })
-    //     .then(function () {
-    //         console.log("note has been deleted!")
-    //         location.reload();
-    //     })
+
+    $.ajax({
+        method: "DELETE",
+        url: "/api/fav-books/" + removeBookId
+    })
+        .then(function () {
+            console.log("book has been deleted!")
+            location.reload();
+        })
 
 });
 

@@ -22,16 +22,16 @@ module.exports = function (app) {
   });
   /***************************NOTES**********************/
   // get book id
-  app.get("/api/mybooks/:id", function (req, res) {
-    // get the book id 
-    db.Note.findOne({
-      where: {
-        bookId: req.params.id
-      }
-    }).then(function (dbNotes) {
-      res.json(dbNotes);
-    });
-  });
+  // app.get("/api/mybooks/:id", function (req, res) {
+  //   // get the book id 
+  //   db.Note.findOne({
+  //     where: {
+  //       bookId: req.params.id
+  //     }
+  //   }).then(function (dbNotes) {
+  //     res.json(dbNotes);
+  //   });
+  // });
 
   // display all the notes
   app.get("/api/mybooks", function (req, res) {
@@ -204,21 +204,22 @@ app.get("/api/fav-books", function(req, res) {
 
 
 // DELETE A BOOK 
-  app.get("/api/book-delete/:id", function (req, res) {
-    console.log("This is req.body", req.body)
-    db.Book.findOne({
-      where: {
-        id: req.body.id
-      }
-    }).then(function (dbBooks) {
-      res.json(dbBooks);
-    });
-  });
+  // app.get("/api/book-delete/:id", function (req, res) {
+  //   console.log("This is req.body", req.body)
+  //   db.Book.findOne({
+  //     where: {
+  //       id: req.body.id
+  //     }
+  //   }).then(function (dbBooks) {
+  //     res.json(dbBooks);
+  //   });
+  // });
 
-  app.delete("/api/book-delete/:id", function (req, res) {
+  app.delete("/api/fav-books/:id", function (req, res) {
+
     db.Book.destroy({
       where: {
-        id: req.body.id
+        id: req.params.id
       }
     }).then(function (
       dbBooks
@@ -226,8 +227,6 @@ app.get("/api/fav-books", function(req, res) {
       res.json(dbBooks);
     });
   });
-
-
 
 
 };
