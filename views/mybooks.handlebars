@@ -25,8 +25,8 @@
 
     <div id='cssmenu'>
         <ul>
-            <li class='active'><a href='#'>Search</a></li>
-            <li><a href='#'>My Books</a></li>
+            <li><a href='/search'>Search</a></li>
+            <li class='active'><a href='/mybooks'>My Books</a></li>
         </ul>
 
     </div>
@@ -66,19 +66,19 @@
                                     </div>
 
 
-                                    <div class="progress-bar">
+                                    {{!-- <div class="progress-bar">
                                         <span class="progress-bar-fill" style="width: 50%;"></span>
-                                    </div>
+                                    </div> --}}
 
-                                    <p class="page-progress">Page <span id="curr-page-count">100</span> of <span
-                                            id="total-page-count">300</span></p>
+                                    <p class="page-progress"><span id="curr-page-count"></span><span
+                                            id="total-page-count">XX</span> pages</p>
 
 
-                                    <a data-toggle="modal" data-target="#page-progress-modal">
+                                    {{!-- <a data-toggle="modal" data-target="#page-progress-modal">
 
                                         <p id="edit-progress">Edit Progress</p>
                                     </a>
-                                    
+                                     --}}
                                     <p id="send-back-bookshelf">Send back to bookshelf</p>
 
                                 </div>
@@ -164,6 +164,7 @@
                         <label for="book-note-area">Note:</label>
                         <textarea class="form-control" id="book-note-area" rows="3"></textarea>
                     </div>
+
                 </div>
                 <div class="modal-footer">
 
@@ -174,6 +175,67 @@
             </div>
         </div>
     </div>
+
+    <!--Open Note Modal-->
+
+
+<div class="modal fade" id="display-note" tabindex="-1" role="dialog" aria-labelledby="note-information-area" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="note-modal-title" id="exampleModalLabel">Open Modal</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+          <p class="note-modal-body"></p>
+
+      </div>
+      <div class="modal-footer">
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--Edit Note Modal-->
+
+<div class="modal fade" id="note-information" tabindex="-1" role="dialog" aria-labelledby="note-information-area" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="note-modal-title" id="exampleModalLabel">Edit Note</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+
+           Note title:<br>
+                    <input id="new-note-title" type="text" name="noteTitle"> <br>
+
+
+                    <div class="form-group">
+                        <label for="new-book-note-area">Note:</label>
+                        <textarea class="form-control" id="new-book-note-area" rows="3"></textarea>
+                    </div>
+                    
+       
+      </div>
+      <div class="modal-footer">
+
+
+            <button id="edited-note-submit" type="button" class="btn btn-primary" data-dismiss="modal">Save
+                        note</button>
+
+
+      </div>
+    </div>
+  </div>
+</div>
 
     <!-- Scripts -->
     <script integrity="" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"
