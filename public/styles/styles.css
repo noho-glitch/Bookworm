@@ -118,13 +118,41 @@ body {
 }
 
 .delete-note {
+  padding-top: 0px; 
   border-radius: 20px;
-  height: 20px; 
+  height: 15px; 
+  width: 60px; 
+  float: right; 
+  font-size: 8pt;
+  background: rgb(255, 68, 0); 
+  color: white; 
+  border: none; 
+  margin-left: 5px; 
+}
+
+.edit-note {
+  padding-top: 0px;
+  border-radius: 20px;
+  height: 15px; 
   width: 60px; 
   float: right; 
   font-size: 8pt;
   background: orange; 
+  border: none; 
 }
+
+.open-note {
+  padding-top: 0px; 
+  border-radius: 20px;
+  height: 15px; 
+  width: 60px; 
+  float: left; 
+  font-size: 8pt;
+  background: rgb(5, 208, 5); 
+  color: white;
+  border: none; 
+}
+
 
 div.card-header {
   padding-top: 5px !important; 

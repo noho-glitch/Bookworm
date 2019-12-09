@@ -57,16 +57,34 @@ $(document).ready(function () {
                     var newNoteTitle = $("<p class=card-note-title>");
                     var newNoteBody = $("<p class=card-note-body>");
                     var deleteButton = $("<button type=button class=delete-note>");
+
+                    var editButton = $("<button type=button class=edit-note>");
+                    var openButton = $("<button type=button class=open-note>");
+            
+
                     var cardHeader = $("<div class=card-header note-header>"); 
             
                     deleteButton.attr("data-bookid", bookId); 
                     deleteButton.attr("data-userid", userId); 
                     deleteButton.attr("data-noteid", noteId); 
+
+                    editButton.attr("data-bookid", bookId);
+                    editButton.attr("data-userid", userId);
+                    editButton.attr("data-noteid", noteId);
+
+                    openButton.attr("data-bookid", bookId);
+                    openButton.attr("data-userid", userId);
+                    openButton.attr("data-noteid", noteId);
             
                     newNoteTitle.text(noteTitle);
                     newNoteBody.text(noteBody);
                     deleteButton.text("Remove");
+                    editButton.text("Edit");
+                    openButton.text("Open");
+
                     cardHeader.append(deleteButton); 
+                    cardHeader.append(openButton);
+                    cardHeader.append(editButton);
             
                     newCard.append(cardHeader); 
                     newCard.append(newNoteTitle);
@@ -98,30 +116,45 @@ $(document).ready(function () {
             bookId: bookId
         };
 
-        var newCard = $("<div class=card>").addClass("note-card");
-        var newNoteTitle = $("<p class=card-note-title>");
-        var newNoteBody = $("<p class=card-note-body>");
-        var deleteButton = $("<button type=button class=delete-note>");
-        var cardHeader = $("<div class=card-header note-header>"); 
+        // var newCard = $("<div class=card>").addClass("note-card");
+        // var newNoteTitle = $("<p class=card-note-title>");
+        // var newNoteBody = $("<p class=card-note-body>");
+        // var deleteButton = $("<button type=button class=delete-note>");
 
-        deleteButton.attr("data-bookid", bookId); 
-        deleteButton.attr("data-userid", userId); 
+        // var editButton = $("<button type=button class=edit-note>");
+        // var openButton = $("<button type=button class=open-note>");
 
-        newNoteTitle.text(noteTitle);
-        newNoteBody.text(noteBody);
-        deleteButton.text("Remove");
-        cardHeader.append(deleteButton); 
+        // var cardHeader = $("<div class=card-header note-header>"); 
 
-        newCard.append(cardHeader); 
-        newCard.append(newNoteTitle);
-        newCard.append(newNoteBody);
+        // deleteButton.attr("data-bookid", bookId); 
+        // deleteButton.attr("data-userid", userId); 
 
-        $("#append-new-note").append(newCard);
+        // editButton.attr("data-bookid", bookId);
+        // editButton.attr("data-userid", userId);
+
+        // openButton.attr("data-bookid", bookId);
+        // openButton.attr("data-userid", userId);
+
+        // newNoteTitle.text(noteTitle);
+        // newNoteBody.text(noteBody);
+        // deleteButton.text("Remove");
+        // editButton.text("Edit");
+        // openButton.text("Open");
+        // cardHeader.append(deleteButton); 
+        // cardHeader.append(openButton);
+        // cardHeader.append(editButton);
+        
+
+        // newCard.append(cardHeader); 
+        // newCard.append(newNoteTitle);
+        // newCard.append(newNoteBody);
+
+        // $("#append-new-note").append(newCard);
 
         // submit new note
         $.post("/api/mybooks", newNote, function () {
-            window.location.href = "/mybooks"; 
-            // location.reload();
+            // window.location.href = "/mybooks"; 
+            location.reload();
         });
 
     });
