@@ -23,9 +23,11 @@ body {
 
 .fav-books {
   height: 500px; 
-  border-radius: 25px !important; 
-  background: lightgray; 
-  border: none !important; 
+  /* border-radius: 25px !important;  */
+  /* background: lightgray;  */
+  border: solid;
+  border-width: 2px;
+  border-color: black;
 }
 
 #img-contain {
@@ -290,13 +292,13 @@ div.card-header {
   /* margin-top: 30px;  */
   margin-right: auto; 
   margin-left: auto; 
-  max-width: 180px; 
+  max-width: 150px; 
 }
 
 .grouping-2 {
   margin-right: auto; 
   margin-left: auto; 
-  max-width: 180px; 
+  max-width: 150px; 
   margin-bottom: 20px;
 }
 
@@ -353,13 +355,14 @@ body {
     background-color: white;
 }
 #createAccount {
-  display:inline-block;
-  margin-left: 30%;
+  display:block;
+  margin-left: auto;
+  margin-right: auto;
 } 
 
 #signIn {
   margin-top: 20px;
-  margin-left: 22%;
+  margin-left: 30%;
   margin-right: auto;
 }
 

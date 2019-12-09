@@ -34,7 +34,7 @@ $("#search-btn").on("click", function (event) {
 });
 
 function renderBooks() {
-    var parameter = "&filter=ebooks&";
+    var parameter = "&filter=ebooks&orderBy=relevance&";
     // var userInput = "";
     var queryURL =
         "https://www.googleapis.com/books/v1/volumes?q=" +
@@ -56,7 +56,7 @@ function renderBooks() {
             //   $(this).attr("id", i);
         }
 
-        for (var i = 0; i < 5; i++) {
+        for (var i = 0; i < 10; i++) {
             console.log(booksArr.length);
 
             title = booksArr[i].volumeInfo.title || "";
@@ -86,7 +86,9 @@ function renderBooks() {
             var bookShelfBtn = $("<button>");
             bookShelfBtn.addClass("btn btn-warning favBtn");
             bookShelfBtn.attr("id", "favorite");
-            bookShelfBtn.text("Add to Bookshelf");
+            // bookShelfBtn.attr("<i class='fas fa-heart'></i>");
+            // bookShelfBtn.html("&hearts;")
+            bookShelfBtn.text("+ Add to Bookshelf");
             bookShelfBtn.attr("data-title", title);
             bookShelfBtn.attr("data-author", author);
             bookShelfBtn.attr("data-isbn", isbn);
