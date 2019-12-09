@@ -12,16 +12,16 @@
             <form id="signup" name="signup" method="post" action="/signup">
 
                 <div class="form-group grouping-1">
-                    <label for="email">Email Address</label>
-                    <input class="text" name="email" type="email" />
-                    <br>
+                    <label class="col-form-label"for="email">Email Address</label>
+                    <input class="text form-control" name="email" type="email" id="inputDefault"/>
+                  
 
                 </div>
 
                 <div class="form-group grouping-1">
                     <label for="firstname">Firstname</label>
-                    <input name="firstname" type="text" />
-                    <br>
+                    <input class="form-control" name="firstname" type="text" id="inputDefault"/>
+             
 
 
                 </div>
@@ -29,22 +29,22 @@
                 <div class="form-group grouping-1">
 
                     <label for="lastname">Lastname</label>
-                    <input name="lastname" type="text" />
-                    <br>
+                    <input class="form-control" name="lastname" type="text" id="inputDefault"/>
+               
 
                 </div>
 
                 <div class="form-group grouping-1">
 
                     <label for="password">Password</label>
-                    <input name="password" type="password" />
-                    <br>
+                    <input class="form-control" name="password" type="password" id="inputDefault"/>
+                    
 
                 </div>
 
                 <a id="already" href="/signin/">Already Registerd?</a>
 
-                <input class="sign-in-submit btn btn-warning form-rounded registerBtn" type="submit" value="Register" />
+                <input class="sign-in-submit btn btn-danger form-rounded registerBtn" type="submit" value="Register" />
             </form>
         </div>
     </div>

@@ -18,7 +18,7 @@ body {
   padding-left: 10px; 
   margin-right: auto; 
   margin-left: auto; 
-  border-radius: 25px !important; 
+  /* border-radius: 25px !important;  */
 }
 
 .fav-books {
@@ -158,7 +158,7 @@ div.card-header {
 #cssmenu {
   width: auto;
   border-bottom: 3px solid #47c9af;
-  font-family: Raleway, sans-serif;
+  /* font-family: Raleway, sans-serif; */
   line-height: 1;
 }
 #cssmenu ul {
@@ -242,9 +242,9 @@ div.card-header {
   margin-right: 15px;
 }
 
-.form-rounded {
+/* .form-rounded {
   border-radius: 1rem;
-}
+} */
 
 .wrapper {
   width: 500px;
@@ -314,7 +314,7 @@ div.card-header {
 }
 
 body {
-  font-family: 'Gupter', serif;
+  /* font-family: 'Gupter', serif; */
 
 }
 
@@ -322,14 +322,14 @@ body {
   margin: 25px 0px 0px 30px;
   padding-top: 0px;
   padding-bottom: 0px;
-  font-family: calibri;
+  /* font-family: calibri; */
 }
 
 .favBtn {
   margin: 25px 0 0 0;
   padding-top: 0px;
   padding-bottom: 0px;
-  font-family: calibri;
+  /* font-family: calibri; */
 }
 
 .book-cover-div {
@@ -363,4 +363,8 @@ body {
 
 #already {
   margin-left: 25%;
+}
+
+.jumbotron {
+  background-color: white;
 }
