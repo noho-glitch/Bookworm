@@ -86,6 +86,8 @@ function renderBooks() {
             var bookShelfBtn = $("<button>");
             bookShelfBtn.addClass("btn btn-warning form-rounded favBtn");
             bookShelfBtn.attr("id", "favorite");
+            bookShelfBtn.attr("data-target", "#launchSuccess");
+            bookShelfBtn.attr("data-toggle", "modal");
             bookShelfBtn.text("Add to Bookshelf");
             bookShelfBtn.attr("data-title", title);
             bookShelfBtn.attr("data-author", author);

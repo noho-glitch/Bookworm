@@ -19,19 +19,30 @@ body {
   margin-right: auto; 
   margin-left: auto; 
   border-radius: 25px !important; 
+  background: #4EC8AF; 
 }
+
+#search-input {
+  border-radius: 25px;
+}
+
+.card.form-rounded {
+  margin-bottom: 10px; 
+}
+
+
 
 .fav-books {
   height: 500px; 
   border-radius: 25px !important; 
-  background: lightgray; 
+  background: #ededed;  
   border: none !important; 
 }
 
 #img-contain {
   height: 250px !important; 
   width: 160px !important; 
-  background: black; 
+  /* background: black;  */
   margin-right: auto; 
   margin-left: auto; 
   margin-top: 40px; 
@@ -40,13 +51,15 @@ body {
 .current-book-img {
   width: 100%; 
   height: 100%; 
+  border: 1px darkgray solid; 
+  border-radius: 10px; 
 }
 
 .currently-reading {
   height: 500px;
   border-radius: 25px !important; 
   font-size: 30pt; 
-  background: lightgray; 
+  background: #ededed; 
   margin-bottom: 10px; 
   border: none !important; 
 }
@@ -54,12 +67,14 @@ body {
 .fav-book-container {
   margin-top: 60px; 
   border-radius: 25px !important; 
+  background: #4EC8AF;
 }
 
 #fav-books-title {
   margin-right: auto; 
   margin-left: auto; 
   font-size: 30pt; 
+  font-family: 'Gupter', serif; 
 }
 
 #currently-reading-title {
@@ -81,6 +96,7 @@ body {
 
 #add-note {
   font-size: 8pt; 
+  cursor: pointer;
 }
 
 .card-note-body {
@@ -108,11 +124,19 @@ body {
 }
 
 .note-card {
-  margin-bottom: 5px; 
+  margin-top: 10px; 
+  border-radius: 20px;
+  /* margin-bottom: 5px;  */
   margin-right: 10px; 
+  margin-left: 10px; 
 }
 
+
+
 #append-new-note {
+  background: white; 
+  border-radius: 25px; 
+  margin-right: 10px;
   overflow-y: scroll;
   height: 400px; 
 }
@@ -332,20 +356,34 @@ div.card-header {
   margin-top: 30px; 
   margin-right: auto; 
   margin-left: auto; 
-  max-width: 180px; 
+  max-width: 155px; 
 }
 
 .grouping-2 {
   margin-right: auto; 
   margin-left: auto; 
-  max-width: 180px; 
+  max-width: 155px; 
 }
 
 .sign-in-submit {
+  border-radius: 25px;
+  margin-right: auto; 
+  margin-left: auto; 
+  display: block; 
+  background: orange;
+  font-size: 12pt;
+}
+
+.sign-up-redirect {
+  padding-top: 0px; 
+  padding-bottom: 0px; 
+  font-size: 10pt;
+  border-radius: 25px;
   margin-right: auto; 
   margin-left: auto; 
   display: block; 
 }
+
 #modalImage {
   float: left;
   margin-right: 15px;
