@@ -56,7 +56,7 @@ $(document).ready(function () {
                     var newCard = $("<div class=card>").addClass("note-card");
                     var newNoteTitle = $("<p class=card-note-title>");
                     var newNoteBody = $("<p class=card-note-body>");
-                    var deleteButton = $("<button type=button class=delete-note>");
+                    var deleteButton = $("<button type=button class=delete-note btn btn-warning>");
                     var cardHeader = $("<div class=card-header note-header>"); 
             
                     deleteButton.attr("data-bookid", bookId); 
@@ -101,7 +101,7 @@ $(document).ready(function () {
         var newCard = $("<div class=card>").addClass("note-card");
         var newNoteTitle = $("<p class=card-note-title>");
         var newNoteBody = $("<p class=card-note-body>");
-        var deleteButton = $("<button type=button class=delete-note>");
+        var deleteButton = $("<button type=button class=delete-note btn btn-warning>");
         var cardHeader = $("<div class=card-header note-header>"); 
 
         deleteButton.attr("data-bookid", bookId); 
@@ -187,7 +187,7 @@ $(document).ready(function () {
             imgDiv.append(imgElement); 
 
             $("#allBooks").append(imgDiv); 
-            $("#allBooks").append("<button class=delete-book> delete </button>"); 
+            $("#allBooks").append("<button class=delete-book btn btn-warning> delete </button>"); 
 
             if (data[i].currentlyReading === true) {
                 // then set that image as we did 

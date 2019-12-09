@@ -43,17 +43,17 @@ body {
 }
 
 .currently-reading {
-  height: 500px;
-  border-radius: 25px !important; 
-  font-size: 30pt; 
-  background: lightgray; 
+  /* height: 500px; */
+  /* border-radius: 25px !important;  */
+  /* font-size: 30pt;  */
+  background-image: url(/assets/img/brownpaper.jpg); 
   margin-bottom: 10px; 
-  border: none !important; 
+  /* border: none !important;  */
 }
 
 .fav-book-container {
   margin-top: 60px; 
-  border-radius: 25px !important; 
+  /* border-radius: 25px !important;  */
 }
 
 #fav-books-title {
@@ -80,7 +80,7 @@ body {
 }
 
 #add-note {
-  font-size: 8pt; 
+  font-size: 16pt; 
 }
 
 .card-note-body {
@@ -116,7 +116,7 @@ body {
   overflow-y: scroll;
   height: 400px; 
 }
-
+/* 
 .delete-note {
   border-radius: 20px;
   height: 20px; 
@@ -124,7 +124,7 @@ body {
   float: right; 
   font-size: 8pt;
   background: orange; 
-}
+} */
 
 div.card-header {
   padding-top: 5px !important; 
@@ -287,7 +287,7 @@ div.card-header {
 }
 
 .grouping-1 {
-  margin-top: 30px; 
+  /* margin-top: 30px;  */
   margin-right: auto; 
   margin-left: auto; 
   max-width: 180px; 
@@ -297,6 +297,7 @@ div.card-header {
   margin-right: auto; 
   margin-left: auto; 
   max-width: 180px; 
+  margin-bottom: 20px;
 }
 
 .sign-in-submit {
@@ -357,6 +358,7 @@ body {
 } 
 
 #signIn {
+  margin-top: 20px;
   margin-left: 22%;
   margin-right: auto;
 }
@@ -367,4 +369,34 @@ body {
 
 .jumbotron {
   background-color: white;
+}
+
+#nav {
+  float: right;
+}
+
+/* .titlePage {
+  float: left;
+}
+
+.logo-img {
+  float: left;
+} */
+
+/* #logo1 {
+  margin-bottom: 20px;
+  height: 20%;
+} */
+
+.center-div
+{
+     margin: 0 auto;
+     
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 20%;
 }

@@ -34,7 +34,7 @@ $("#search-btn").on("click", function (event) {
 });
 
 function renderBooks() {
-    var parameter = "";
+    var parameter = "&filter=ebooks&";
     // var userInput = "";
     var queryURL =
         "https://www.googleapis.com/books/v1/volumes?q=" +
@@ -75,7 +75,7 @@ function renderBooks() {
             publishedDate = booksArr[i].volumeInfo.publishedDate;
 
             var card = $("<div>");
-            card.addClass("card form-rounded");
+            card.addClass("card");
 
             var imageDiv = $("<div>");
             imageDiv.addClass("float-left thumbnail");
@@ -84,7 +84,7 @@ function renderBooks() {
             textDiv.addClass("float-left textWrap");
 
             var bookShelfBtn = $("<button>");
-            bookShelfBtn.addClass("btn btn-warning form-rounded favBtn");
+            bookShelfBtn.addClass("btn btn-warning favBtn");
             bookShelfBtn.attr("id", "favorite");
             bookShelfBtn.text("Add to Bookshelf");
             bookShelfBtn.attr("data-title", title);
@@ -95,6 +95,10 @@ function renderBooks() {
             bookShelfBtn.attr("data-image", image);
             bookShelfBtn.attr("data-description", description);
             bookShelfBtn.attr("data-publishedDate", publishedDate);
+            bookShelfBtn.attr("data-toggle", "popover")
+            bookShelfBtn.attr("data-placement", "right")
+            bookShelfBtn.attr("data-content", "added to favorites")
+            bookShelfBtn.attr("data-container", "body")
 
             var cardBody = $("<div>");
             cardBody.addClass("card-body");
@@ -258,7 +262,7 @@ function renderBooks() {
         };
 
         console.log("working!");
-        console.log("new book" + newBook);
+        console.log("new book" + JSON.stringify(newBook));
 
         $.post("/api/favorites", newBook, function (res) {
             // window.location.href = "/mybooks";
