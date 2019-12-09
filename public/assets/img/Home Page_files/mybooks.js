@@ -24,64 +24,25 @@ $(document).ready(function () {
 
 /*************************************NOTES*********************************/ 
 
-    function getNotesForCurrentBook() {
+  
+    $(document).ready(function () {
 
-        console.log("getting notes");
+        // get all  notes by book idn
+        $.get("/api/mybooks", function (data) {
+            console.log(data);
+            // loop to append all the notes 
 
-        var currentBookId = $(".current-book-img").attr("data-bookId"); 
-
-            $.get("/api/mybooks", function (data) {
-                console.log("this is the get for the notes");
-                console.log("data is", data);
-               
-               // run a for loop and only display notes for this book
-
-               for (var i = 0; i < data.length; i++) {
-
-                console.log(currentBookId); 
-
-                console.log(data[i].bookId); 
-                
-                // console.log(data[i].bookId === parseInt(currentBookId));
-
-                if (data[i].bookId === parseInt(currentBookId)) {
-                    // then display those notes 
-
-                    var noteId = data[i].id; 
-                    var noteTitle = data[i].noteTitle; 
-                    var noteBody = data[i].noteText; 
-                    var userId = $(".current-book-img").attr("data-userid");
-                    var bookId = $(".current-book-img").attr("data-bookId"); 
-            
-                    var newCard = $("<div class=card>").addClass("note-card");
-                    var newNoteTitle = $("<p class=card-note-title>");
-                    var newNoteBody = $("<p class=card-note-body>");
-                    var deleteButton = $("<button type=button class=delete-note>");
-                    var cardHeader = $("<div class=card-header note-header>"); 
-            
-                    deleteButton.attr("data-bookid", bookId); 
-                    deleteButton.attr("data-userid", userId); 
-                    deleteButton.attr("data-noteid", noteId); 
-            
-                    newNoteTitle.text(noteTitle);
-                    newNoteBody.text(noteBody);
-                    deleteButton.text("Remove");
-                    cardHeader.append(deleteButton); 
-            
-                    newCard.append(cardHeader); 
-                    newCard.append(newNoteTitle);
-                    newCard.append(newNoteBody);
-            
-                    $("#append-new-note").append(newCard);
-
-                }
+            // begin sabrina paste 
+            for (var i = 0; i < data.length; i++) {
+                $("#append-new-note").append("<h1>" + data[i].noteTitle + "</h1>")
+                $("#append-new-note").append("<p>" + data[i].noteText + "</p>")
+                $("#append-new-note").append("<button class='delete' data-id='" + data[i].id + "'>delete</button>");
+            } // end sabrina paste 
 
 
-               };
-                
-            });
+        });
+    })
 
-    };
 
     // Capture note 
     $(document).on("click", "#note-submit", function () {
@@ -98,49 +59,45 @@ $(document).ready(function () {
             bookId: bookId
         };
 
+        console.log(newNote);
+        console.log(noteTitle);
+        console.log(noteBody);
+
         var newCard = $("<div class=card>").addClass("note-card");
         var newNoteTitle = $("<p class=card-note-title>");
         var newNoteBody = $("<p class=card-note-body>");
-        var deleteButton = $("<button type=button class=delete-note>");
-        var cardHeader = $("<div class=card-header note-header>"); 
-
-        deleteButton.attr("data-bookid", bookId); 
-        deleteButton.attr("data-userid", userId); 
+        var deleteButton = $("<p id=delete-note class=delete>");
 
         newNoteTitle.text(noteTitle);
         newNoteBody.text(noteBody);
         deleteButton.text("Remove");
-        cardHeader.append(deleteButton); 
 
-        newCard.append(cardHeader); 
+        newCard.append(deleteButton); 
         newCard.append(newNoteTitle);
         newCard.append(newNoteBody);
+        newCard.append(deleteButton);
 
         $("#append-new-note").append(newCard);
 
-        // submit new note
+        // submitNote(newNote); 
         $.post("/api/mybooks", newNote, function () {
-            window.location.href = "/mybooks"; 
+            // window.location.href = "/mybooks"; 
             // location.reload();
         });
+
 
     });
 
     // Delete Note
-    $(document).on("click", ".delete-note", function () {
-
-        console.log("remove was clicked!")
-
-        var noteId = $(this).data('noteid');
-
-        console.log(noteId); 
-
+    $(document).on("click", ".delete", function () {
+        console.log("delete was clicked!")
+        var noteId = $(this).data('id');
         $.ajax({
             method: "DELETE",
             url: "/api/mybooks/" + noteId
         })
             .then(function () {
-                console.log("note has been deleted!")
+                console.log("note had been deleted!")
                 location.reload();
             })
 
@@ -148,15 +105,17 @@ $(document).ready(function () {
 
 /****************************BOOKS*************************************/ 
 
-// Show all books and display currenlty reading book 
+// Show all books
 $(document).ready(function () {
+    // get all boooks by user id
 
     console.log("the document loads"); 
 
     $.get("/api/fav-books", function (data) {
-        console.log("fav books loop", data);
+        console.log(data);
         // loop to append all the books 
 
+      
         for (var i = 0; i < data.length; i++) {
 
             // variables to store book information 
@@ -187,31 +146,18 @@ $(document).ready(function () {
             imgDiv.append(imgElement); 
 
             $("#allBooks").append(imgDiv); 
-            $("#allBooks").append("<button class=delete-book> delete </button>"); 
-
-            if (data[i].currentlyReading === true) {
-                // then set that image as we did 
-                $(".current-book-img").attr("src", bookCoverSrc); 
-                $("#total-page-count").text(bookPageCount); 
-                $(".current-book-img").attr("data-empty", "1"); 
-                $(".current-book-img").attr("data-bookid", bookId); 
-                $(".current-book-img").attr("data-userid", userId); 
-                
-                // then hide that book 
-                $(".book-cover-div").filter("[data-bookId='" + data[i].id + "']").hide();
-            }
 
         };
 
-    }).done(function() {
-
-        getNotesForCurrentBook(); 
-
-    }); 
+    });
 });
 
 
 $(document).on("click", ".book-cover-div", function () {
+
+    console.log("click registers"); 
+
+    console.log(this); 
 
     var selectedImage = $(this); 
     var selectedImageSrc = $(this).attr("src"); 
@@ -222,6 +168,8 @@ $(document).on("click", ".book-cover-div", function () {
     var placeholderImg = $(".current-book-img").attr("data-empty"); 
 
     console.log(selectedImageSrc); 
+
+    // selectedImage.addClass("currentlyReading"); 
 
     selectedImage.attr("data-currentlyReading", true); 
 
@@ -243,35 +191,30 @@ $(document).on("click", ".book-cover-div", function () {
         };
 
         updateBookToReading(updateBook); 
-        getNotesForCurrentBook(); 
+
     }
 
 });
 
 // function to set book to currently reading = true 
 function updateBookToReading(book) {
-
-    console.log("this is updating book");
-
     $.ajax({
         method: "PUT",
         url: "/api/update",
-        data: book,
-        timeout: 3000
+        data: book
     })
-        .done(function() {
-
-           
-            // location.reload();
-
-            // window.location.href = "/mybooks"; 
-
-    
+        .then(function() {
+            window.location.href = "/mybooks"; 
         });
 } // end function update book to reading
 
 $(document).on("click", "#send-back-bookshelf", function() {
 
+    // update apiRoute and set currently reading to false 
+    // hide all notes 
+    // set display back to show and empty the image source 
+    
+    // grab bookid 
     var currentBookId = $(".current-book-img").attr("data-bookid"); 
     var currentUserId = $(".current-book-img").attr("data-userid"); 
     console.log(currentUserId); 
@@ -279,7 +222,6 @@ $(document).on("click", "#send-back-bookshelf", function() {
     console.log("201", currentBookId); 
 
     $("[data-bookid='" + currentBookId + "']").show(); 
-
     $(".current-book-img").attr("data-empty", "0"); 
 
     if ($(".current-book-img").attr("data-empty") === "0") {
@@ -294,11 +236,11 @@ $(document).on("click", "#send-back-bookshelf", function() {
         currentlyReading: 0
     };
 
-    $("#append-new-note").empty(); 
-
     updateBookToReading(updateBook); 
 
-   
+
 }); 
 
-});
+// on click event to send the book back to favorite books 
+
+}); // end of on load 
