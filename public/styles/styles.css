@@ -288,9 +288,9 @@ body {
 }
 
 .sign-in-submit {
-  margin-right: auto; 
-  margin-left: auto; 
   display: block; 
+  display: inline-block;
+  margin-left: 10%;
 }
 #modalImage {
   float: left;
@@ -338,4 +338,17 @@ body {
     margin-right: auto;
     margin-left: auto;
     background-color: white;
+}
+#createAccount {
+  display:inline-block;
+  margin-left: 30%;
+} 
+
+#signIn {
+  margin-left: 22%;
+  margin-right: auto;
+}
+
+#already {
+  margin-left: 25%;
 }
