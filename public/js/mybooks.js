@@ -24,38 +24,53 @@ $(document).ready(function () {
 
 /*************************************NOTES*********************************/ 
 
-  
-    $(document).ready(function () {
+    function getNotesForCurrentBook() {
 
-        if ($("current-book-img").attr("data-empty") === "1") {
+        console.log("getting notes");
 
-           
-                
-        }
-       
-    });
+        console.log("line 39: ", $("current-book-img").attr("data-empty") === "1");
+
+        // if ($("current-book-img").attr("data-empty") === "1") {
+
+            $.get("/api/mybooks", function (data) {
+                console.log("this is the get for the notes");
+                console.log("data is", data);
+               
+               // run a for loop and only display notes for this book
+
+        
+            });
+            
+        // } // end of If 
+
+    };
+
 
 
 
     // get to display all notes associated with a book 
 
-    // function getAllNotesForBook (data) 
+    // function getAllNotesForBook (data) {
 
-    // $.get("/api/mybooks", function (data) {
-    //     console.log("this is the get for the notes");
-    //     console.log(data);
-    //     // loop to append all the notes 
+    //     $.get("/api/mybooks", function (data) {
+    //         console.log("this is the get for the notes");
+    //         console.log(data);
+    //         // loop to append all the notes 
+    
+    //         // begin sabrina paste 
+    //         for (var i = 0; i < data.length; i++) {
+    //             $("#append-new-note").append("<h1>" + data[i].noteTitle + "</h1>")
+    //             $("#append-new-note").append("<p>" + data[i].noteText + "</p>")
+    //             $("#append-new-note").append("<button class='delete' data-id='" + data[i].id + "'>delete</button>");
+    //         } // end sabrina paste 
+    
+    
+    //     });
+    
 
-    //     // begin sabrina paste 
-    //     for (var i = 0; i < data.length; i++) {
-    //         $("#append-new-note").append("<h1>" + data[i].noteTitle + "</h1>")
-    //         $("#append-new-note").append("<p>" + data[i].noteText + "</p>")
-    //         $("#append-new-note").append("<button class='delete' data-id='" + data[i].id + "'>delete</button>");
-    //     } // end sabrina paste 
+    // }
 
-
-    // });
-
+   
 
     // Capture note 
     $(document).on("click", "#note-submit", function () {
@@ -126,17 +141,6 @@ $(document).ready(function () {
 
 /****************************BOOKS*************************************/ 
 
-// function getCurrentBook(book) {
-
-//     $.get("/api/fav-books", function(data) {
-
-//         console.log(data); 
-    
-//     }); 
-
-// }
-
-
 // Show all books and display currenlty reading book 
 $(document).ready(function () {
 
@@ -191,7 +195,12 @@ $(document).ready(function () {
 
         };
 
-    });
+    }).done(function() {
+        console.log("favorite books successfully loaded"); 
+
+        getNotesForCurrentBook(); 
+
+    }); 
 });
 
 
@@ -233,6 +242,8 @@ $(document).on("click", ".book-cover-div", function () {
         };
 
         updateBookToReading(updateBook); 
+
+        getNotesForCurrentBook(); 
 
     }
 

@@ -143,7 +143,7 @@ module.exports = function (app) {
 
   // display the book that is currently being read 
 
-app.get("/api/fav-books/curr-reading", function(req, res) {
+app.get("/api/fav-books", function(req, res) {
 
   db.Book.findOne({
     where: {
