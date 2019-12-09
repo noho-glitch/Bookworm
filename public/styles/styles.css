@@ -419,6 +419,9 @@ body {
   margin-left: auto; 
   display: block;
   cursor: pointer;  
+  border-radius: 20px;
+  border: 1px darkgray solid; 
+  border: 1px 
 }
 
 #allBooks {
