@@ -66,26 +66,19 @@ module.exports = function (app) {
   });
 
   // Delete a note by id
-  app.get("/api/mybooks/:id", function (req, res) {
-    db.Note.findOne({
+  app.delete("/api/mybooks/:id", function (req, res) {
+
+    console.log("delete req is: ", req); 
+
+    db.Note.destroy({
       where: {
         id: req.params.id
       }
     }).then(function (dbNotes) {
       res.json(dbNotes);
     });
-  });
 
-  app.delete("/api/mybooks/:id", function (req, res) {
-    db.Note.destroy({
-      where: {
-        id: req.params.id
-      }
-    }).then(function (
-      dbNotes
-    ) {
-      res.json(dbNotes);
-    });
+
   });
 
   /*************BOOKS ****************/ 

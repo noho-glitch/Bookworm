@@ -47,6 +47,7 @@ $(document).ready(function () {
                 if (data[i].bookId === parseInt(currentBookId)) {
                     // then display those notes 
 
+                    var noteId = data[i].id; 
                     var noteTitle = data[i].noteTitle; 
                     var noteBody = data[i].noteText; 
                     var userId = $(".current-book-img").attr("data-userid");
@@ -60,6 +61,7 @@ $(document).ready(function () {
             
                     deleteButton.attr("data-bookid", bookId); 
                     deleteButton.attr("data-userid", userId); 
+                    deleteButton.attr("data-noteid", noteId); 
             
                     newNoteTitle.text(noteTitle);
                     newNoteBody.text(noteBody);
@@ -124,25 +126,21 @@ $(document).ready(function () {
 
     });
 
-    // pass through bookid and userid to the remove button 
-
     // Delete Note
     $(document).on("click", ".delete-note", function () {
 
-        console.log("delete was clicked!")
+        console.log("remove was clicked!")
 
-        // var currentBookId = $(".current-book-img").attr("data-bookid"); 
-        // var currentUserId = $(".current-book-img").attr("data-userid"); 
-        // var noteId = $()
+        var noteId = $(this).data('noteid');
 
+        console.log(noteId); 
 
-        var noteId = $(this).data('id');
         $.ajax({
             method: "DELETE",
             url: "/api/mybooks/" + noteId
         })
             .then(function () {
-                console.log("note had been deleted!")
+                console.log("note has been deleted!")
                 location.reload();
             })
 
@@ -301,7 +299,6 @@ $(document).on("click", "#send-back-bookshelf", function() {
     updateBookToReading(updateBook); 
 
    
-
-
 }); 
 
+});
