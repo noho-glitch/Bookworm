@@ -381,7 +381,9 @@ $(document).on("click", "#send-back-bookshelf", function() {
     var currentUserId = $(".current-book-img").attr("data-userid"); 
     console.log(currentUserId); 
 
-    console.log("201", currentBookId); 
+    console.log("201", currentBookId);
+    
+    $("#total-page-count").text("XX");
 
     $("[data-bookid='" + currentBookId + "']").parent().show(); 
     $("[data-bookid='" + currentBookId + "']").show();
