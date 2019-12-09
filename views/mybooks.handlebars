@@ -9,12 +9,6 @@
 
     <script href="https://use.fontawesome.com/6207dd8341.js"></script>
 
-     {{!-- Google Fonts --}}
-    <link href="https://fonts.googleapis.com/css?family=Gupter&display=swap" rel="stylesheet">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
 
     <link rel="stylesheet" href="/styles/styles.css" />
 
@@ -26,13 +20,26 @@
 <body>
 
 
-    <div id='cssmenu'>
-        <ul>
-            <li><a href='/search'>Search</a></li>
-            <li class='active'><a href='/mybooks'>My Books</a></li>
-        </ul>
 
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="collapse navbar-collapse" id="navbarColor03">
+                <ul class="navbar-nav mr-auto">
+                    <img height="10%" width="10%" src="/assets/img/bookworm.jpeg">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/search">Search<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/mybooks">My Books</a>
+                    </li>
+                    <li class="nav-item" id="nav">
+                        <a class="nav-link" href="/signin">Sign In</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
     </div>
+
 
     <div class="container">
 
@@ -46,7 +53,7 @@
                 <div class="col-lg-4">
 
                     <div class="card fav-books">
-                        <p id="fav-books-title">Favorite Books</p>
+                        <h5 id="fav-books-title">Bookshelf</h5>
                         <div id="allBooks"></div>
                     </div>
 
@@ -57,7 +64,7 @@
                 <div class="col-lg-8">
 
                     <div class="card currently-reading">
-                        <p id="currently-reading-title">Currently Reading</p>
+                        <h5 id="currently-reading-title">Currently Reading</h5>
 
                         <div class="row">
                             <div class="col-lg-5 text-center">
@@ -88,15 +95,17 @@
                             </div>
                             <div class="col-lg-7">
 
-                                  
+
 
                                 <div id="append-new-note"></div>
 
- <a class="add-note-btn" data-toggle="modal" data-target="#add-note-modal">
-     
-                                    <p class="text-center" id="add-note">Add note</p>
+                                <a class="add-note-btn" data-toggle="modal" data-target="#add-note-modal">
+                                    <i class="fas fa-plus"></i>
+                                    <p class="text-center" id="add-note">
+
+                                        + Add note</p>
                                 </a>
-                             
+
 
                             </div>
 

@@ -34,7 +34,7 @@ $("#search-btn").on("click", function (event) {
 });
 
 function renderBooks() {
-    var parameter = "";
+    var parameter = "&filter=ebooks&orderBy=relevance&";
     // var userInput = "";
     var queryURL =
         "https://www.googleapis.com/books/v1/volumes?q=" +
@@ -56,7 +56,7 @@ function renderBooks() {
             //   $(this).attr("id", i);
         }
 
-        for (var i = 0; i < 5; i++) {
+        for (var i = 0; i < 10; i++) {
             console.log(booksArr.length);
 
             title = booksArr[i].volumeInfo.title || "";
@@ -75,7 +75,7 @@ function renderBooks() {
             publishedDate = booksArr[i].volumeInfo.publishedDate;
 
             var card = $("<div>");
-            card.addClass("card form-rounded");
+            card.addClass("card");
 
             var imageDiv = $("<div>");
             imageDiv.addClass("float-left thumbnail");
@@ -84,11 +84,11 @@ function renderBooks() {
             textDiv.addClass("float-left textWrap");
 
             var bookShelfBtn = $("<button>");
-            bookShelfBtn.addClass("btn btn-warning form-rounded favBtn");
+            bookShelfBtn.addClass("btn btn-warning favBtn");
             bookShelfBtn.attr("id", "favorite");
-            bookShelfBtn.attr("data-target", "#launchSuccess");
-            bookShelfBtn.attr("data-toggle", "modal");
-            bookShelfBtn.text("Add to Bookshelf");
+            // bookShelfBtn.attr("<i class='fas fa-heart'></i>");
+            // bookShelfBtn.html("&hearts;")
+            bookShelfBtn.text("+ Add to Bookshelf");
             bookShelfBtn.attr("data-title", title);
             bookShelfBtn.attr("data-author", author);
             bookShelfBtn.attr("data-isbn", isbn);
@@ -97,6 +97,10 @@ function renderBooks() {
             bookShelfBtn.attr("data-image", image);
             bookShelfBtn.attr("data-description", description);
             bookShelfBtn.attr("data-publishedDate", publishedDate);
+            bookShelfBtn.attr("data-toggle", "popover")
+            bookShelfBtn.attr("data-placement", "right")
+            bookShelfBtn.attr("data-content", "added to favorites")
+            bookShelfBtn.attr("data-container", "body")
 
             var cardBody = $("<div>");
             cardBody.addClass("card-body");
@@ -260,7 +264,7 @@ function renderBooks() {
         };
 
         console.log("working!");
-        console.log("new book" + newBook);
+        console.log("new book" + JSON.stringify(newBook));
 
         $.post("/api/favorites", newBook, function (res) {
             // window.location.href = "/mybooks";
