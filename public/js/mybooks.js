@@ -75,6 +75,8 @@ $(document).ready(function () {
                     openButton.attr("data-bookid", bookId);
                     openButton.attr("data-userid", userId);
                     openButton.attr("data-noteid", noteId);
+                    openButton.attr("data-toggle", "modal");
+                    openButton.attr("data-target", "#note-information");
             
                     newNoteTitle.text(noteTitle);
                     newNoteBody.text(noteBody);
@@ -116,41 +118,6 @@ $(document).ready(function () {
             bookId: bookId
         };
 
-        // var newCard = $("<div class=card>").addClass("note-card");
-        // var newNoteTitle = $("<p class=card-note-title>");
-        // var newNoteBody = $("<p class=card-note-body>");
-        // var deleteButton = $("<button type=button class=delete-note>");
-
-        // var editButton = $("<button type=button class=edit-note>");
-        // var openButton = $("<button type=button class=open-note>");
-
-        // var cardHeader = $("<div class=card-header note-header>"); 
-
-        // deleteButton.attr("data-bookid", bookId); 
-        // deleteButton.attr("data-userid", userId); 
-
-        // editButton.attr("data-bookid", bookId);
-        // editButton.attr("data-userid", userId);
-
-        // openButton.attr("data-bookid", bookId);
-        // openButton.attr("data-userid", userId);
-
-        // newNoteTitle.text(noteTitle);
-        // newNoteBody.text(noteBody);
-        // deleteButton.text("Remove");
-        // editButton.text("Edit");
-        // openButton.text("Open");
-        // cardHeader.append(deleteButton); 
-        // cardHeader.append(openButton);
-        // cardHeader.append(editButton);
-        
-
-        // newCard.append(cardHeader); 
-        // newCard.append(newNoteTitle);
-        // newCard.append(newNoteBody);
-
-        // $("#append-new-note").append(newCard);
-
         // submit new note
         $.post("/api/mybooks", newNote, function () {
             // window.location.href = "/mybooks"; 
@@ -176,6 +143,23 @@ $(document).ready(function () {
                 console.log("note has been deleted!")
                 location.reload();
             })
+
+    });
+
+    // open Note 
+
+    $(document).on("click", ".open-note", function () {
+
+    // populate modal with relevant information
+
+    console.log(this.parentElement.parentElement.children[1].textContent);
+    console.log(this.parentElement.parentElement.children[2].textContent);
+
+    var noteTitle = this.parentElement.parentElement.children[1].textContent;
+    var noteBody = this.parentElement.parentElement.children[2].textContent;
+
+    $(".note-modal-title").text(noteTitle);
+    $(".note-modal-body").text(noteBody);
 
     });
 
