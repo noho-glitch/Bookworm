@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<!-- saved from url=(0029)http://localhost:3000/mybooks -->
+<html nighteye="disabled" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <link rel="stylesheet" href="./Home Page_files/bootstrap.min.css">
+  <link rel="stylesheet" href="./Home Page_files/styles.css" media="screen" title="no title" charset="utf-8">
+  <title>Home Page</title>
+</head>
+
+<body class="vsc-initialized" style="">
+  
+
+
+
+    <!-- Required meta tags -->
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+    <script href="https://use.fontawesome.com/6207dd8341.js"></script>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="./Home Page_files/bootstrap.min(1).css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="./Home Page_files/styles.css">
+
+    <title>My books</title>
+
+
+
+
+
+
+
+    <div id="cssmenu">
+        <ul>
+            <li class="active"><a href="http://localhost:3000/mybooks#">Search</a></li>
+            <li><a href="http://localhost:3000/mybooks#">My Books</a></li>
+        </ul>
+
+    </div>
+
+    <div class="container">
+
+        <div class="fav-book-container jumbotron">
+
+
+            <div class="row">
+
+
+                <!-- Favorite Book Section -->
+                <div class="col-lg-4">
+
+                    <div class="card fav-books">
+                        <p id="fav-books-title">Favorite Books</p>
+                        <div id="allBooks"><div><img class="book-cover-div" data-bookid="12" data-userid="2" src="./Home Page_files/content" data-title="Waltzing Into the Cold War" data-author="James Jay Carafano" data-pagecount="248" data-currentlyreading="true" data-currentpage="0" data-bookrating="0" style="display: none;"></div><div><img class="book-cover-div" data-bookid="13" data-userid="2" src="./Home Page_files/content" data-title="Waltzing Into the Cold War" data-author="James Jay Carafano" data-pagecount="248" data-currentlyreading="false" data-currentpage="0" data-bookrating="0"></div><div><img class="book-cover-div" data-bookid="14" data-userid="2" src="./Home Page_files/content(1)" data-title="Important Civil War Auction, June 24, 2007, Gettysburg, Pennsylvania" data-author="Heritage Auction Galleries (Dallas, Tex.)" data-pagecount="295" data-currentlyreading="false" data-currentpage="0" data-bookrating="0"></div><div><img class="book-cover-div" data-bookid="15" data-userid="2" src="./Home Page_files/content(1)" data-title="Important Civil War Auction, June 24, 2007, Gettysburg, Pennsylvania" data-author="Heritage Auction Galleries (Dallas, Tex.)" data-pagecount="295" data-currentlyreading="false" data-currentpage="0" data-bookrating="0"></div><div><img class="book-cover-div" data-bookid="16" data-userid="2" src="./Home Page_files/content(1)" data-title="Important Civil War Auction, June 24, 2007, Gettysburg, Pennsylvania" data-author="Heritage Auction Galleries (Dallas, Tex.)" data-pagecount="295" data-currentlyreading="false" data-currentpage="0" data-bookrating="0"></div></div>
+                    </div>
+
+                </div>
+
+
+                <!-- Currently Reading Section -->
+                <div class="col-lg-8">
+
+                    <div class="card currently-reading">
+                        <p id="currently-reading-title">Currently Reading</p>
+
+                        <div class="row">
+                            <div class="col-lg-5 text-center">
+                                <div id="curr-reading-book">
+
+                                    <div id="img-contain">
+                                        <img data-empty="1" class="current-book-img" src="./Home Page_files/content" data-bookid="12" data-userid="2">
+
+                                    </div>
+
+
+                                    <div class="progress-bar">
+                                        <span class="progress-bar-fill" style="width: 50%;"></span>
+                                    </div>
+
+                                    <p class="page-progress">Page <span id="curr-page-count">100</span> of <span id="total-page-count">248</span></p>
+
+
+                                    <a data-toggle="modal" data-target="#page-progress-modal">
+
+                                        <p id="edit-progress">Edit Progress</p>
+                                    </a>
+                                    
+                                    <p id="send-back-bookshelf">Send back to bookshelf</p>
+
+                                </div>
+                            </div>
+                            <div class="col-lg-7">
+
+                                  
+
+                                <div id="append-new-note"><div class="card note-card"><p class="card-note-title">Thoughts on chapter 2</p><p class="card-note-body">I enjoyed this chapter, although I'm not sure I would read this book again.</p><p id="delete-note" class="delete">Remove</p></div><div class="card note-card"><p class="card-note-title">Thoughts on chapter 2</p><p class="card-note-body">I enjoyed this chapter, although I'm not sure I would read this book again.</p><p id="delete-note" class="delete">Remove</p></div></div>
+
+ <a class="add-note-btn" data-toggle="modal" data-target="#add-note-modal">
+     
+                                    <p class="text-center" id="add-note">Add note</p>
+                                </a>
+                             
+
+                            </div>
+
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+
+    
+
+    <!-- Page Progress Modal -->
+    <div class="modal fade" id="page-progress-modal" tabindex="-1" role="dialog" aria-labelledby="page-progress-modalTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Reading progress</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+
+                    Current page:<br>
+                    <input id="current-page" type="text" name="lastname"> <br>
+                    Total pages:<br>
+                    <input id="total-pages" type="text" name="firstname"><br>
+
+                </div>
+                <div class="modal-footer">
+
+                    <button id="page-submit" type="button" class="btn btn-primary" data-dismiss="modal">Save
+                        changes</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Note Modal -->
+    <div class="modal fade" id="add-note-modal" tabindex="-1" role="dialog" aria-labelledby="add-note-modalTitle" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addNoteTitle">New Note</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    Note title:<br>
+                    <input id="note-title" type="text" name="noteTitle"> <br>
+
+
+                    <div class="form-group">
+                        <label for="book-note-area">Note:</label>
+                        <textarea class="form-control" id="book-note-area" rows="3"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+
+                    <button id="note-submit" type="button" class="btn btn-primary" data-dismiss="modal">Save
+                        note</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script integrity="" src="./Home Page_files/jquery.min.js" crossorigin="anonymous"></script>
+    <script src="./Home Page_files/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="./Home Page_files/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="./Home Page_files/mybooks.js"></script>
+
+
+
+
+
+ <script src="./Home Page_files/jquery-3.1.1.min.js"></script> 
+</body></html>

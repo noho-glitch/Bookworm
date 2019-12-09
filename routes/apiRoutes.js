@@ -38,8 +38,11 @@ module.exports = function (app) {
 
 
     // console.log("fav-notes/:id req is:", req);
-    console.log("fav-notes/:id req.user is:", req.user);  
-    console.log("fav-notes/:id req.user.id is:", req.user.id); 
+    // console.log("fav-notes/:id req.user is:", req.user);  
+    // console.log("fav-notes/:id req.user.id is:", req.user.id); 
+
+    console.log("req.params: ", req.params); 
+
     // console.log("fav-notes res is: ", res); 
 
     db.Note.findAll({
@@ -63,26 +66,19 @@ module.exports = function (app) {
   });
 
   // Delete a note by id
-  app.get("/api/mybooks/:id", function (req, res) {
-    db.Note.findOne({
+  app.delete("/api/mybooks/:id", function (req, res) {
+
+    console.log("delete req is: ", req); 
+
+    db.Note.destroy({
       where: {
         id: req.params.id
       }
     }).then(function (dbNotes) {
       res.json(dbNotes);
     });
-  });
 
-  app.delete("/api/mybooks/:id", function (req, res) {
-    db.Note.destroy({
-      where: {
-        id: req.params.id
-      }
-    }).then(function (
-      dbNotes
-    ) {
-      res.json(dbNotes);
-    });
+
   });
 
   /*************BOOKS ****************/ 
@@ -90,6 +86,8 @@ module.exports = function (app) {
   // put to update book as currently reading 
 
   app.put("/api/update", function(req, res) {
+
+    req.setTimeout(0);
 
     console.log("req body: ", req.body); 
     console.log("req.body.bookId: ", req.body.bookId);
@@ -100,10 +98,12 @@ module.exports = function (app) {
         where: {
           id: req.body.bookId,
           userId: req.body.userId
-        },
-        returning: true
+        }
+        // ,returning: true
       })
       .then(function (result) {
+
+        // res.status(201).json(result);
         console.log("result is:", result); 
       })
   });
@@ -140,7 +140,27 @@ module.exports = function (app) {
     });
   });
 
-  
+
+  // display the book that is currently being read 
+
+app.get("/api/fav-books", function(req, res) {
+
+  db.Book.findOne({
+    where: {
+      currentlyReading: 1,
+      userId: req.body.userId
+    }
+  })
+  .then(function (currBook) {
+    res.json(currBook);
+  });
+
+});
+
+
+
+// find a book by id 
+  // app.get("/api/fav-books/:id", function (req, res) {
 
   //save a new book
 
