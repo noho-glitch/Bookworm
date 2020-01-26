@@ -29,8 +29,8 @@
     "sequelize": "^5.21.2"
   },
   "engines": {
-    "node": "0.8.x",
-    "npm": "1.1.x"
+    "node": "13.7.0",
+    "npm": "6.13.6"
   },
   "devDependencies": {
     "chai": "^4.2.0",
