@@ -56,7 +56,7 @@ $(document).ready(function () {
                     var newCard = $("<div class=card>").addClass("note-card");
                     var newNoteTitle = $("<p class=card-note-title>");
                     var newNoteBody = $("<p class=card-note-body>");
-                    var deleteButton = $("<button type=button class=delete-note>");
+                    var deleteButton = $("<button type=button class=btn-warning>");
 
                     var editButton = $("<button type=button class=edit-note>");
                     var openButton = $("<button type=button class=open-note>");

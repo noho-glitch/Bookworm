@@ -104,6 +104,7 @@ function renderBooks() {
 
             var cardBody = $("<div>");
             cardBody.addClass("card-body");
+            cardBody.addClass("search-card");
 
             var bookTitle = $("<h5>");
             bookTitle.text(title);

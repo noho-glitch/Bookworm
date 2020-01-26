@@ -8,6 +8,9 @@
 body {
   background-image: url(../assets/img/books.png);
   /* background-repeat: no-repeat;  */
+  background-color: rgba(238, 238, 238, 0.5) !important;
+  background-blend-mode: color;
+
 }
 
 .search-box {
@@ -97,7 +100,9 @@ body {
 #add-note {
   font-size: 16pt; 
 }
-
+.search-card {
+  margin-bottom: 10px;
+}
 .card-note-body {
   white-space: nowrap;
   overflow: hidden;
