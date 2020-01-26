@@ -1,27 +1,23 @@
-
 .search_bar {
-  width: 70% !important; 
-  margin-right: auto; 
-  margin-left: auto; 
+  width: 70% !important;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 body {
   background-image: url(../assets/img/books.png);
-  /* background-repeat: no-repeat;  */
   background-color: rgba(238, 238, 238, 0.5) !important;
   background-blend-mode: color;
-
 }
 
 .search-box {
-  margin-top: 100px; 
-  width: 80%; 
-  max-width: 500px; 
-  padding-right: 10px; 
-  padding-left: 10px; 
-  margin-right: auto; 
-  margin-left: auto; 
-  /* border-radius: 25px !important;  */
+  margin-top: 100px;
+  width: 80%;
+  max-width: 500px;
+  padding-right: 10px;
+  padding-left: 10px;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 #search-input {
@@ -29,65 +25,54 @@ body {
 }
 
 .card.form-rounded {
-  margin-bottom: 10px; 
+  margin-bottom: 10px;
 }
 
-
-
 .fav-books {
-  height: 500px; 
-  /* border-radius: 25px !important;  */
-  /* background: lightgray;  */
+  height: 500px;
   border: solid;
   border-width: 2px;
   border-color: black;
 }
 
 #img-contain {
-  height: 250px !important; 
-  width: 160px !important; 
-  /* background: black;  */
-  margin-right: auto; 
-  margin-left: auto; 
-  margin-top: 40px; 
+  height: 250px !important;
+  width: 160px !important;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 40px;
 }
 
 .current-book-img {
-  width: 100%; 
-  height: 100%; 
-  border: 1px darkgray solid; 
-  border-radius: 10px; 
+  width: 100%;
+  height: 100%;
+  border: 1px darkgray solid;
+  border-radius: 10px;
 }
 
 .currently-reading {
-  /* height: 500px; */
-  /* border-radius: 25px !important;  */
-  /* font-size: 30pt;  */
-  background-image: url(/assets/img/brownpaper.jpg); 
-  margin-bottom: 10px; 
-  /* border: none !important;  */
+  background-image: url(/assets/img/brownpaper.jpg);
+  margin-bottom: 10px;
 }
 
 .fav-book-container {
-  margin-top: 60px; 
-  /* border-radius: 25px !important;  */
+  margin-top: 60px;
 }
 
 #fav-books-title {
-  margin-right: auto; 
-  margin-left: auto; 
-  font-size: 30pt; 
-  /* font-family: 'Gupter', serif;  */
+  margin-right: auto;
+  margin-left: auto;
+  font-size: 30pt;
 }
 
 #currently-reading-title {
-  margin-right: auto; 
-  margin-left: auto; 
+  margin-right: auto;
+  margin-left: auto;
 }
 
 #edit-progress {
-  font-size: 8pt; 
-  cursor: pointer; 
+  font-size: 8pt;
+  cursor: pointer;
   color: #595959;
 }
 
@@ -98,7 +83,7 @@ body {
 }
 
 #add-note {
-  font-size: 16pt; 
+  font-size: 16pt;
 }
 .search-card {
   margin-bottom: 10px;
@@ -110,8 +95,8 @@ body {
   display: inline-block;
   max-width: 100%;
   font-size: 10pt;
-  color: gray;  
-  margin-left: 10px; 
+  color: gray;
+  margin-left: 10px;
 }
 
 .card-note-title {
@@ -121,58 +106,54 @@ body {
   display: inline-block;
   max-width: 100%;
 
-  font-size: 14pt; 
-  margin-top: 5px; 
-  margin-left: 10px; 
-  margin-bottom: 5px; 
+  font-size: 14pt;
+  margin-top: 5px;
+  margin-left: 10px;
+  margin-bottom: 5px;
 }
 
 .note-card {
-  margin-top: 10px; 
-  margin-right: 10px; 
-  margin-left: 10px; 
+  margin-top: 10px;
+  margin-right: 10px;
+  margin-left: 10px;
 }
-
-
 
 #append-new-note {
-  background: white; 
-  border-radius: 25px; 
+  background: white;
+  border-radius: 25px;
   margin-right: 10px;
   overflow-y: scroll;
-  height: 400px; 
+  height: 400px;
 }
 
-  .delete-note {
-    margin-top: auto;
-    float: right; 
-    margin-left: 3%; 
-  }
+.delete-note {
+  margin-top: auto;
+  float: right;
+  margin-left: 3%;
+}
 
-  .edit-note {
-    display: block;
-    margin-top: auto;
-    margin-right: auto; 
-    margin-left: auto; 
-
-  }
+.edit-note {
+  display: block;
+  margin-top: auto;
+  margin-right: auto;
+  margin-left: auto;
+}
 
 .open-note {
   display: block;
   margin-top: auto;
-  float: left; 
+  float: left;
 }
 
 .deleteBook {
-  display: block; 
-  margin-right: auto; 
-  margin-left: auto; 
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
 }
 
-
 div.card-header {
-  padding-top: 5px !important; 
-  padding-bottom: 5px !important; 
+  padding-top: 5px !important;
+  padding-bottom: 5px !important;
 }
 
 #cssmenu,
@@ -202,7 +183,6 @@ div.card-header {
 #cssmenu {
   width: auto;
   border-bottom: 3px solid #47c9af;
-  /* font-family: Raleway, sans-serif; */
   line-height: 1;
 }
 #cssmenu ul {
@@ -233,11 +213,11 @@ div.card-header {
   font-weight: 400;
   text-decoration: none;
   color: #444444;
-  -webkit-transition: all .2s ease;
-  -moz-transition: all .2s ease;
-  -ms-transition: all .2s ease;
-  -o-transition: all .2s ease;
-  transition: all .2s ease;
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  -ms-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  transition: all 0.2s ease;
   margin-right: -4px;
 }
 #cssmenu > ul > li.active > a,
@@ -256,9 +236,9 @@ div.card-header {
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
   content: "";
-  -webkit-transition: all .2s ease;
-  -o-transition: all .2s ease;
-  transition: all .2s ease;
+  -webkit-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  transition: all 0.2s ease;
   -webkit-transform: perspective(5px) rotateX(2deg);
   -webkit-transform-origin: bottom;
   -moz-transform: perspective(5px) rotateX(2deg);
@@ -275,36 +255,30 @@ div.card-header {
 /* Media Queries  */
 
 @media only screen and (max-width: 990px) {
-  
   .fav-books {
-    margin-bottom: 50px; 
+    margin-bottom: 50px;
   }
-
 }
 
 .thumbnail {
   margin-right: 15px;
 }
 
-/* .form-rounded {
-  border-radius: 1rem;
-} */
-
 .wrapper {
   width: 500px;
 }
 
 .progress-bar {
-  margin-top: 10px; 
-  margin-bottom: 10px; 
-  margin-right: auto; 
-  margin-left: auto; 
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-right: auto;
+  margin-left: auto;
   width: 70%;
-  height: 15px; 
+  height: 15px;
   background-color: #e0e0e0;
   padding: 3px;
   border-radius: 3px;
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, .2);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 .progress-bar-fill {
@@ -312,14 +286,14 @@ div.card-header {
   height: 22px;
   background-color: #659cef;
   border-radius: 3px;
-  
+
   transition: width 500ms ease-in-out;
 }
 
 .page-progress {
-  font-size: 12pt; 
-  color: darkgray; 
-  margin-bottom: 5px; 
+  font-size: 12pt;
+  color: darkgray;
+  margin-bottom: 5px;
 }
 
 .textWrap {
@@ -331,21 +305,20 @@ div.card-header {
 }
 
 .grouping-1 {
-  /* margin-top: 30px;  */
-  margin-right: auto; 
-  margin-left: auto; 
+  margin-right: auto;
+  margin-left: auto;
   display: block;
   max-width: 150px;
 }
 .grouping-2 {
-  margin-left: auto; 
+  margin-left: auto;
   margin-right: auto;
-  max-width: 150px; 
+  max-width: 150px;
   margin-bottom: 20px;
 }
 
 .sign-in-submit {
-  display: block; 
+  display: block;
   display: inline-block;
   margin-left: 10%;
 }
@@ -359,47 +332,42 @@ div.card-header {
   float: left;
 }
 
-
-
 .modalBtn {
   margin: 25px 0px 0px 30px;
   padding-top: 0px;
   padding-bottom: 0px;
-  /* font-family: calibri; */
 }
 
 .favBtn {
   margin: 25px 0 0 0;
   padding-top: 0px;
   padding-bottom: 0px;
-  /* font-family: calibri; */
 }
 
 .book-cover-div {
-  margin-bottom: 10px; 
-  margin-right: auto; 
-  margin-left: auto; 
+  margin-bottom: 10px;
+  margin-right: auto;
+  margin-left: auto;
   display: block;
-  cursor: pointer;  
+  cursor: pointer;
 }
 
 #allBooks {
   overflow-y: scroll;
-  height: 400px; 
+  height: 400px;
   padding-top: 10px;
-    /* padding-bottom: 10px; */
-    width: 90%;
-    border-radius: 25px;
-    display: block;
-    margin-right: auto;
-    margin-left: auto;
-    background-color: white;
+  width: 90%;
+  border-radius: 25px;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  background-color: white;
 }
 #createAccount {
-  display:block;
+  display: block;
   margin-left: auto;
   margin-right: auto;
-} 
+}
 
 #signIn {
   margin-top: 20px;
@@ -419,23 +387,8 @@ div.card-header {
   float: right;
 }
 
-/* .titlePage {
-  float: left;
-}
-
-.logo-img {
-  float: left;
-} */
-
-/* #logo1 {
-  margin-bottom: 20px;
-  height: 20%;
-} */
-
-.center-div
-{
-     margin: 0 auto;
-     
+.center-div {
+  margin: 0 auto;
 }
 
 .center {
