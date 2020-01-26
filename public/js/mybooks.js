@@ -56,11 +56,13 @@ $(document).ready(function () {
                     var newCard = $("<div class=card>").addClass("note-card");
                     var newNoteTitle = $("<p class=card-note-title>");
                     var newNoteBody = $("<p class=card-note-body>");
-                    var deleteButton = $("<button type=button class=btn-warning>");
-                    deleteButton.addClass("deleteBook");
+                    var deleteButton = $("<button type=button class=btn-danger>");
+                    deleteButton.addClass("delete-note");
 
-                    var editButton = $("<button type=button class=edit-note>");
+                    var editButton = $("<button type=button class=btn-warning>");
+                    editButton.addClass("edit-note")
                     var openButton = $("<button type=button class=open-note>");
+                    openButton.addClass("btn-success");
             
 
                     var cardHeader = $("<div class=card-header note-header>"); 
@@ -239,11 +241,11 @@ $(document).ready(function () {
 
             var imgDiv = $("<div class=book-div-wrapper>"); 
             var imgElement = $("<img class=book-cover-div>"); 
-            var deleteBtn = $("<button type=button class=btn-warning>");
+            var deleteBtn = $("<button type=button class=btn-danger>");
             deleteBtn.addClass("deleteBook");
 
 
-            deleteBtn.text("Remove");
+            deleteBtn.text("Remove Book");
             deleteBtn.attr("data-bookId", bookId);
 
             imgDiv.attr("data-bookid", bookId);
