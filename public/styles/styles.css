@@ -129,8 +129,6 @@ body {
 
 .note-card {
   margin-top: 10px; 
-  border-radius: 20px;
-  /* margin-bottom: 5px;  */
   margin-right: 10px; 
   margin-left: 10px; 
 }
@@ -146,22 +144,12 @@ body {
 }
 
   .delete-note {
-    /* padding-top: 0px;  */
-    /* border-radius: 20px; */
-    /* height: 15px;  */
-    /* width: 60px;  */
     margin-top: auto;
     float: right; 
-    /* font-size: 8pt; */
-    /* background: rgb(255, 68, 0);  */
-    /* color: white;  */
-    /* border: none;  */
     margin-left: 3%; 
   }
 
   .edit-note {
-    /* padding-top: 0px; */
-    /* float: right;  */
     display: block;
     margin-top: auto;
     margin-right: auto; 
@@ -172,29 +160,13 @@ body {
 .open-note {
   display: block;
   margin-top: auto;
-  /* padding-top: 0px;  */
-  /* border-radius: 20px; */
-  /* height: 15px;  */
-  /* width: 60px;  */
   float: left; 
-  /* font-size: 8pt; */
-  /* background: rgb(5, 208, 5);  */
-  /* color: white; */
-  /* border: none;  */
 }
 
 .deleteBook {
   display: block; 
   margin-right: auto; 
   margin-left: auto; 
-  /* padding-top: 0px;  */
-  /* border-radius: 20px; */
-  /* height: 15px;  */
-  /* width: 60px;  */
-  /* font-size: 8pt; */
-  /* background: rgb(255, 68, 0);  */
-  /* color: white; */
-  /* border: none;  */
 }
 
 
