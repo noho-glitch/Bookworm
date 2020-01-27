@@ -16,8 +16,12 @@ Getting started is as easy as visiting our deployed site on heroku.  First time 
 
 [Search for a book here!](https://bookworm2019.herokuapp.com/search/)
 ## Sign in or Register
+![signin](https://github.com/noho-glitch/Bookworm/blob/master/public/assets/img/signin.png?raw=true)
 ## Search for a book!
+![search](https://github.com/noho-glitch/Bookworm/blob/master/public/assets/img/search.png?raw=true)
+![moreinfo](https://github.com/noho-glitch/Bookworm/blob/master/public/assets/img/moreinfo.png)
 ## Taking a note
+![note](https://github.com/noho-glitch/Bookworm/blob/master/public/assets/img/note.png?raw=true)
 ## Built With
 * [Node.js](https://nodejs.org/en/)
 * [MySQL](https://www.mysql.com/)
@@ -26,7 +30,6 @@ Getting started is as easy as visiting our deployed site on heroku.  First time 
 * [Passport](http://www.passportjs.org/)
 
 ## Authors
-* [nexio-t](https://github.com/nexio-t)
-* [samuniz](https://github.com/samuniz)
-* [sampizzo](https://github.com/sampizzo)
-* [noho-glitch](https://github.com/noho-glitch)
+* [Sabrina Shaget || samuniz](https://github.com/samuniz)
+* [Sam Pizzo || sampizzo](https://github.com/sampizzo)
+* [David Nolan || noho-glitch](https://github.com/noho-glitch)
